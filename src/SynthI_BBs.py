@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 from rdkit import Chem
 from rdkit.Chem import rdChemReactions as Reactions
-from BBsClasification import BBClassifier
+from src.BBsClasification import BBClassifier
 from rdkit.Chem.rdMolDescriptors import *
 from rdkit.Chem.rdmolops import *
 from rdkit.Chem import AddHs

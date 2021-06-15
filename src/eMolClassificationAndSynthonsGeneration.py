@@ -1,7 +1,7 @@
 from rdkit import Chem
 from rdkit.Chem.rdMolDescriptors import *
-from BBsClasification import BBClassifier
-from SynthI_BBs import mainSynthonsGenerator, readMol
+from src.BBsClasification import BBClassifier
+from src.SynthI_BBs import mainSynthonsGenerator, readMol
 from rdkit.Chem.rdmolops import *
 from concurrent.futures import ProcessPoolExecutor
 from rdkit.Chem import AddHs
