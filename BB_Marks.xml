@@ -1,0 +1,499 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<BB_Marks>
+    <Acetylenes>
+        <AlkyneCH
+            SMARTS="[C:1]#[CH:2]>>*[C;+0:2]#[C:1]"
+            Labels="*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </AlkyneCH>
+    </Acetylenes>
+    <Acylhalides>
+        <Acylhalides
+            SMARTS="[C;$(C(=O)([#6])):1][Cl,F,Br:2]>>[C;+0:1]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Acylhalides>
+        <N-Acylhalides
+            SMARTS="[C;$(C(=O)([N;D3])):1][Cl,F,Br:2]>>[C;+0:1]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </N-Acylhalides>
+        <O-Acylhalides
+            SMARTS="[C;$(C(=O)([O;D2])):1][Cl,F,Br:2]>>[C;+0:1]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </O-Acylhalides>
+    </Acylhalides>
+    <Anhydrides>
+        <Acyclic_Anhydrides
+            SMARTS="[C;$(C(=O)([#6])!@-O-C(-[#6])=O):1][O:2]>>[C;+0:1]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Acyclic_Anhydrides>
+    </Anhydrides>
+    <Alcohols>
+        <Aliphatic_alcohols
+            SMARTS="[O;$([OH][CX4;!$(C[S,N,P,OD2]C=O)]);!$(O[2H]):1]>>[O;+0:1]*|[O;$(O[CX4;!$(C[S,N,P,OD2]C=O)]):1][2H:2]>>[O;+0:1]*|[OH:2][C;X4;!$(C[S,N,P,OD2]C=O):1]>>[C;+0:1]*"
+            Labels="*O->O:20|*O->O:20|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Aliphatic_alcohols>
+        <Heterols
+            SMARTS="[O;$([OH][c;!$(c1ccccc1)]);!$(O[2H]):1]>>[O;+0:1]*|[O;$(O[c;!$(c1ccccc1)]):1][2H:2]>>[O;+0:1]*"
+            Labels="*O->O:20|*O->O:20"> </Heterols>
+        <Phenols
+            SMARTS="[O;$([OH]c1ccccc1);!$(O[2H]):1]>>[O;+0:1]*|[O;$(Oc1ccccc1):1][2H:2]>>[O;+0:1]*"
+            Labels="*O->O:20|*O->O:20"> </Phenols>
+    </Alcohols>
+    <Aldehyde>
+        <Aliphatic_Aldehydes
+            SMARTS="[C;$([CH](C)(=O)):1]=[O:2]>>[C;+0:1]*|[C;$([CH](C)(=O)):1]=[O:2]>>[C;+0:1]*|[C;$([CH](C)(=O)):1]=[O:2]>>*[C;+0:1]-[OH:2]"
+            Labels="*C->C:30,*[13C]->13C:30,*[13CH]->13C:30|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Aliphatic_Aldehydes>
+        <Aromatic_aldehydes
+            SMARTS="[C;$([CH](c)(=O)):1]=[O:2]>>[C;+0:1]*|[C;$([CH](c)(=O)):1]=[O:2]>>[C;+0:1]*|[C;$([CH](c)(=O)):1]=[O:2]>>*[C;+0:1]-[OH:2]"
+            Labels="*C->C:30,*[13C]->13C:30,*[13CH]->13C:30|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Aromatic_aldehydes>
+        <Heteroaromatic_aldehydes
+            SMARTS="[C;$([CH]([c;!$(c1ccccc1)])(=O)):1]=[O:2]>>[C;+0:1]*|[C;$([CH]([c;!$(c1ccccc1)])(=O)):1]=[O:2]>>[C;+0:1]*"
+            Labels="*C->C:30,*[13C]->13C:30,*[13CH]->13C:30|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Heteroaromatic_aldehydes>
+    </Aldehyde>
+    <Alkenes>
+        <AlkenesCH2
+            SMARTS="[C:1]=[CH2:2]>>*[C:1]"
+            Labels="*C->C:50"> </AlkenesCH2>
+        <AlkenesForHeckCoupling
+            SMARTS="[C:1]=[CH2:2]>>[C:1]=[C:2]*"
+            Labels="*C->C:20"> </AlkenesForHeckCoupling>
+    </Alkenes>
+    <AlkylHalides>
+        <Alkyl_halides
+            SMARTS="[Cl,Br,I:1][C;X4:2]>>[C;+0:2]*|[I:1][C;X4:2]>>[C;+0:2]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </Alkyl_halides>
+        <Benzyl_halides
+            SMARTS="[Cl,Br,I:1][C;X4;$(Cc1ccccc1):2]>>[C;+0:2]*|[I:1][C;X4;$(Cc1ccccc1):2]>>[C;+0:2]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </Benzyl_halides>
+        <Heteroaromatic_benzyl_halides
+            SMARTS="[Cl,Br,I:1][C;X4;!$(Cc1ccccc1):2]>>[C;+0:2]*|[I:1][C;X4;!$(Cc1ccccc1):2]>>[C;+0:2]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </Heteroaromatic_benzyl_halides>
+        <Heterocyclic_alkyl_halides
+            SMARTS="[Cl,Br,I:1][C;X4:2]>>[C;+0:2]*|[I:1][C;X4:2]>>[C;+0:2]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </Heterocyclic_alkyl_halides>
+    </AlkylHalides>
+    <Amides>
+        <Amides
+            SMARTS="[N;$([NH,NH2]C(=[O,S])[#6])!$(N[N,O,S,P]);!$(NC=[N,P]);!$(N[2H]):1]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20"> </Amides>
+        <WeinrebAmides
+            SMARTS="[C;$(C([#6])(=O)N([CH3])O[CH3]):1][N;$(N([CH3])O[CH3]):2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </WeinrebAmides>
+    </Amides>
+    <Aminoacids>
+        <AlphaAmino_Acid
+            SMARTS="[N;$([NH,NH2]);$(N[CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[N;$([NH2]);$(N[CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[C;$(C(=O)([OD1])[CX4][NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)]):1][OD1:2]>>*[C;+0:1]|[N;$([NH,NH2]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)!$(N[2H]):1][CX4:2][C;$(C(=O)([OD1])[CX4][NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)]):3][OD1:4]>>*[N;+0:1][CX4:2][C:3]*|[N;$([NH2]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)!$(N[2H]):1][CX4:2][C;$(C(=O)([OD1])[CX4][NH2;!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)]):3][OD1:4]>>*[N;+0:1][CX4:2][C:3]*"
+            Labels="*N->N:20|*N->N:40|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:20,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:20|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:40,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:40"> </AlphaAmino_Acid>
+        <BetaAmino_Acid
+            SMARTS="[N;$([NH,NH2]);$(N[CX4,O][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[N;$([NH2]);$(N[CX4,O][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[C;$(C(=O)([OD1])[CX4][CX4,O][NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N[CX4]C(=O)[OD1])!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)]):1][OD1:2]>>*[C;+0:1]|[N;$([NH,NH2]);$(N[CX4,O][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)!$(N[2H]):1][CX4,O:2][CX4:3][C;$(C(=O)([OD1])[CX4][CX4,O][NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N[CX4]C(=O)[OD1])!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)]):4][OD1:5]>>*[N;+0:1][CX4,O:2][C:3][C:4]*|[N;$([NH2]);$(N[CX4,O][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)!$(N[2H]):1][CX4,O:2][CX4:3][C;$(C(=O)([OD1])[CX4][CX4,O][NH2;!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N[CX4]C(=O)[OD1])!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)]):4][OD1:5]>>*[N;+0:1][CX4,O:2][C:3][C:4]*"
+            Labels="*N->N:20|*N->N:40|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:20,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:20|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:40,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:40"> </BetaAmino_Acid>
+        <GammaAmino_Acid
+            SMARTS="[N;$([NH,NH2]);$(N[CX4,O][CX4][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(N[CX4,O][CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[N;$([NH2]);$(N[CX4,O][CX4][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(N[CX4,O][CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[C;$(C(=O)([OD1])[CX4][CX4][CX4,O][NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N[CX4]C(=O)[OD1])!$(N[CX4,O][CX4]C(=O)[OD1])!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)]):1][OD1:2]>>*[C;+0:1]|[N;$([NH,NH2]);$(N[CX4,O][CX4][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(N[CX4,O][CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)!$(N[2H]):1][CX4,O:2][CX4:3][CX4:4][C;$(C(=O)([OD1])[CX4][CX4][CX4,O][NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N[CX4]C(=O)[OD1])!$(N[CX4,O][CX4]C(=O)[OD1])!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)]):5][OD1:6]>>*[N;+0:1][CX4,O:2][C:3][C:4][C;+0:5]*|[N;$([NH2]);$(N[CX4,O][CX4][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(N[CX4,O][CX4]C(=O)[OD1]);!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)!$(N[2H]):1][CX4,O:2][CX4:3][CX4:4][C;$(C(=O)([OD1])[CX4][CX4][CX4,O][NH2;!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N[CX4]C(=O)[OD1])!$(N[CX4,O][CX4]C(=O)[OD1])!$(N=[C,N,O])!$(N[c,#7,S,P])!$(N#C)]):5][OD1:6]>>*[N;+0:1][CX4,O:2][C:3][C:4][C;+0:5]*"
+            Labels="*N->N:20|*N->N:40|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:20,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:20|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:40,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*N->N:40"> </GammaAmino_Acid>
+        <N-AliphaticAmino_Acid
+            SMARTS="[N;$([NH,NH2])!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[N;$([NH2])!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[C;$(C(=O)[OD1]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*N->N:20|*N->N:40|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </N-AliphaticAmino_Acid>
+        <N-AromaticAmino_Acid
+            SMARTS="[N;$([NH,NH2]c)!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[#7,O,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[N;$([NH2]c)!$(NC=[N,S,P,C]);!$(N!@C=O)!$(N=[C,N,O])!$(N[#7,O,S,P])!$(N#C)!$(N[2H]):1]>>*[N;+0:1]|[C;$(C(=O)[OD1]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*N->N:20|*N->N:40|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </N-AromaticAmino_Acid>
+    </Aminoacids>
+    <ArylHalide>
+        <Aryl_halides_Pd
+            SMARTS="[c;$(c1[a][a][n][a][a]1):1][Cl:2]>>*[c;+0:1]|[c;$(c1[n][a][a][a][a]1):1][Cl:2]>>*[c;+0:1]|[c:1][I,Br:2]>>*[c;+0:1]|[c:1][O;$(OS(=O)(=O)C(F)(F)F):2]>>*[c;+0:1]"
+            Labels="*c->c:10,*[13c]->13c:10|*c->c:10,*[13c]->13c:10|*c->c:10,*[13c]->13c:10|*c->c:10,*[13c]->13c:10"> </Aryl_halides_Pd>
+        <Aryl_halides_SN
+            SMARTS="[F,Cl,Br,I:1][c;$(c1[a;!$([a][O])!$([a][Nv3X3])][a;!$([a][O])!$([a][Nv3X3])][a]([$([NX3](=O)=O),$([NX3+](=O)[O-]),$(C#N),$(C([H])=O),$(C(O)=O),$(S(=O)=O)])[a;!$([a][O])!$([a][Nv3X3])][a;!$([a][O])!$([a][Nv3X3])]1):2]>>*[c;+0:2]|[F,Cl,Br,I:1][c;$(c1[a]([$([NX3](=O)=O),$([NX3+](=O)[O-]),$(C#N),$(C([H])=O),$(C(O)=O),$(S(=O)=O)])[a;!$([a][O])!$([a][Nv3X3])][a;!$([a][O])!$([a][Nv3X3])][a;!$([a][O])!$([a][Nv3X3])][a;!$([a][O])!$([a][Nv3X3])]1):2]>>*[c;+0:2]|[c;$(c1[a][a][n][a][a]1):1][Cl:2]>>*[c;+0:1]|[c;$(c1[n][a][a][a][a]1):1][Cl:2]>>*[c;+0:1]"
+            Labels="*c->c:10,*[13c]->13c:10|*c->c:10,*[13c]->13c:10|*c->c:10,*[13c]->13c:10|*c->c:10,*[13c]->13c:10"> </Aryl_halides_SN>
+        <Aryl_iodides
+            SMARTS="[c:1][I:2]>>*[c;+0:1]"
+            Labels="*c->c:10,*[13c]->13c:10"> </Aryl_iodides>
+    </ArylHalide>
+    <Azides>
+        <Azides_Acylated
+            SMARTS="[C;$(C=O):1][N$(N=[N+]=[N-]):2]>>*[C;+0:1]|[S;$(S=O):1][N$(N=[N+]=[N-]):2]>>*[S;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*S->S:10"> </Azides_Acylated>
+    </Azides>
+    <Bifunctional>
+        <Acid_Aldehyde
+            SMARTS="[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*C->C:30,*[13C]->13C:30,*[13CH]->13C:30|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Acid_Aldehyde>
+        <Acid_ArylHalide
+            SMARTS="[Cl:1][c;$(c1[c,n][c,n]n[c,n][c,n]1),$(c1[n][c,n][n,c][c,n][c,n]1),$(c1[n]aa[a;!c]1):2]>>*[c;+0:2]|[I,Br:1][c:2]>>*[c;+0:2]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*c->c:10,*[13c]->13c:10|*c->c:10,*[13c]->13c:10|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Acid_ArylHalide>
+        <Acid_Ester
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Acid_Ester>
+        <NbocAmino_Acid
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N:1][C;$(C(=O)OC([CH3])([CH3])[CH3]):2]>>[N!$(N=[O,S]):1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NbocAmino_Acid>
+        <NcbzAmino_Acid
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N:1][C;$(C(=O)O[CH2]c1[cH][cH][cH][cH][cH]1):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NcbzAmino_Acid>
+        <Isothiocyanates_Acid
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[ND2;$(N[#6]):1]=[C;$(C(=S)=N):2]>>[N:1]|[NH,NH2;!$(NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1):1]>>*[N;+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </Isothiocyanates_Acid>
+        <NfmocAmino_Acid
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N:1][C;$(C(=O)O[CH2][CH]1c2[cH][cH][cH][cH]c2-c3[cH][cH][cH][cH]c13):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NfmocAmino_Acid>
+        <NTFAcAmino_Acid
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N:1][C;$(C(=O)C(F)(F)F):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N:1]|[NH2!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NTFAcAmino_Acid>
+        <Acid_Nitro
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N;+0,+1;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O):1](=[O:2])=,-[O;+0,-1:3]>>[NH2,+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </Acid_Nitro>
+        <Aldehyde_ArylHalide
+            SMARTS="[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*|[Cl,Br,I:1][c;$(c1[c,n][c,n]n[c,n][c,n]1),$(c1[n][c,n][n,c][c,n][c,n]1),$(c1[n]aa[a;!c]1),$(cI),$(cBr):2]>>*[c;+0:2]"
+            Labels="*C->C:30,*[13C]->13C:30,*[13CH]->13C:30,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*c->c:10,*[13c]->13c:10"> </Aldehyde_ArylHalide>
+        <Aldehyde_Ester
+            SMARTS="[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:30,*[13C]->13C:30,*[13CH]->13C:30,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Aldehyde_Ester>
+        <Aldehyde_Nboc
+            SMARTS="[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*|[N:1][C;$(C(=O)OC([CH3])([CH3])[CH3]):2]>>[N:1]|[NH,NH2;!$(NC(=O)OC([CH3])([CH3])[CH3]):1]>>*[N;+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*C->C:30,*[13C]->13C:30,*[13CH]->13C:30,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </Aldehyde_Nboc>
+        <Aldehyde_Nitro
+            SMARTS="[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*|[N;+0,+1;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O):1](=[O:2])=,-[O;+0,-1:3]>>[NH2,+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*C->C:30,*[13C]->13C:30,*[13CH]->13C:30,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </Aldehyde_Nitro>
+        <Aldehyde_SO2X
+            SMARTS="[S;D4;$(S(=O)=O):1][F,Cl,Br:2]>>*[S;+0:1]|[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*"
+            Labels="*S->S:10|*C->C:30,*[13C]->13C:30,*[13CH]->13C:30,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Aldehyde_SO2X>
+        <Amine_Ester
+            SMARTS="[NX3;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4]);!$(N[2H]):1]>>*[N;+0:1]|[NX3;$([NH2][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]|[NX3;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NH;R](@[N;R])@[CX4,c]),$([NHR]([CX4,c])@[O]),$([NH2][O]);!$(N[2H]):1]>>*[N;+0:1]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$(C[CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*N->N:20|*N->N:40|*N->N:20|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Amine_Ester>
+        <NbnDi_Amines
+            SMARTS="[NH,NH2;!$(N[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(N[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[2H]):1]>>*[N;+0:1]|[N;$(N[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[C,S,P]=[O,S,N]):1][C;$([CH2]c1[cH][cH][cH][cH][cH]1):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);!$(N[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);$([NH2][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NbnDi_Amines>
+        <NbocDi_Amines
+            SMARTS="[NH,NH2;!$(NC(=O)OC([CD1])([CD1])[CD1]);!$(N[2H]):1]>>*[N;+0:1]|[NH2;$([NH2][c,CX4]);!$(NC(=O)OC([CD1])([CD1])[CD1]);!$(N[2H]):1]>>*[N;+0:1]|[N;$(NC(=O)OC([CD1])([CD1])[CD1]):1][C;$(C(=O)OC([CD1])([CD1])[CD1]):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);!$(N[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);$([NH2][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NbocDi_Amines>
+        <NcbzDi_Amines
+            SMARTS="[NH,NH2;!$(NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[2H]):1]>>*[N;+0:1]|[NH2;$([NH2][c,CX4]);!$(NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[2H]):1]>>*[N;+0:1]|[N;$(NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1):1][C;$(C(=O)O[CH2]c1[cH][cH][cH][cH][cH]1):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);!$(NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);$([NH2][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NcbzDi_Amines>
+        <NfmocDi_Amines
+            SMARTS="[NH,NH2;!$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13);!$(N[2H]):1]>>*[N;+0:1]|[NH2;$([NH2][c,CX4]);!$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13);!$(N[2H]):1]>>*[N;+0:1]|[N;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):1][C;$(C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);!$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);$([NH2][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NfmocDi_Amines>
+        <NTFAcDi_Amines
+            SMARTS="[NH,NH2;!$(NC(=O)C(F)(F)F);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(NC(=O)C(F)(F)F);!$(N[2H]):1]>>*[N;+0:1]|[N;$(NC(=O)C(F)(F)F):1][C;$(C(=O)C(F)(F)F):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);!$(NC(=O)C(F)(F)F);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);$([NH2][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NTFAcDi_Amines>
+        <Di_Amines_NotherCarbamates
+            SMARTS="[NH,NH2;!$(NC(=O)O[CD1]);!$(NC(=O)O[CH2][CD1]);!$(NC(=O)O[CH2]C(F)(F)F);!$(NC(=O)O[CH2][CH]=[CH2]);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(NC(=O)O[CD1]);!$(NC(=O)O[CH2][CD1]);!$(NC(=O)O[CH2]C(F)(F)F);!$(NC(=O)O[CH2][CH]=[CH2]);!$(N[2H]):1]>>*[N;+0:1]|[N;$(NC(=O)O[CD1]),$(NC(=O)O[CH2][CD1]),$(NC(=O)O[CH2]C(F)(F)F),$(NC(=O)O[CH2][CH]=[CH2]):1][C;$(C(=O)O[CD1]),$(C(=O)O[CH2][CD1]),$(C(=O)O[CH2]C(F)(F)F),$(C(=O)O[CH2][CH]=[CH2]):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);!$(NC(=O)C(F)(F)F);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);$([NH2][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </Di_Amines_NotherCarbamates>
+        <Ester_Isocyanates
+            SMARTS="[C;$(C=O):1]=[N:2]>>*[C;+0:1]-[N:2]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Ester_Isocyanates>
+        <Ester_SO2X
+            SMARTS="[S;D4;$(S(=O)(=O)):1][F,Cl,Br:2]>>*[S;+0:1]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*S->S:10|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Ester_SO2X>
+        <Boronics_Ncbz
+            SMARTS="[#6:1][B;$(B(F)(F)F),$(B(O)O):2]>>*[#6;+0:1]|[#6:1][B;$(B(F)(F)F):2]>>*[#6;+0:1]|[N;$(NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1):1][C;$(C(=O)O[CH2]c1[cH][cH][cH][cH][cH]1):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);!$(NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);$([NH2][c,CX4]):1]>>*[N;+0:1]"
+            Labels="*C->C:21,*[13C]->13C:21,*[13CH]->13C:21,*c->c:21,*[13c]->13c:21|*C->C:70,*[13C]->13C:70,*[13CH]->13C:70,*c->c:70,*[13c]->13c:70|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </Boronics_Ncbz>
+        <Boronics_Nfmoc
+            SMARTS="[#6:1][B;$(B(F)(F)F),$(B(O)O):2]>>*[#6;+0:1]|[#6:1][B;$(B(F)(F)F):2]>>*[#6;+0:1]|[N;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):1][C;$(C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);!$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O);$([NH2][c,CX4]):1]>>*[N;+0:1]"
+            Labels="*C->C:21,*[13C]->13C:21,*[13CH]->13C:21,*c->c:21,*[13c]->13c:21|*C->C:70,*[13C]->13C:70,*[13CH]->13C:70,*c->c:70,*[13c]->13c:70|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </Boronics_Nfmoc>
+        <Boronics_Acid
+            SMARTS="[#6:1][B;$(B(F)(F)F):2]>>*[#6;+0:1]|[#6:1][B;$(B(O)O):2]>>*[#6;+0:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:21,*[13C]->13C:21,*[13CH]->13C:21,*c->c:21,*[13c]->13c:21,*C->C:70,*[13C]->13C:70,*[13CH]->13C:70,*c->c:70,*[13c]->13c:70|*C->C:21,*[13C]->13C:21,*[13CH]->13C:21,*c->c:21,*[13c]->13c:21|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Boronics_Acid>
+        <Boronics_Aldehyde
+            SMARTS="[#6:1][B;$(B(F)(F)F):2]>>*[#6;+0:1]|[#6:1][B;$(B(O)O):2]>>*[#6;+0:1]|[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*"
+            Labels="*C->C:21,*[13C]->13C:21,*[13CH]->13C:21,*c->c:21,*[13c]->13c:21,*C->C:70,*[13C]->13C:70,*[13CH]->13C:70,*c->c:70,*[13c]->13c:70|*C->C:21,*[13C]->13C:21,*[13CH]->13C:21,*c->c:21,*[13c]->13c:21|*C->C:30,*[13C]->13C:30,*[13CH]->13C:30,*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Boronics_Aldehyde>
+        <Hydroxy_Aldehyde
+            SMARTS="[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*|[OH;$(O[#6]);!$(OC=O):1]>>*[O;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*C->C:30,*[13C]->13C:30,*[13CH]->13C:30|*O->O:20"> </Hydroxy_Aldehyde>
+    </Bifunctional>
+    <Boronics>
+        <Aliphatic_boronates
+            SMARTS="[C:1][B;$(B([O;!$(OC=O)])[O;!$(OC=O)]),$(B([OH;!$(OC=O)])[OH;!$(OC=O)]):2]>>*[C;+0:1]|[C:1][B;$(B([$(F),$(OC=O)])[$(F),$(OC=O)]):2]>>*[C;+0:1]|[C:1][B;-1;$(B(O)(O)(O)):2]>>*[C;+0:1]"
+            Labels="*C->C:21,*[13C]->13C:21,*[13CH]->13C:21|*C->C:21,*[13C]->13C:21,*[13CH]->13C:21|*C->C:21,*[13C]->13C:21,*[13CH]->13C:21"> </Aliphatic_boronates>
+        <Aromatic_boronates
+            SMARTS="[c:1][B;$(B([O;!$(OC=O)])[O;!$(OC=O)]),$(B([OH;!$(OC=O)])[OH;!$(OC=O)]):2]>>*[c;+0:1]|[c:1][B;$(B([$(F),$(OC=O)])[$(F),$(OC=O)]):2]>>*[c;+0:1]|[c:1][B;-1;$(B(O)(O)(O)):2]>>*[c;+0:1]"
+            Labels="*c->c:21,*[13c]->13c:21|*c->c:21,*[13c]->13c:21|*c->c:21,*[13c]->13c:21"> </Aromatic_boronates>
+        <BF3andMIDA
+            SMARTS="[#6:1][B;$(B(F)(F)F):2]>>*[#6;+0:1]|[#6:1][B$([B;-1](O)(O)(O)),$(B(OC=O)OC=O):2]>>*[#6;+0:1]"
+            Labels="*c->c:21,*[13c]->13c:21,*c->c:70,*[13c]->13c:70,*C->C:21,*[13C]->13C:21,*[13CH]->13C:21,*C->C:70,*[13C]->13C:70,*[13CH]->13C:70|*C->C:21,*[13C]->13C:21,*[13CH]->13C:21,*c->c:21,*[13c]->13c:21"> </BF3andMIDA>
+        <Ene_boronates
+            SMARTS="[C;$(C=C):1][B;$(B([O;!$(OC=O)])[O;!$(OC=O)]),$(B([OH;!$(OC=O)])[OH;!$(OC=O)]):2]>>*[C;+0:1]|[C;$(C=C):1][B;$(B([$(F),$(OC=O)])[$(F),$(OC=O)]):2]>>*[C;+0:1]|[C;$(C=C):1][B;-1;$(B(O)(O)(O)):2]>>*[C;+0:1]"
+            Labels="*C->C:21,*[13C]->13C:21,*[13CH]->13C:21|*C->C:21,*[13C]->13C:21,*[13CH]->13C:21|*C->C:21,*[13C]->13C:21,*[13CH]->13C:21"> </Ene_boronates>
+        <Ine_boronates
+            SMARTS="[C;$(C#C):1][B;$(B([O;!$(OC=O)])[O;!$(OC=O)]),$(B([OH;!$(OC=O)])[OH;!$(OC=O)]):2]>>*[C;+0:1]|[C;$(C#C):1][B;$(B([$(F),$(OC=O)])[$(F),$(OC=O)]):2]>>*[C;+0:1]|[C;$(C#C):1][B;-1;$(B(O)(O)(O)):2]>>*[C;+0:1]"
+            Labels="*C->C:21,*[13C]->13C:21,*[13CH]->13C:21|*C->C:21,*[13C]->13C:21,*[13CH]->13C:21|*C->C:21,*[13C]->13C:21,*[13CH]->13C:21"> </Ine_boronates>
+    </Boronics>
+    <Acid>
+        <Aliphatic_Acid
+            SMARTS="[C;$(C(=O)C):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Aliphatic_Acid>
+        <ArAcetic_Acid
+            SMARTS="[C;$(C(=O)[CH2]c1ccccc1):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </ArAcetic_Acid>
+        <Aromatic_Acid
+            SMARTS="[C;$(C(=O)c1ccccc1):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Aromatic_Acid>
+        <HetAcetic_Acid
+            SMARTS="[C;$(C(=O)[CH2][a;!$(c1ccccc1)]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </HetAcetic_Acid>
+        <Heteroaromatic_Acid
+            SMARTS="[C;$(C(=O)[c;!$(c1ccccc1)]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Heteroaromatic_Acid>
+    </Acid>
+    <ElementOrganics>
+        <ArAcylTMS
+            SMARTS="[C;$(C(=O)c):1][#14;$([#14]([C;D1])([C;D1])[C;D1]):2]>>*[C;+0:1]"
+            Labels="*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </ArAcylTMS>
+        <ArSiR3
+            SMARTS="[c:1][#14;$([#14]([CX4,F,Cl,O])([CX4,F,Cl,O])[CX4,F,Cl,O]):2]>>*[c;+0:1]"
+            Labels="*c->c:20,*[13c]->13c:20"> </ArSiR3>
+        <ArSnAlk3
+            SMARTS="[c:1][#50;$([#50]([CX4])([CX4])[CX4]):2]>>*[c;+0:1]"
+            Labels="*c->c:20,*[13c]->13c:20"> </ArSnAlk3>
+        <EnylSiR3
+            SMARTS="[C;$(C=C):1][#14;$([#14]([CX4,F,Cl,O])([CX4,F,Cl,O])[CX4,F,Cl,O]):2]>>*[C;+0:1]"
+            Labels="*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </EnylSiR3>
+        <EnylSnAlk3
+            SMARTS="[C;$(C=C):1][#50;$([#50]([CX4])([CX4])[CX4]):2]>>*[C;+0:1]"
+            Labels="*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </EnylSnAlk3>
+    </ElementOrganics>
+    <Esters>
+        <Esters
+            SMARTS="[C;$(C(=O)[#6]);!$(C(=O)c1[cH][cH][cH][cH][cH]1);!$(C(=O)[CH3]):1][O;!R;$(O[CX4,c]):2]>>*[C;+0:1]|[O;!R;$(O(C(=O)[#6])[CX4,c]);!$(O([CH3])C([#6])=O);!$(O([CH2][CH3])C([#6])=O);!$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O);!$(O(C([CH3])([CH3])[CH3])C([#6])=O);!$(O([CH2][CH]=[CH2])C([#6])=O):1][C;$(C(=O)):2]>>*[O;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*O->O:20"> </Esters>
+        <PoliEsters
+            SMARTS="[C;$(C(=O)[#6]);!$(C(=O)c1[cH][cH][cH][cH][cH]1);!$(C(=O)[CH3]):1][O;!R;$(O[CX4,c]):2]>>*[C;+0:1]|[O;!R;$(O(C(=O)[#6])[CX4,c]);!$(O([CH3])C([#6])=O);!$(O([CH2][CH3])C([#6])=O);!$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O);!$(O(C([CH3])([CH3])[CH3])C([#6])=O);!$(O([CH2][CH]=[CH2])C([#6])=O):1][C;$(C(=O)):2]>>*[O;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*O->O:20"> </PoliEsters>
+    </Esters>
+    <Ketones>
+        <Ketones
+            SMARTS="[C;$(C([#6])[#6]):1]=[O:2]>>*[C;+0:1]|[C;$(C([#6;D2])[#6;D2]):1]=[O:2]>>*[C;+0:1]|[C;$([CH,CH2;D3]C(=O)([#6]));!$(C[OH]);!$(C[2H]):1]>>*[C;+0:1]|[C;$([C;D3]C(=O)([#6]));!$(C[OH]):1][2H:2]>>*[C;+0:1]|[C;$([CH2;D2]C(=O)([#6]));!$(C[OH]):1]>>*[C;+0:1]|[C;$(C([#6])[#6]):1]=[O:2]>>*[C;+0:1][OH]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:30,*[13C]->13C:30,*[13CH]->13C:30|*C->C:20,*[13C]->13C:20,*[13CH]->13C:20|*C->C:20,*[13C]->13C:20,*[13CH]->13C:20|*C->C:40,*[13C]->13C:40,*[13CH]->13C:40|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Ketones>
+    </Ketones>
+    <nHAzoles>
+        <nHAzoles
+                SMARTS="[nH;r5:1]>>*[n;+0:1]"
+                Labels="*n->n:20,*[15n]->15n:20"> </nHAzoles>
+        </nHAzoles>
+    <PrimaryAmines>
+        <PriAmines_Aliphatic
+            SMARTS="[NH2;$([NH2][CX4]);!$([NH2]C[OH,SH]);!$(N([2H])[2H]):1]>>*[N;+0:1]|[N;$(N[CX4]);!$(NC[OH,SH]):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </PriAmines_Aliphatic>
+        <PriAmines_Anilines
+            SMARTS="[NH2;$([NH2]c1ccccc1);!$(N([2H])[2H]):1]>>*[N;+0:1]|[N;$(Nc1ccccc1):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </PriAmines_Anilines>
+        <PriAmines_Benzylic
+            SMARTS="[NH2;$([NH2][CX4]c1ccccc1);!$([NH2]C[OH,SH]);!$(N([2H])[2H]):1]>>*[N;+0:1]|[N;$(N[CX4]c1ccccc1);!$(NC[OH,SH]):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </PriAmines_Benzylic>
+        <PriAmines_Het-Anilines
+            SMARTS="[NH2;$([NH2]a);!$([NH2]c1ccccc1);!$(N([2H])[2H]):1]>>*[N;+0:1]|[N;$(Na);!$(Nc1ccccc1):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </PriAmines_Het-Anilines>
+        <PriAmines_Het-benzylic
+            SMARTS="[NH2;$([NH2][CX4]a);!$([NH2]C[OH,SH]);!$([NH2][CX4]c1ccccc1);!$(N([2H])[2H]):1]>>*[N;+0:1]|[N;$(N[CX4]a);!$(NC[OH,SH]);!$(N[CX4]c1ccccc1):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </PriAmines_Het-benzylic>
+    </PrimaryAmines>
+    <Reagents>
+        <DiAmines
+            SMARTS="[N;$([NH,NH2]);!$(N=*)!$(N[#7,CX3,CX2,P,S]):1]>>*[N;+0:1]|[N;$([NH,NH2]);!$(N=*)!$(N[#7,CX3,CX2,P,S]):1]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20|*N->N:20"> </DiAmines>
+        <Hydrazines
+            SMARTS="[N;$([NH]);!$(N[CX3,CX2,P,S])!$(N=,#*)!$(N[O,S,P]):1]!@[N;!$(N[CX3,CX2,P,S])!$(N=,#*)!$(N[O,S,P]):2]>>*[N;+0:1]|[N;$([NH,NH2]N);!$(N[CX3,CX2,P,S])!$(N=,#*)!$(N[O,S,P]):1]>>*[N;+0:1]"
+            Labels="*N->N:40,*[15NH]->15N:40|*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20"> </Hydrazines>
+        <Hydrazides
+            SMARTS="[N;$([NH,NH2,NH3+]NC(=O)[#6])!$(NC=[O,S,N])!$(N[S,P]):1]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20"> </Hydrazides>
+        <Hydroxylamines
+            SMARTS="[NX3;!$(N=*)!$(N[CX3,CX2,P,S]);$([NH,NH2]-[O;D2]):1]>>*[N;+0:1]|[NX3;$([NH,NH2]-[O;D2])!$(N=*)!$(N[CX3,CX2,P,S]):1]>>*[N;+0:1]|[O;D1;$(O[NX3]);!$(ON=*)!$(ON[CX3,CX2,P,S]);!$(O[NH2]):1]>>*[O;+0:1]|[NX3;D3;!$(N=*)!$(N[c,CX3,CX2,P,S]):1]!@[O;D2;$(OC(=O)c1[cH][cH][cH][cH][cH]1):2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|*O->O:20|*N->N:11,*[15NH]->15N:11,*[15N]->15N:11"> </Hydroxylamines>
+        <Isocyanates
+            SMARTS="[C;$(C=O):1]=[N;!$(N(=C=O)C(=O)C(Cl)(Cl)Cl):2]>>*[C;+0:1]-[N:2]|[C;$(C(=O)C(Cl)(Cl)Cl):1][N;$(N(=C=O)C(=O)C(Cl)(Cl)Cl):2]=[C;$(C=O);!$(C(=O)C(Cl)(Cl)Cl):3]>>*[C;+0:3]-[N:2]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Isocyanates>
+        <PoliIsocyanates
+            SMARTS="[C;$(C=O):1]=[N:2]>>*[C;+0:1]-[N:2]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </PoliIsocyanates>
+        <Isothiocyanates
+            SMARTS="[C;$(C=S):1]=[N:2]>>*[C;+0:1]-[N:2]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Isothiocyanates>
+        <Li_organics
+            SMARTS="[Li:2][#6:1]>>*[#6;+0:1]"
+            Labels="*C->C:20,*[13C]->13C:20,*[13CH]->13C:20,*c->c:20,*[13c]->13c:20"> </Li_organics>
+        <Mg_organics
+            SMARTS="[Mg:2][#6:1]>>*[#6;+0:1]"
+            Labels="*C->C:20,*[13C]->13C:20,*[13CH]->13C:20,*c->c:20,*[13c]->13c:20"> </Mg_organics>
+        <Zn_organics
+            SMARTS="[Zn:2][#6:1]>>*[#6;+0:1]"
+            Labels="*C->C:20,*[13C]->13C:20,*[13CH]->13C:20,*c->c:20,*[13c]->13c:20"> </Zn_organics>
+        <Oxiranes
+            SMARTS="[C:1]1[O:2][C:3]1>>[C:1]([OH:2])[C;+0:3]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Oxiranes>
+        <PoliOxiranes
+            SMARTS="[C:1]1[O:2][C:3]1>>[C:1]([OH:2])[C;+0:3]*"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </PoliOxiranes>
+        <Oximes
+            SMARTS="[OD1;$(O[NX2]=[C;X3;$(C([CX4,c])[CX4,c]),$([CH][CX4,c])]):1]>>*[O;+0:1]"
+            Labels="*O->O:20"> </Oximes>
+        <Thioles
+            SMARTS="[SH,S-;D1$(S[CX4,c]),$(S[#6]@=,@:[*]):1]>>*[S;+0:1]"
+            Labels="*S->S:20"> </Thioles>
+        <Michael_Acceptors
+            SMARTS="[CX3;!$([OH,SH,NH2,O-,S-]);$(CC#N),$(C[SD4,CX3,P]=O),$(C[N+](=O)[O-]):1]=[CX3;!$(C[O,N,S,I,Cl,Br]);!$(C[2H]):2]>>[C:1][C;+0:2]*|[CX3;!$([OH,SH,NH2,O-,S-]);$(CC#N),$(C[SD4,CX3,P]=O),$(C[N+](=O)[O-]):1]=[CX3;!$(C[O,N,S,I,Cl,Br]):2][2H:3]>>[C:1][C;+0:2]([H])*"
+            Labels="*C->C:60,*[13C]->13C:60,*[13CH]->13C:60|*C->C:60,*[13C]->13C:60,*[13CH]->13C:60"> </Michael_Acceptors>
+        <Minisci_CHpartners
+            SMARTS="[cH;r6;$(cn),$(c1[a][a][n][a][a]1);!$(c[2H]):1]>>*[c;+0:1]|[c;r6;$(cn),$(c1[a][a][n][a][a]1):1][2H:2]>>*[c;+0:1]"
+            Labels="*c->c:60,*[13c]->13c:60|*c->c:60,*[13c]->13c:60"> </Minisci_CHpartners>
+        <OxalateAlkEsters
+            SMARTS="[C;!$(C=O):1][O;$(O(C)C(=O)C(=O)O[C;D1]),$(O(C)C(=O)C(=O)O[C;D2][C;D1]):2]>>*[C;+0:1]"
+            Labels="*C->C:70,*[13C]->13C:70,*[13CH]->13C:70"> </OxalateAlkEsters>
+        <NOPhtal_AlkEsters
+            SMARTS="[CX4:1][C;$(C(=O)ON1C(=O)c2[cH][cH][cH][cH]c2C1=O):2]>>*[C;+0:1]"
+            Labels="*C->C:70,*[13C]->13C:70,*[13CH]->13C:70"> </NOPhtal_AlkEsters>
+
+    </Reagents>
+    <ReagentsForOlefination>
+        <JuliaKocienski
+            SMARTS="[CH,CH2;X4:1][S;D4;$(S(=O)(=O)c),$(Sc1nc2[cH][cH][cH][cH]c2s1),$(Sc1n[cH][cH][cH][cH]1),$(Sc1nnnn1c2[cH][cH][cH][cH][cH]2),$(Sc1nnnn1C([CD1])([CD1])[CD1]),$(Sc1[cH]c(C(F)(F)F)[cH]c(C(F)(F)F)[cH]1):2]>>*[C;+0:1]"
+            Labels="*C->C:40,*[13C]->13C:40,*[13CH]->13C:40"> </JuliaKocienski>
+        <Wittig
+            SMARTS="[CH,CH2;X4:1][PD4;$(P(c1[cH][cH][cH][cH][cH]1)(c1[cH][cH][cH][cH][cH]1)c1[cH][cH][cH][cH][cH]1):2]>>*[C;+0:1]"
+            Labels="*C->C:40,*[13C]->13C:40,*[13CH]->13C:40"> </Wittig>
+        <Horner_Wadsworth_EmmonsReagents
+            SMARTS="[CH,CH2;X4;$(C[C,S](=O)O[CX4,c]),$(CC(=O)[CX4,c]),$(CC#N),$(CS(=O)[N,O]),$(C[ND3]=O):1][PD4;$(P(=O)(O[CX4,c])O[CX4,c]):2]>>*[C;+0:1]"
+            Labels="*C->C:40,*[13C]->13C:40,*[13CH]->13C:40"> </Horner_Wadsworth_EmmonsReagents>
+    </ReagentsForOlefination>
+    <SecondaryAmines>
+        <Cyc-Aliphatic
+            SMARTS="[N;D2;$([NH](@[CX4])@[CX4]);!$([NH]C[OH,SH]);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;$(N(@[CX4])@[CX4]);!$(NC[OH,SH]):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </Cyc-Aliphatic>
+        <Cyc-Anilines
+            SMARTS="[N;D2;$([NH](@[CX4])@c1ccccc1);!$([NH]C[OH,SH]);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;$(N(@[CX4])@c1ccccc1);!$(NC[OH,SH]):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </Cyc-Anilines>
+        <Cyc-Benzylic
+            SMARTS="[N;D2;$([NH](@[CX4])@[CX4]c1ccccc1);!$([NH]C[OH,SH]);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;$(N(@[CX4])@[CX4]c1ccccc1);!$(NC[OH,SH]):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </Cyc-Benzylic>
+        <Cyc-Het-Anilines
+            SMARTS="[N;D2;$([NH](@[CX4])@c);!$([NH]C[OH,SH]);!$([NH]c1ccccc1);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;$(N(@[CX4])@c);!$(NC[OH,SH]);!$(Nc1ccccc1):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </Cyc-Het-Anilines>
+        <Cyc-Het-benzylic
+            SMARTS="[N;D2;$([NH](@[CX4])@[CX4]c);!$([NH]C[OH,SH]);!$([NH][CX4]c1ccccc1);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;$(N(@[CX4])@[CX4]c);!$(NC[OH,SH]);!$(N[CX4]c1ccccc1):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </Cyc-Het-benzylic>
+        <diArylAmines
+            SMARTS="[N;A;D2;$([NH](c)c);!$(N[2H]):1]>>*[N;+0:1]|[N;A;D2;$(N(c)c):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </diArylAmines>
+        <secAliphatic
+            SMARTS="[N;D2;$([NH]([CX4])[CX4]);!$([NH]C[OH,SH]);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;$(N([CX4])[CX4]);!$(NC[OH,SH]):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </secAliphatic>
+        <SecAmines_Aliphatic_Fluorinated
+            SMARTS="[N;D2;$([NH]([CX4])[CX4]);!$([NH]C[OH,SH]);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;$(N([CX4])[CX4]);!$(NC[OH,SH]):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </SecAmines_Aliphatic_Fluorinated>
+        <SecAmines_Aliphatic_Polycyclic
+            SMARTS="[N;D2;$([NH]([CX4])[CX4]);!$([NH]C[OH,SH]);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;$(N([CX4])[CX4]);!$(NC[OH,SH]):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </SecAmines_Aliphatic_Polycyclic>
+        <secAnilines
+            SMARTS="[N;D2;!R;$([NH]([CX4])c1ccccc1);!$([NH]C[OH,SH]);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;!R;$(N([CX4])c1ccccc1);!$(NC[OH,SH]):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </secAnilines>
+        <secBenzylic
+            SMARTS="[N;D2;!R;$([NH]([CX4])[CX4]c1ccccc1);!$([NH]C[OH,SH]);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;!R;$(N(c)c):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </secBenzylic>
+        <secHet-Anilines
+            SMARTS="[N;D2;!R;$([NH]([CX4])c);!$([NH]C[OH,SH]);!$([NH]c1ccccc1);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;!R;$(N([CX4])c);!$(NC[OH,SH]);!$(Nc1ccccc1):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </secHet-Anilines>
+        <secHet-benzylic
+            SMARTS="[N;D2;!R;$([NH]([CX4])[CX4]c);!$([NH]C[OH,SH]);!$([NH][CX4]c1ccccc1);!$(N[2H]):1]>>*[N;+0:1]|[N;D2;!R;$(N([CX4])[CX4]c);!$(NC[OH,SH]);!$(N[CX4]c1ccccc1):1][2H:2]>>*[N;+0:1]"
+            Labels="*N->N:20,*[15N]->15N:20|*N->N:20,*[15N]->15N:20"> </secHet-benzylic>
+    </SecondaryAmines>
+    <SulfonesSulfinates>
+        <AlkylSulfinates
+            SMARTS="[S;D3;$(S(=O)[O-]);$(S(=O)[OH]):2][CX4:1]>>*[C;+0:1]|[O;-1;$([O-]S(=O)[CX4]):1]>>*[O;+0:1]|[O;D1;$([OH]S(=O)[CX4]):1]>>*[O;+0:1]"
+            Labels="*C->C:70,*[13C]->13C:70,*[13CH]->13C:70|*O->O:20|*O->O:20"> </AlkylSulfinates>
+        <ArylSulfinates
+            SMARTS="[S;D3;$(S(=O)[O-]);$(S(=O)[OH]):2][c:1]>>*[c;+0:1]|[O;-1;$([O-]S(=O)c):1]>>*[O;+0:1]|[O;D1;$([OH]S(=O)c):1]>>*[O;+0:1]"
+            Labels="*c->c:70,*[13c]->13c:70|*O->O:20|*O->O:20"> </ArylSulfinates>
+        <EnInSulfinates
+            SMARTS="[C;$(C=C),$(C#C):1][SD3;$(S(=O)[OH,O-]):2]>>*[C;+0:1]"
+            Labels="*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </EnInSulfinates>
+        <Aryl_Allyl_Sulphones
+            SMARTS="[c:1][S;$(S(=O)(=O)[CH2][CH]=[CH2]):2]>>*[c;+0:1]"
+            Labels="*c->c:20,*[13c]->13c:20"> </Aryl_Allyl_Sulphones>
+    </SulfonesSulfinates>
+    <SulfonylHalides>
+        <Aliphatic_Sulfonylhalides
+            SMARTS="[S;D4;$(S(=O)(=O)[CX4]):1][F,Cl,Br:2]>>*[S;+0:1]"
+            Labels="*S->S:10"> </Aliphatic_Sulfonylhalides>
+        <Benzene_Sulfonylhalides
+            SMARTS="[S;D4;$(S(=O)(=O)c1ccccc1):1][F,Cl,Br:2]>>*[S;+0:1]"
+            Labels="*S->S:10"> </Benzene_Sulfonylhalides>
+        <EnIn_Sulfonylhalides
+            SMARTS="[S;D4;$(S(=O)(=O)C=,#C):1][F,Cl,Br:2]>>*[S;+0:1]"
+            Labels="*S->S:10"> </EnIn_Sulfonylhalides>
+        <HeteroAliphatic_Sulfonylhalides
+            SMARTS="[S;D4;$(S(=O)(=O)[CX4R]):1][F,Cl,Br:2]>>*[S;+0:1]"
+            Labels="*S->S:10"> </HeteroAliphatic_Sulfonylhalides>
+        <Heteroaromatic_Sulfonylhalides
+            SMARTS="[S;D4;$(S(=O)(=O)a);!$(Sc1ccccc1):1][F,Cl,Br:2]>>*[S;+0:1]"
+            Labels="*S->S:10"> </Heteroaromatic_Sulfonylhalides>
+        <Sulfamoylhalides
+            SMARTS="[S;D4;$(S(=O)(=O)[#7]):1][F,Cl,Br:2]>>*[S;+0:1]"
+            Labels="*S->S:10"> </Sulfamoylhalides>
+        <SulfonylFluorides
+            SMARTS="[S;D4;$(S=O):1][F:2]>>*[S;+0:1]"
+            Labels="*S->S:10"> </SulfonylFluorides>
+        <FluoroSulfates
+            SMARTS="[S;D4;$(S(=O)(=O)O[#6]):1][F:2]>>*[S;+0:1]|[#6:1][O;$(OS(=O)(=O)F):2]>>*[#6;+0:1]"
+            Labels="*S->S:10|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*c->c:10,*[13c]->13c:10"> </FluoroSulfates>
+        <Poli_Sulfonylhalides
+            SMARTS="[S;D4;$(S(=O)(=O)[#6]):1][F,Cl,Br:2]>>*[S;+0:1]"
+            Labels="*S->S:10"> </Poli_Sulfonylhalides>
+    </SulfonylHalides>
+    <Trifunctional>
+        <Acid_Aldehyde_ArylHalide
+            SMARTS="[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[Cl,Br,I:1][c;$(c1[c,n][c,n]n[c,n][c,n]1),$(c1[n][c,n][n,c][c,n][c,n]1),$(c1[n]aa[a;!c]1),$(cI),$(cBr):2]>>*[c;+0:2]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*C->C:30,*[13C]->13C:30,*[13CH]->13C:30|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*c->c:10,*[13c]->13c:10"> </Acid_Aldehyde_ArylHalide>
+        <Acid_Aldehyde_Acetylenes
+            SMARTS="[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[C:1]#[CH:2]>>*[C;+0:2]#[C:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*C->C:30,*[13C]->13C:30,*[13CH]->13C:30|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:20,*[13C]->13C:20,*[13CH]->13C:20"> </Acid_Aldehyde_Acetylenes>
+        <Acid_Aldehyde_Nitro
+            SMARTS="[C;$([CH]([#6])(=O)):1]=[O:2]>>[C;+0:1]*|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N;+0,+1;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O):1](=[O:2])=,-[O;+0,-1:3]>>[NH2,+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10,*C->C:30,*[13C]->13C:30,*[13CH]->13C:30|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </Acid_Aldehyde_Nitro>
+        <Acid_ArylHalide_Ester
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[Cl,Br,I:1][c;$(c1[c,n][c,n]n[c,n][c,n]1),$(c1[n][c,n][n,c][c,n][c,n]1),$(c1[n]aa[a;!c]1),$(cI),$(cBr):2]>>*[c;+0:2]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*c->c:10,*[13c]->13c:10|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Acid_ArylHalide_Ester>
+        <Acid_ArylHalide_Nitro
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[Cl,Br,I:1][c;$(c1[c,n][c,n]n[c,n][c,n]1),$(c1[n][c,n][n,c][c,n][c,n]1),$(c1[n]aa[a;!c]1),$(cI),$(cBr):2]>>*[c;+0:2]|[N;+0,+1;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O):1](=[O:2])=,-[O;+0,-1:3]>>[NH2,+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*c->c:10,*[13c]->13c:10|No|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </Acid_ArylHalide_Nitro>
+        <Acid_Ester_Nitro
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N;+0,+1;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O):1](=[O:2])=,-[O;+0,-1:3]>>[NH2,+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </Acid_Ester_Nitro>
+        <Amines_ArylHalide_Nitro
+            SMARTS="[NH;$([NH][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]|[NH,NH2;$([NH,NH2][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]|[Cl,Br,I:1][c;$(c1[c,n][c,n]n[c,n][c,n]1),$(c1[n][c,n][n,c][c,n][c,n]1),$(c1[n]aa[a;!c]1),$(cI),$(cBr):2]>>*[c;+0:2]|[N;+0,+1;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O):1](=[O:2])=,-[O;+0,-1:3]>>[NH2,+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*N->N:20|*N->N:40,*N->N:20|*c->c:10,*[13c]->13c:10|No|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </Amines_ArylHalide_Nitro>
+        <NbocAmino_Acid_AlkyneCH
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[C:1]#[CH:2]>>*[C;+0:2]#[C:1]|[N:1][C;$(C(=O)OC([CH3])([CH3])[CH3]):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:20,*[13C]->13C:20,*[13CH]->13C:20|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NbocAmino_Acid_AlkyneCH>
+        <NbocAmino_Acid_ArylHalide
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[Cl,Br,I:1][c;$(c1[c,n][c,n]n[c,n][c,n]1),$(c1[n][c,n][n,c][c,n][c,n]1),$(c1[n]aa[a;!c]1),$(cI),$(cBr):2]>>*[c;+0:2]|[N:1][C;$(C(=O)OC([CH3])([CH3])[CH3]):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*c->c:10,*[13c]->13c:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NbocAmino_Acid_ArylHalide>
+        <NbocAmino_Acid_Ester
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N:1][C;$(C(=O)OC([CH3])([CH3])[CH3]):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </NbocAmino_Acid_Ester>
+        <NbocAmino_Acid_Nitro
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N:1][C;$(C(=O)OC([CH3])([CH3])[CH3]):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[N;+0,+1;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O):1](=[O:2])=,-[O;+0,-1:3]>>[NH2,+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </NbocAmino_Acid_Nitro>
+        <Amines_Nboc_Ester
+            SMARTS="[NH,NH2;!$(NC(=O)OC([CH3])([CH3])[CH3]);!$(N[2H]):1]>>*[N;+0:1]|[NH2;!$(NC(=O)OC([CH3])([CH3])[CH3]);!$(N[2H]):1]>>*[N;+0:1]|[N:1][C;$(C(=O)OC([CH3])([CH3])[CH3]):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*N->N:20,*[15NH]->15N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Amines_Nboc_Ester>
+        <Nboc_NCbz_Amino_Acid
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N:1][C;$(C(=O)OC([CH3])([CH3])[CH3]):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[N:1][C;$(C(=O)O[CH2]c1[cH][cH][cH][cH][cH]1):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </Nboc_NCbz_Amino_Acid>
+        <Nboc_Nfmoc_Amino_Acid
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N:1][C;$(C(=O)OC([CH3])([CH3])[CH3]):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[N;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):1][C;$(C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </Nboc_Nfmoc_Amino_Acid>
+        <NfmocAmino_Acid_AlkyneCH
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[C:1]#[CH:2]>>*[C;+0:2]#[C:1]|[N;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):1][C;$(C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*C->C:20,*[13C]->13C:20,*[13CH]->13C:20|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NfmocAmino_Acid_AlkyneCH>
+        <NfmocAmino_Acid_ArylHalide
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[Cl,Br,I:1][c;$(c1[c,n][c,n]n[c,n][c,n]1),$(c1[n][c,n][n,c][c,n][c,n]1),$(c1[n]aa[a;!c]1),$(cI),$(cBr):2]>>*[c;+0:2]|[N;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):1][C;$(C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|*c->c:10,*[13c]->13c:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40"> </NfmocAmino_Acid_ArylHalide>
+        <NfmocAmino_Acid_Ester
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):1][C;$(C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </NfmocAmino_Acid_Ester>
+        <NfmocAmino_Acid_Nitro
+            SMARTS="[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]|[N;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):1][C;$(C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13):2]>>[N:1]|[NH,NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[NH2;!$(NC=[N,S,P,C]);!$(N!@C=O):1]>>*[N;+0:1]|[N;+0,+1;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O):1](=[O:2])=,-[O;+0,-1:3]>>[NH2,+0:1]|[NH2:1]>>*[N;+0:1]"
+            Labels="*C->C:10,*[13C]->13C:10,*[13CH]->13C:10|No|*N->N:20,*[15NH]->15N:20|*N->N:40,*[15NH]->15N:40|No|*N->N:20,*N->N:40,*[15NH]->15N:20,*[15NH]->15N:40"> </NfmocAmino_Acid_Nitro>
+        <Di_Esters_Amino
+            SMARTS="[NH;$([NH][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]|[NH,NH2;$([NH,NH2][c,CX4]);!$(N[2H]):1]>>*[N;+0:1]|[O;$(O(C)C([#6])=O):1][C;$([CH3]),$([CH2][CH3]),$([CH2]c1[cH][cH][cH][cH][cH]1),$(C([CH3])([CH3])[CH3]),$([CH2][CH]=[CH2]):2]>>[OH:1]|[C;$(C(=O)[#6]):1][OD1:2]>>*[C;+0:1]"
+            Labels="*N->N:20|*N->N:40,*N->N:20|No|*C->C:10,*[13C]->13C:10,*[13CH]->13C:10"> </Di_Esters_Amino>
+
+    </Trifunctional>
+    <TertiaryAmines>
+        <TertiaryAmines
+            SMARTS="[N;D3;$(N([CX4,c])([CX4,c])[CX4,c]);!$(NC[OH,SH]);!$(NC!@=[O,N,S]):1]>>*[N;+1:1]"
+            Labels="*[N+]->N:20,*[NH+]->N:20,*[15N]->15N:20"> </TertiaryAmines>
+    </TertiaryAmines>
+</BB_Marks>
