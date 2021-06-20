@@ -13,21 +13,15 @@ All BBs structures need to be sanitized and standartized idependently by user pr
 
 
 ## Building blocks Classification
-```
->>> from SynthI.src.SynthI_Classifier import BBClassifier
->>> BBClassifier(molSmiles="CCOC(=O)C1=C(N)SC=C1C2CC2")
-
-['Bifunctional_Amine_Ester', 'PrimaryAmines_PriAmines_Het-Anilines']
-
-```
 ```python
 >>> from SynthI.src.SynthI_Classifier import BBClassifier
 >>> BBClassifier(molSmiles="CCOC(=O)C1=C(N)SC=C1C2CC2")
+
+from SynthI.src.SynthI_Classifier import BBClassifier
+BBClassifier(molSmiles="CCOC(=O)C1=C(N)SC=C1C2CC2")
 ```
-
-```text
+```
 ['Bifunctional_Amine_Ester', 'PrimaryAmines_PriAmines_Het-Anilines']
-
 ```
 
 ## SynthI-BBs 
