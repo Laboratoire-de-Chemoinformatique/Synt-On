@@ -65,7 +65,16 @@ SynthI-BBs allows to perform scaffold analysis of BBs and generate exhaustively 
 
 |Synthon lable | Synthon example | Nature of the reaction center | Example of corresponding reagent classes |
 | :-: | :-: | :-: | :-: |
-|AHn:10 | C1CC1[CH3:10] | Electrophilic | Acyl, aryl and alkyl halides, sulfonylhalides, anhydrides,  acides, aminoacids, esters, alcohols, aldehydes, ketones, Weinreb amides, acylated azides, iso(thio)cyanates, oxiranes 
+| AHn:10 | C1CC1[CH3:10] | Electrophilic | Acyl, aryl and alkyl halides, sulfonylhalides, anhydrides,  acides, aminoacids, esters, alcohols, aldehydes, ketones, Weinreb amides, acylated azides, iso(thio)cyanates, oxiranes |
+| AHn:20 | C1CC1[NH2:20]  | Nucleophilic | Alcohols, thiols, amines, amides, NH-azoles, hydrazines, hydrazides, hydroxylamines, oximes, esters, element organics, metal organics, ketones, aryl and allyl sulphones, alkenes for Heck couplings |
+| CHn:30 | C1CC1C[CH3:30]  | Bivalent electrophilic | Aldehydes, ketones |
+| AHn:40 | C1CC1C[NH2:40]  | Bivalent nucleophilic | Ketones, primary amines, hydrazines, hydroxylamines, reagents for olefination (Jullia-Kocienski, Wittig, Horner-Wadsworth-Emmons) |
+| CH3:50 | C1CC1[CH3:50]  | Bivalent neutral | Terminal alkenes (for metathesis) |
+| CHn:60 | c1cc[cH:60]nc1  | Electrophilic radical | Minisci CH-partners, Michael acceptors |
+| CHn:70 | C1CC1[CH3:70]  | Nucleophilic radical | BF3 and MIDA boronates, oxalate alkyl esters, NOPhtal alkyl esters, sulphinates |
+| CHn:21 | C1CC1C[CH3:21]  | Boronics-derived nucleophilic | Boronic reagents |
+| NH:11 | R1[NH:11]R2 | Electrophilic nitrogen | Benzoyl O-acylated hydroxilamines |
+
 
 ### Scaffold analysis
 
