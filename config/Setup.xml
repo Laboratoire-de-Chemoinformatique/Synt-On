@@ -1,46 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!--  -->
-<!-- Example for the "include only" mode -->
-        <!--all reactions except "Novel methods for C(Ar)-C(sp3) coupling" and "Giese reaction C(sp3) - C(sp3)" will be applied
-            <CustomizedFragmentation>
-                <ModeOfFragmentation> include only </ModeOfFragmentation>
-                <ListOfReactions>R1-R10,R11.1-R11.4,R12.1</ListOfReactions>
-            </CustomizedFragmentation>-->
-
-    <!-- Example for the "exclude some" mode -->
-        <!-- all reactions except "Novel methods for C(Ar)-C(sp3) coupling" and "Giese reaction C(sp3) - C(sp3)" will be applied
-
-    <CustomizedFragmentation>
-        <ModeOfFragmentation> exclude some </ModeOfFragmentation>
-        <ListOfReactions>R11.5,R12.2</ListOfReactions>
-    </CustomizedFragmentation>-->
-
-    <!-- Example for the "one by one" mode -->
-        <!-- all reactions will be applied one by one in the default order
-
-            <CustomizedFragmentation>
-            <ModeOfFragmentation> one by one </ModeOfFragmentation>
-            <ListOfReactions>R1-R12</ListOfReactions>
-            </CustomizedFragmentation>-->
-
-    <!-- Example for the "block by block" mode -->
-        <!-- apply first all alkylation/arylation reaction simultaneously,then acylation/sulphoacylation/condensation,
-        followed by all couplings, except Sanogashira
-
-    <CustomizedFragmentation>
-        <ModeOfFragmentation> block by block </ModeOfFragmentation>
-        <ListOfReactions>
-            <Block1> R3-R7 </Block1>
-            <Block2> R1, R2, R8, R9 </Block2>
-            <Block3> R11.1-R11.3, R11.5 </Block3>
-        </ListOfReactions>
-    </CustomizedFragmentation>-->
-<N-RECAP_setup>
-    <!-- Example for the "use all" mode-->
-    <CustomizedFragmentation>
-        <ModeOfFragmentation> use all </ModeOfFragmentation>
-    </CustomizedFragmentation>
-
+<SynthIfragmenation_setup>
     <AvailableReactions>
         <!-- Amides & Ureas -->
         <R1 name="N-acylation">
@@ -242,15 +202,18 @@
                 ReconstructionReaction="[#107:3][#6;X4;!D1:1].[#106:4][#6;X4;$([#6;D2][#6]),$([#6;D3]([#6])[#6]);$([#6]!@[#6;X4;!D1;!D4;$(C-C#N),$(C-C=O),$(C-S(=O)(=O)),$([#8][#7](=O)-[#6])]):2]>>[#6:1]-[#6:2]"
                 Labels="*[V]C->C:70,*[V][11C]->11C:70,*[V][11CH]->11C:70,*[V][11CH2]->11C:70,*[V][11CH3]->11C:70,*[V][13C]->13C:70,*[V][13CH]->13C:70,*[V][13CH2]->13C:70,*[V][13CH3]->13C:70,*[V][14C]->14C:70,*[V][14CH]->14C:70,*[V][14CH2]->14C:70,*[V][14CH3]->14C:70;*C->C:60,*[11C]->11C:60,*[11CH]->11C:60,*[11CH2]->11C:60,*[11CH3]->11C:60,*[13C]->13C:60,*[13CH]->13C:60,*[13CH2]->13C:60,*[13CH3]->13C:60,*[14C]->14C:60,*[14CH]->14C:60,*[14CH2]->14C:60,*[14CH3]->14C:60"> </R13.2>
         </R13>
+        <R14 name="None">
+            <R14.1 name="None"
+            SMARTS="None"
+            Labels="None"
+            ReconstructionReaction="None"> </R14.1>
+        </R14>
     </AvailableReactions>
     <AvailableModesOfFragmentation>
         use all;     <!-- default one; all reactions applied simultaneously -->
         include only; <!-- input: customized list of reactions; all reactions applied simultaneously -->
         exclude some; <!-- input: customized list of excluded reactions; all reactions applied simultaneously -->
-        one by one; <!-- input: customized list of sorted reactions; reaction applied in the specified order;
-        as soon as one bond is cut and first synthons are generated, algorithm moves to their fragmentation -->
-        block by block <!-- input: customized list of reactions, organized in blocks with respect to the order of
-        each block application; all reactions inside the block are applied simultaneously -->
+        one by one; <!-- input: customized list of sorted reactions; reaction applied in the specified order; each bond can be cut only using one reaction -->
     </AvailableModesOfFragmentation>
 
-</N-RECAP_setup>
+</SynthIfragmenation_setup>
