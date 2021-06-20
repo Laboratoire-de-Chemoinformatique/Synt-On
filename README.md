@@ -31,6 +31,36 @@ If the SMILES cannot be processed by RdKit, the following messages will appear:
 C1CCC(CC1)P([Ir][N]2=CC=CC=C2)(C3CCCCC3)C4CCCCC4.C/1C/C=C\CC/C=C1 was not processed by rdkit
 ```
 
+### Bulk BBs classification 
+
+Also *SynthI_Classifier.py* can be launched as a comand line tool for the BBs library separation into several sublibraries according to the BBs classes:
+
+```shell script
+$ python3 SynthI/src/SynthI_Classifier.py -h
+```
+```text
+usage: SynthI_Classifier [-h] [-i INPUT]
+
+Classification of building blocks. Separates provided library into several sublibraries according to the reagents classess.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Input SMILES file
+
+Code implementation:                Yuliana Zabolotna, Alexandre Varnek
+                                    Laboratoire de Chémoinformatique, Université de Strasbourg.
+
+Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Kostiantyn Gavrylenko, Olexandre Oksiuta 
+                                    Institute of Organic Chemistry, National Academy of Sciences of Ukraine
+                                    Kyiv National Taras Shevchenko University
+2021 Strasbourg, Kiev 
+
+```
+As a result separate files for each BB class found in the provided library file will be created. The name contains both class and subclass names separated by underscore - *SecondaryAmines_Cyc-Aliphatic.smi* or *Acid_Aliphatic_Acid.smi*.
+
+
+
 ## SynthI-BBs 
 
 ### Scaffold analysis
