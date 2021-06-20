@@ -30,6 +30,7 @@ The scripts were run in a linux workstation with 15 processors.
 All BBs structures need to be sanitized and standartized idependently by user prior to SynthI usage. Solvents and contriones should be deleted. There is no need to generate major tautomer form as soon as SynthI will do it for each generated synthons separately.
 
 ## SynthI-Classifier
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
 This module returns the list of classes assigned to the given BB. 
 
@@ -61,6 +62,8 @@ As soon as heterocyclization reaction will be available only in SynhtI.2.0, some
 
 ### Bulk BBs classification 
 
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+
 Also *SynthI_Classifier.py* can be launched as a comand line tool for the BBs library separation into several sublibraries according to the BBs classes:
 
 ```shell script
@@ -89,6 +92,8 @@ As a result separate files for each BB class found in the provided library file 
 
 ## SynthI-BBs 
 
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+
 SynthI-BBs allows to perform scaffold analysis of BBs and generate exhaustively all possible synthons from a given BB. The position of the functional groups as well as type of the resulting intermediate product (cation, anion, radical etc.) is encoded in synthon’s SMILES by introducing special system of labels. 
 
 |Synthon label | Synthon example | Nature of the reaction center | Example of corresponding reagent classes |
@@ -104,6 +109,8 @@ SynthI-BBs allows to perform scaffold analysis of BBs and generate exhaustively 
 | NH:11 | R1[NH:11]R2 | Electrophilic nitrogen | Benzoyl O-acylated hydroxilamines |
 
 ### Scaffold analysis
+
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
 SynthI-BBs allow to generate meaningful scaffolds from BBs by removing any ring-containing moieties that will not be kept in the reaction product and thus are irrelevant in BB analysis (e.g. protective (Bnz, Cbz, Fmoc) and leaving groups (boronics, oxiranes, etc.))
 
@@ -147,6 +154,8 @@ Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Ko
 It generates four files: *outSuffixName_Scaffolds.smi*, *outSuffixName_scaffoldsCounts.smi*, *outSuffixName_cumulativeprecentage.smi*, *Scaffolds_FreqPlot_outSuffixName.png*.
 
 ###BBs synthonization
+
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
 In case if BB contain protective groups, protected synthons will be discarded by default
 
@@ -240,6 +249,9 @@ Resulted synthons can be filtered according to the Ro2:
 ```
 
 ###Bulk synthons generation for the large BBs library
+
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+
 In case of large BB library, classification and synthonization of BBs can be performed using command line tool *SynthI/SynthI_BBsBulkClassificationAndSynthonization.py*:
 
 ```shell script
@@ -292,6 +304,8 @@ N[CH:10]=O EN300-50197 Reagents_Isocyanates ClC(Cl)(Cl)C(=O)N=C=O 1 outSuffixNam
 Files *outSuffixName_NotProcessed* and *outSuffixName_NotClassified* contain not processed by RdKit or processed but not classified BBs.
 
 ##SynthI-Fragmentation
+
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
 This module allows to fragment given molecule and generate synthons that correspond to particular BBs, needed to easily synthesize input compound.
 
@@ -475,6 +489,8 @@ Children synthons: -
 ```
 ###Selecting customized list of reactions for fragmentation
 
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+
 **Mode "include_only"**
 
 Only the reactions, selected by user will be used for fragmentation. The list of RiDs should be specified using argument `reactionsToWorkWith`. The list should be provided inside " "; intervals separated via "-" and "," can be used (e.g. "R1-R10,R11.1-R11.4,R12.1"). Specification "R1" implicitly includes all (R1.1, R1.2, R1.3 and R1.4) subreactions in the group R1.
@@ -560,10 +576,13 @@ R2.2_0|R5.1_0 c1nn[nH:20]n1.Clc1ccccc1C([CH3:10])[OH:20].N[CH:10]=O Availability
 
 ### Bulk compounds fragmentation
 
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
 
 
 ### Detailed classes description
+
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
 _**CLASS `synthon (smiles, cutLevel=1, directParent=None, directChildren=None, syntheticPathway=None, BBlibProvided=False)`**_
 
