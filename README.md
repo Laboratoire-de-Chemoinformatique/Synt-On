@@ -37,8 +37,7 @@ Also *SynthI_Classifier.py* can be launched as a comand line tool for the BBs li
 
 ```shell script
 $ python3 SynthI/src/SynthI_Classifier.py -h
-```
-```text
+
 usage: SynthI_Classifier [-h] [-i INPUT]
 
 Classification of building blocks. Separates provided library into several sublibraries according to the reagents classess.
