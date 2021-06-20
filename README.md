@@ -61,6 +61,11 @@ As a result separate files for each BB class found in the provided library file 
 
 
 ## SynthI-BBs 
+SynthI-BBs allows to perform scaffold analysis of BBs and generate exhaustively all possible synthons from a given BB. The position of the functional groups as well as type of the resulting intermediate product (cation, anion, radical etc.) is encoded in synthon’s SMILES by introducing special system of labels. 
+
+|Synthon lable | Synthon example | Nature of the reaction center | Example of corresponding reagent classes |
+| :-: | :-: | :-: | :-: |
+|AHn:10 | C1CC1[CH3:10] | Electrophilic | Acyl, aryl and alkyl halides, sulfonylhalides, anhydrides,  acides, aminoacids, esters, alcohols, aldehydes, ketones, Weinreb amides, acylated azides, iso(thio)cyanates, oxiranes 
 
 ### Scaffold analysis
 
