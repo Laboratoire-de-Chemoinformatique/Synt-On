@@ -3,7 +3,7 @@ Open-source tool for synthons-based library design.
 
 This synthetic pathways are organized in a disconnection hierarchically, that can be navigated with the help of functions: 
 * *getLongestSyntheticPathways()* - creates a list of the synthetic pathways containing the largest number of stages (leafs of the hierarchy)
-* ```python
+    ```python
     >>> LongestSyntheticPathways = getLongestSyntheticPathways(allSyntheticPathways)
     >>> for ind,reagentSet in enumerate(LongestSyntheticPathways):
     ...     print("reagentSet " + str(ind) + " :")
@@ -19,3 +19,4 @@ This synthetic pathways are organized in a disconnection hierarchically, that ca
     reagentSet 3 : 
     R10.1_1|R2.2_0 Clc1ccccc1[CH2:10][OH:20].c1nnn([CH3:20])n1.N[CH:10]=O Availability rate (% of mol. atoms coming from available synthons): 0.17
     ```
+  
