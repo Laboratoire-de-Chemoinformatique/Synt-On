@@ -16,19 +16,19 @@ All BBs structures need to be sanitized and standartized idependently by user pr
 ```python
 >>> from SynthI.src.SynthI_Classifier import BBClassifier
 >>> BBClassifier(molSmiles="CCOC(=O)C1=C(N)SC=C1C2CC2")
-
-from SynthI.src.SynthI_Classifier import BBClassifier
-BBClassifier(molSmiles="CCOC(=O)C1=C(N)SC=C1C2CC2")
-
-
->>> for reagentSetKey in allSyntheticPathways:
-...     allSyntheticPathways[reagentSetKey].printShortReagentSetInfo()
-
-for reagentSetKey in allSyntheticPathways:
-   allSyntheticPathways[reagentSetKey].printShortReagentSetInfo()
 ```
-```
+```text
 ['Bifunctional_Amine_Ester', 'PrimaryAmines_PriAmines_Het-Anilines']
+```
+If the SMILES cannot be processed by RdKit, the following messages will appear:
+
+```python
+>>> BBClassifier(molSmiles="C1CCC(CC1)P([Ir][N]2=CC=CC=C2)(C3CCCCC3)C4CCCCC4.C/1C/C=C\CC/C=C1")
+```
+```text
+[23:37:46] Explicit valence for atom # 8 N, 4, is greater than permitted
+[23:37:46] Explicit valence for atom # 8 N, 4, is greater than permitted
+C1CCC(CC1)P([Ir][N]2=CC=CC=C2)(C3CCCCC3)C4CCCCC4.C/1C/C=C\CC/C=C1 was not processed by rdkit
 ```
 
 ## SynthI-BBs 
