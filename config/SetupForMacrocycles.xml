@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--  -->
+<!-- Example for the "include only" mode -->
+        <!--all reactions except "Novel methods for C(Ar)-C(sp3) coupling" and "Giese reaction C(sp3) - C(sp3)" will be applied
+            <CustomizedFragmentation>
+                <ModeOfFragmentation> include only </ModeOfFragmentation>
+                <ListOfReactions>R1-R10,R11.1-R11.4,R12.1</ListOfReactions>
+            </CustomizedFragmentation>-->
+
+    <!-- Example for the "exclude some" mode -->
+        <!-- all reactions except "Novel methods for C(Ar)-C(sp3) coupling" and "Giese reaction C(sp3) - C(sp3)" will be applied
+
+    <CustomizedFragmentation>
+        <ModeOfFragmentation> exclude some </ModeOfFragmentation>
+        <ListOfReactions>R11.5,R12.2</ListOfReactions>
+    </CustomizedFragmentation>-->
+
+    <!-- Example for the "one by one" mode -->
+        <!-- all reactions will be applied one by one in the default order
+
+            <CustomizedFragmentation>
+            <ModeOfFragmentation> one by one </ModeOfFragmentation>
+            <ListOfReactions>R1-R12</ListOfReactions>
+            </CustomizedFragmentation>-->
+
+    <!-- Example for the "block by block" mode -->
+        <!-- apply first all alkylation/arylation reaction simultaneously,then acylation/sulphoacylation/condensation,
+        followed by all couplings, except Sanogashira
+
+    <CustomizedFragmentation>
+        <ModeOfFragmentation> block by block </ModeOfFragmentation>
+        <ListOfReactions>
+            <Block1> R3-R7 </Block1>
+            <Block2> R1, R2, R8, R9 </Block2>
+            <Block3> R12.1-R12.3, R12.5,R12.6 </Block3>
+        </ListOfReactions>
+    </CustomizedFragmentation>-->
+<N-RECAP_setup>
+    <!-- Example for the "use all" mode-->
+    <CustomizedFragmentation>
+        <ModeOfFragmentation> use all </ModeOfFragmentation>
+    </CustomizedFragmentation>
+
+    <AvailableReactions>
+        <!-- Amides & Ureas -->
+        <MR1 name="Macrocyclization:N-acylation">
+            <!-- Amide -->
+            <MR1.1 name="Macrocyclization:Amine acylation"
+                SMARTS="[C;$(C([#7])(=[#8])[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#7;A;+0;$([#7;D2]([#6])[#6]),$([#7;D3]([#6])([#6])[#6]):2]>>([*][#6:1].[*][#7:2])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20"
+                ReconstructionReaction="[#6;$([#6](=[#8])[#6]):1][#23].[#7;A;+0;$([#7;D2][#6]),$([#7;D3]([#6])[#6]):2][#74]>>([#6:1]-[#7:2])"> </MR1.1>
+            <MR1.2 name="Macrocyclization:N-Acylation of RN-X compounds"
+                SMARTS="[C;$(C([#7])(=[#8])[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#7;A;+0;!D1;!$([#7;D2]([#6])[#6]);!$([#7;D3]([#6])([#6])[#6]);!$([#7]=[#7]):2]>>([*][#6:1].[*][#7:2])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20"
+                ReconstructionReaction="[#6;$([#6](=[#8])[#6]):1][#23].[#7;A;+0;!D1;!$([#7]=[#7]);!$([#7;D2][#6]);!$([#7;D3]([#6])[#6]):2][#74]>>([#6:1]-[#7:2])"> </MR1.2>
+            <MR1.3 name="Macrocyclization:N-Acylation by O=C(+)-X reagents (except isocyanates - R1.4)"
+                SMARTS="[C;$(C([#7])=[#8]);!$(C([#7])(=[#8])[#7]);!$(C([#7])(=[#8])[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#7;A;+0;$([#7;D2]([#6])[#6]),$([#7;D3]([#6])([#6])[#6]):2]>>([*][#6:1].[*][#7:2])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20"
+                ReconstructionReaction="[#6;!D1;$([#6]=[#8]);!$([#6]([#6])=[#8]):1][#23].[#7;A;+0;!D1;!$([#7]=[#7]):2][#74]>>[#6:1]-[#7:2]"> </MR1.3>
+            <!-- Urea -->
+            <MR1.4 name="Macrocyclization:Amine acylation by isocyanates or analogues"
+                SMARTS="[#7;A;+0;$([#7;D2][#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;A;$([#6]=[#8,#16]);!$([#6]([#7;D3])(=[#8,#16])[#7;D3]):3](@[#7;A;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;+0;$([#7;D3]([#6])[#6]),$([#7;D2][#6]):2])>>([#7:1]-[#6:3](-[*]).[#7:2]-[*])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20"
+                ReconstructionReaction="[#7;A;+0;$([#7;D2][#6]):1][#6;A;$([#6]=[#8,#16]):2][#23].[#7;A;+0;$([#7;D2][#6]),$([#7;D3]([#6])[#6]):3][#74]>>[#7:1]-[#6:2]-[#7:3]"> </MR1.4>
+        </MR1>
+        <!-- Esters -->
+        <MR2 name="Macrocyclization:O-acylation">
+             <MR2.1 name="Macrocyclization:Alcohol/Phenol acylation"
+                SMARTS="[#6;$([#6]([#6])([#8])=[#8]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[O;+0;$([#8]([#6])[#6]):2]>>([*][C:1].[O:2][*])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*O->O:20;*[18O]->O:20;*[18OH]->O:20"
+                ReconstructionReaction="[#6;$([#6]([#6])=[#8]):1][#23].[#8;+0;$([#8][#6]):2][#74]>>([#8:2]-[#6:1])"> </MR2.1>
+            <MR2.2 name="Macrocyclization:O-Acylation by O=C(+)-X reagents"
+                SMARTS="[C;$(C([#8])=[#8]);!$([#6]([#8])(=[#8])[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[O;+0;$([#8]([#6])[#6]):2]>>([*][#6:1].[*][#8:2])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*O->O:20;*[18O]->O:20;*[18OH]->O:20"
+                ReconstructionReaction="[#6;$(C=[#8]);!$([#6](=[#8])[#6]):1][#23].[#8;+0;$([#8][#6]):2][#74]>>([#8:2]-[#6:1])"> </MR2.2>
+            <MR2.3 name="Macrocyclization:O-Acylation of O-X compounds"
+                SMARTS="[C;$(C([#8])(=[#8])[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#8;+0;!D1;!$([#8;D2]([#6])[#6]):2]>>([*][#6:1].[*][#8:2])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*O->O:20;*[18O]->O:20;*[18OH]->O:20"
+                ReconstructionReaction="[#6;$([#6](=[#8])[#6]):1][#23].[#8;A;+0;!D1;!$([#8][#6]):2][#74]>>([#6:1]-[#8:2])"> </MR2.3>
+        </MR2>
+        <!-- Amines; question about enamines; tertiary alkylation agents are excluded completely-->
+        <MR3 name="Macrocyclization:Amine_alkylation_arylation">
+            <MR3.1 name="Macrocyclization:SN alkylation of amines"
+                SMARTS="[#6;A;!D4;X4;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[N;!D1;+0;$([NH]([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;A])[#6]),$(N([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;A])([#6])[#6]):2]>>([*][N:2].[*][#6:1])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20"
+                ReconstructionReaction="[#23][#6;A;!D4;X4:1].[#74][#7;A;!D1;+0;$([NH][#6]),$(N([#6])[#6])>>([#6:1][#7:2])"> </MR3.1>
+            <MR3.2 name="Macrocyclization:Buchwald-Hartwig amination(BHA), Cu-mediated C-N coupling"
+                SMARTS="[#6;a;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[N;!D1;+0;$([NH]([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;a])-[#6]),$(N([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;a])([#6])[#6]):2]>>([*][N:2].[*][#6:1])"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20"
+                ReconstructionReaction="[#23][#6;a:1].[#74][#7;A;!D1;+0;$([NH][#6]),$(N([#6])[#6]):2]>>([#6:1][#7:2])"> </MR3.2>
+            <!-- Umpolung is equivalent to the BHA, the difference will be introduced by marks in the main script -->
+            <MR3.3 name="Macrocyclization:Umpolung cross-coupling"
+                SMARTS="[#6;a;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[N;D3;+0;$(N([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;a])([#6;A])[#6;A]):2]>>([*][N:2].[*][#6:1])"
+                Labels="*c->c:20;*[11c]->11c:20;*[11cH]->11c:20;*[13c]->13c:20;*[13cH]->13c:20;*[14c]->14c:20;*[14cH]->14c:20;*N->N:11;*[15N]->15N:11;*[15NH]->15N:11;*[15NH2]->15N:11"
+                ReconstructionReaction="[#6;a:1][#74].[N;!D1;+0;$([NH]-[#6]),$(N(-[#6])-[#6]):2][#109]>>([#6:1]-[#7:2])"> </MR3.3>
+            <!-- Quarternary nitrogen; work for both alkylation/arylation; there are still questions about way to display nitrogen containing synthon -->
+            <MR3.4 name="Macrocyclization:Tertiary amines alkylation arylation"
+                SMARTS="[#6;!D4;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[N;D4;+1;!$(N=O);$(N([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])):2]>>([*][N;+1:2].[*][#6:1])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*[N+]->N:20"
+                ReconstructionReaction="[#23][#6;!D4:1].[#74][N;D4;+1:2]>>([#6:1]-[#7;+1:2])"> </MR3.4>
+        </MR3>
+        <!-- Ethers & Alkyl-hydroxylamines-->
+        <MR4 name="Macrocyclization:O-alkylation_arylation">
+            <MR4.1 name="Macrocyclization:SN alkylation"
+                SMARTS="[#6;A:1]-@[O;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;+0;$([#8]([#6])[#6]);!$(O-C=[#6,#7,#8,#15,#16,#34]):2]>>([#6:1][*].[*][#8:2])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*O->O:20;*[18O]->O:20;*[18OH]->O:20"
+                ReconstructionReaction="[#6;A:1][#23].[#8;+0;$([#8][#6]);!$(O-C=[#6,#7,#8,#15,#16,#34]):2][#74]>>([#8:2]-[#6:1])"> </MR4.1>
+            <MR4.2 name="Macrocyclization:Cu-mediated C-O coupling"
+                SMARTS="[#6;a:1]-@[O;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;+0;$([#8]([#6])[#6]);!$(O-C=[#6,#7,#8,#15,#16,#34]):2]>>([#6:1][*].[*][#8:2])"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*O->O:20;*[18O]->O:20;*[18OH]->O:20"
+                ReconstructionReaction="[#6;a:1][#23].[#8;+0;$([#8][#6]);!$(O-C=[#6,#7,#8,#15,#16,#34]):2][#74]>>([#8:2]-[#6:1])"> </MR4.2>
+             <!-- Is there are any limitations for the nature of the second carbon atom?  is equivalent to the Cu-mediated coupling, the difference will be introduced by marks in the main script -->
+            <MR4.3 name="Macrocyclization:Chan-Evans-Lam coupling"
+                SMARTS="[#6;a:1]-@[O;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;+0;$([#8]([#6])[#6]);!$(O-C=[#6,#7,#8,#15,#16,#34]):2]>>([#6;a:1][*].[*][#8;+0:2])"
+                Labels="*c->c:21;*[11c]->11c:21;*[11cH]->11c:21;*[13c]->13c:21;*[13cH]->13c:21;*[14c]->14c:21;*[14cH]->14c:21;*O->O:20;*[18O]->O:20;*[18OH]->O:20"
+                ReconstructionReaction="[#6;a:1][#108].[#8;+0;$([#8][#6]):2][#74]>>([#8:2]-[#6:1])"> </MR4.3>
+            <MR4.4 name="Macrocyclization:N-O-alkylation"
+                SMARTS="[#6;A:1]-@[O;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;+0;$([#8]([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])[#7]);!$(O-C=[#6,#7,#8,#15,#16,#34]):2]>>([#6:1][*].[*][#8:2])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*O->O:20;*[18O]->O:20;*[18OH]->O:20"
+                ReconstructionReaction="[#6;A:1][#23].[#8;+0;$([#8][#7;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]):2][#74]>>([#8:2]-[#6:1])"> </MR4.4>
+        </MR4>
+        <!-- N(Ar)-C(sp3, sp2) -->
+        <MR5 name="Macrocyclization:Alkylation_arylation_of_NH-heterocycles">
+            <MR5.1 name="SN alkylation"
+                SMARTS="[#6;A;!D4;X4;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#7;a;+0;$([#7;a](@[#6,#7,#8])([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11;A])@[#6,#7,#8]);!$([#7]~[#6]=[#7,#8,#15,#16,#34]):2]>>([*][N:2].[*][#6:1])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*n->n:20;*[15n]->n:20;*[15nH]->n:20"
+                ReconstructionReaction="[#23:1][#6;A;!D4;X4:2].[#74:3][#7;a;+0;$([#7;a](@[#6,#7,#8])@[#6,#7,#8]);!$([#7]~[#6]=[#7,#8,#15,#16,#34]):4]>>([#6;A:2]-[#7;a:4])"> </MR5.1>
+            <!-- CHE is equivalent to the Cu-mediated coupling, the difference will be introduced by marks in the main script -->
+            <MR5.2 name="Macrocyclization:Chan-Evans-Lam coupling"
+                SMARTS="[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#7;a;+0;$([#7;a](@[#6,#1,#7,#8])([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])@[#6,#1,#7,#8]);!$([#7]~[#6]=[#7,#8,#15,#16,#34]):2]>>([*][N:2].[*][#6:1])"
+                Labels="*c->c:21;*[11c]->11c:21;*[11cH]->11c:21;*[13c]->13c:21;*[13cH]->13c:21;*[14c]->14c:21;*[14cH]->14c:21;*C->C:21;*[11C]->11C:21;*[11CH]->11C:21;*[11CH2]->11C:21;*[11CH3]->11C:21;*[13C]->13C:21;*[13CH]->13C:21;*[14C]->14C:21;*[14CH]->14C:21;*[14CH2]->14C:21;*[14CH3]->14C:21;*n->n:20;*[15n]->n:20;*[15nH]->n:20"
+                ReconstructionReaction="[#108][#6:1].[#74][#7;a;+0;$([#7;a](@[#6,#7,#8])@[#6,#7,#8]);!$([#7]~[#6]=[#7,#8,#15,#16,#34]):2]>>([#6:1]-[#7:2])"> </MR5.2>
+            <MR5.3 name="Macrocyclization:Cu-mediated C-N coupling"
+                SMARTS="[#6;X3;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#7;a+0;$([#7;a](@[#6,#1,#7,#8])([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])@[#6,#1,#7,#8]);!$([#7]~[#6]=[#7,#8,#15,#16,#34]):2]>>([*][N:2].[*][#6:1])"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*n->n:20;*[15n]->n:20;*[15nH]->n:20"
+                ReconstructionReaction="[#23][#6;X3:1].[#74][#7;a;+0;$([#7;a](@[#6,#7,#8])@[#6,#7,#8]);!$([#7]~[#6]=[#7,#8,#15,#16,#34]):2]>>([#6:1]-[#7:2])"> </MR5.3>
+        </MR5>
+        <!-- N(lactam)-C() -->
+        <MR6 name="Macrocyclization:Alkylation_arylation_of_NH-lactam">
+            <MR6.1 name="Macrocyclization:SN alkylation"
+                SMARTS="[#6;A;!D4;X4;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#7;A;!D1;+0;$([#7](@-[#6])@-[#6](=[O])[#6]);!$([#7](@-C=[#6,#7,#8,#15,#16,#34])@-[#6](=[O])):2]>>([*][N:2].[*][#6:1])"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20"
+                ReconstructionReaction="[#23][#6;A;!D4;X4:1].[#74][#7;A;!D1;+0;$([#7](@-[#6])@-[#6](=[O])[#6]);!$([#7](@-C=[#6,#7,#8,#15,#16,#34])@-[#6](=[O])):2]>>([#6:1]-[#7:2])"> </MR6.1>
+            <MR6.2 name="Macrocyclization:Chan-Evans-Lam coupling"
+                SMARTS="[#6;!D4;!X2;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#7;A;!D1;+0;$([#7](@-[#6])@-[#6](=[O])[#6]);!$([#7](@-C=[#6,#7,#8,#15,#16,#34])@-[#6](=[O])):2]>>([*][N:2].[*][#6:1])"
+                Labels="*c->c:21;*[11c]->11c:21;*[11cH]->11c:21;*[13c]->13c:21;*[13cH]->13c:21;*[14c]->14c:21;*[14cH]->14c:21;*C->C:21;*[11C]->11C:21;*[11CH]->11C:21;*[11CH2]->11C:21;*[11CH3]->11C:21;*[13C]->13C:21;*[13CH]->13C:21;*[14C]->14C:21;*[14CH]->14C:21;*[14CH2]->14C:21;*[14CH3]->14C:21;*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20"
+                ReconstructionReaction="[#108][#6;!D4;!X2:1].[#74][#7;A;!D1;+0;$([#7](@-[#6])@-[#6](=[O])[#6]);!$([#7](@-C=[#6,#7,#8,#15,#16,#34])@-[#6](=[O])):2]>>([#6:1]-[#7:2])"> </MR6.2>
+            <MR6.3 name="Macrocyclization:Cu-mediated C-N coupling"
+                SMARTS="[#6;a;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#7;A;!D1;+0;$([#7](@-[#6])@-[#6](=[O])[#6]);!$([#7](@-C=[#6,#7,#8,#15,#16,#34])@-[#6](=[O])):2]>>([*][N:2].[*][#6:1])"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20"
+                ReconstructionReaction="[#23][#6;a:1].[#74][#7;A;!D1;+0;$([#7](@-[#6])@-[#6](=[O])[#6]);!$([#7](@-C=[#6,#7,#8,#15,#16,#34])@-[#6](=[O])):2]>>([#6:1]-[#7:2])"> </MR6.3>
+        </MR6>
+        <!-- Thioethers -->
+        <MR7 name="Macrocyclization:S-alkylation_arylation">
+            <MR7.1 name="Macrocyclization:S-alkylation arylation"
+                SMARTS="[S;+0;X2;$(S([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]);!$(S[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]=[#8,#16,#7]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;!$([#6]=[#8,#16,#7]):2]>>([#16:1]*.[#6:2]*)"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*S->S:20;*[35S]->35S:20"
+                ReconstructionReaction="[#6;A:1][#23].[#16;+0;$(S[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]);!$(S-C=[#6,#7,#8,#15,#16,#34]):2][#74]>>([#16:2]-[#6:1])"> </MR7.1>
+            <MR7.2 name="Macrocyclization:Simple alkylation of sulphinic acid salts"
+                SMARTS="[S;+0;X4;$(S(=O)(=O)([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;A:2]>>([#16:1]*.[#6:2]*)"
+                Labels="*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10;*S->S:20;*[35S]->35S:20"
+                ReconstructionReaction="[#6;A:1][#23].[S;+0;X4;$(S(=O)(=O)([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])):2][#74]>>([#16:2]-[#6:1])"> </MR7.2>
+            <MR7.3 name="Macrocyclization:Cu-catalyzed arylation of sulphinic acid salts"
+                SMARTS="[S;+0;X4;$(S(=O)(=O)([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;a:2]>>([#16:1]*.[#6:2]*)"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*S->S:20;*[35S]->35S:20"
+                ReconstructionReaction="[#6;a:1][#23].[S;+0;X4;$(S(=O)(=O)([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])):2][#74]>>([#16:2]-[#6:1])"> </MR7.3>
+        </MR7>
+        <!-- Sulphonamides -->
+        <MR8 name="Macrocyclization:Amine_sulphoacylation">
+            <MR8.1 name="Macrocyclization:Amine sulphoacilation using RSO2F reagents"
+                SMARTS="[#7;+0;A;$(N[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[S;+0;X4;$(S(=O)(=O)[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11,#7,#8]):2]>>(*[#7:1].*[S:2])"
+                Labels="*N->N:20;*[15N]->15N:20;*[15NH]->15N:20;*[15NH2]->15N:20;*S->S:10;*[35S]->35S:10;*[35Sh]->35S:10;*[SH]->S:10"
+                ReconstructionReaction="[#7;A:1][#74].[S;+0;X4;$(S(=O)(=O)[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11,#7,#8]):2][#23]>>([#16:2]-[#7:1])"> </MR8.1>
+        </MR8>
+        <!-- Imines, oximes, hydrazones, semicarbazones  -->
+        <MR9 name="Macrocyclization:Condensation_of_Y-NH2_with_carbonyl_compounds">
+            <MR9.1 name="Macrocyclization:Condensation of Y-NH2 with carbonyl compounds"
+                SMARTS="[#6;$([CH][#6]),$(C([#6])[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]=@[#7;+0;A;$(N[#6,#7,#8]):2]>>([#6:1]*.*[N:2])"
+                Labels="*C->C:30;*[11C]->11C:30;*[11CH]->11C:30;*[11CH2]->11C:30;*[11CH3]->11C:30;*[13C]->13C:30;*[13CH]->13C:30;*[14C]->14C:30;*[14CH]->14C:30;*[14CH2]->14C:30;*[14CH3]->14C:30;*N->N:40;*[15N]->15N:40;*[15NH]->15N:40;*[15NH2]->15N:40"
+                ReconstructionReaction="[#6;$([CH]-[#6]),$(C([#6])[#6]):1]([#72])[#72].[#7;+0;A;$(N[#6,#7,#8]):2]([#104])[#104]>>([#6:1]=[#7:2])"> </MR9.1>
+        </MR9>
+        <MR10 name="Macrocyclization:Metal organics C-C bong assembling">
+            <MR10.1 name="Macrocyclization:Addition of Li, Mg, Zn organics to aldehydes and ketones"
+                SMARTS="[#6;X4;$([#6;D2][OH;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]),$([#6;D3]([OH;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])[#6]),$([#6;D4]([OH;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])([#6])[#6]):1]-@[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:2]>>(*[V][#6:1].*[#6:2])"
+                Labels="*[V]C->C:10;*[V][11C]->11C:10;*[V][11CH]->11C:10;*[V][11CH2]->11C:10;*[V][11CH3]->11C:10;*[V][13C]->13C:10;*[V][13CH]->13C:10;*[V][14C]->14C:10;*[V][14CH]->14C:10;*[V][14CH2]->14C:10;*[V][14CH3]->14c:10;*C->C:20;*[11C]->11C:20;*[11CH]->11C:20;*[11CH2]->11C:20;*[11CH3]->11C:20;*[13C]->13C:20;*[13CH]->13C:20;*[14C]->14C:20;*[14CH]->14C:20;*[14CH2]->14C:20;*[14CH3]->14C:20;*c->c:20;*[11c]->11c:20;*[11cH]->11c:20;*[13c]->13c:20;*[13cH]->13c:20;*[14c]->14c:20;*[14cH]->14c:20"
+                ReconstructionReaction="[#23][#6;X4;$([#6;D2][OH;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]),$([#6;D3]([OH;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])[#6]),$([#6;D4]([OH;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])([#6])[#6]):1].[#74][#6]>>([#6:1]-[#6:2])"> </MR10.1>
+            <MR10.2 name="Macrocyclization:Acylation of Li, Mg, Zn organics"
+                SMARTS="[#6;X3;$([#6;D2](=[#8])-[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]),$([#6;D3](=[#8])(-[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11])-[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]):1]-@[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:2]>>(*[V][#6:1].*[#6:2])"
+                Labels="*[V]C->C:10;*[V][11C]->11C:10;*[V][11CH]->11C:10;*[V][11CH2]->11C:10;*[V][11CH3]->11C:10;*[V][13C]->13C:10;*[V][13CH]->13C:10;*[V][14C]->14C:10;*[V][14CH]->14C:10;*[V][14CH2]->14C:10;*[V][14CH3]->14c:10;*c->c:20;*[11c]->11c:20;*[11cH]->11c:20;*[13c]->13c:20;*[13cH]->13c:20;*[14c]->14c:20;*[14cH]->14c:20;*C->C:20;*[11C]->11C:20;*[11CH]->11C:20;*[11CH2]->11C:20;*[11CH3]->11C:20;*[13C]->13C:20;*[13CH]->13C:20;*[14C]->14C:20;*[14CH]->14C:20;*[14CH2]->14C:20;*[14CH3]->14C:20"
+                ReconstructionReaction="[#23][#6;X3;$([#6;D2]=[#8]),$([#6;D3](=[#8])-[#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11]):1].[#74][#6:2]>>([#6:1]-[#6:2])"> </MR10.2>
+        </MR10>
+        <!-- Olefin ??????? Enamines ???????-->
+        <MR11 name="Macrocyclization:Olefination">
+            <MR11.1 name="Macrocyclization:Knovenagel-, Wittig-, Julia-Kocienski- type reactions"
+                SMARTS="[#6;$([CH][#6]),$(C([#6])[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]=@[C;$([CH][#6]),$(C([#6])[#6]):2]>>([#6:1]=*.*[#6:2])"
+                Labels="*=C->C:40;*=[13C]->C:40;*=[13CH]->C:40;*=[13CH2]->C:40;*=[14C]->C:40;*=[14CH]->C:40;*=[14CH2]->C:40;*C->C:30;*[11C]->11C:30;*[11CH]->11C:30;*[11CH2]->11C:30;*[11CH3]->11C:30;*[13C]->13C:30;*[13CH]->13C:30;*[14C]->14C:30;*[14CH]->14C:30;*[14CH2]->14C:30;*[14CH3]->14C:30"
+                ReconstructionReaction="[#6;$([CH][#6]),$(C([#6])[#6]):1]([#72])[#72].[#6;$([CH][#6]),$(C([#6])[#6]):2]([#104])[#104]>>([#6:1]=[#6:2])"> </MR11.1>
+            <MR11.2 name="Macrocyclization:Olefin Metathesis"
+                SMARTS="[C;$([CH][#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]=@[C;$([CH][#6]),$(C([#6])[#6]):2]>>([#6:1]*.*[#6:2])"
+                Labels="*C->C:50;*[11C]->11C:50;*[11CH]->11C:50;*[11CH2]->11C:50;*[11CH3]->11C:50;*[13C]->13C:50;*[13CH]->13C:50;*[14C]->14C:50;*[14CH]->14C:50;*[14CH2]->14C:50;*[14CH3]->14C:50"
+                ReconstructionReaction="[#6;$([CH][#6]):1]([#105])[#105].[#6;$([CH][#6]),$(C([#6])[#6]):2]([#105])[#105]>>([#6:1]=[#6:2])"> </MR11.2>
+        </MR11>
+        <!-- Various combinations of C - C bonds  -->
+        <MR12 name="Macrocyclization:C-C couplings">
+
+            <MR12.1 name="Macrocyclization:Suzuki cross-coupling C(Ar)- C(Ar)"
+                SMARTS="[c;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[c:2]>>(*[V][c:1].*[c:2])"
+                Labels="*[V]c->c:10;*[V][11c]->11c:10;*[V][11cH]->11c:10;*[V][13c]->13c:10;*[V][13cH]->13c:10;*[V][14c]->14c:10;*[V][14cH]->14c:10;*c->c:21;*[11c]->11c:21;*[11cH]->11c:21;*[13c]->13c:21;*[13cH]->13c:21;*[14c]->14c:21;*[14cH]->14c:21"
+                ReconstructionReaction="[#6;a:1][#23].[#6;a:2][#74]>>([#6:1]-[#6:2])"> </MR12.1>
+            <MR12.2 name="Macrocyclization:Suzuki coupling C(sp2) - C(sp2)"
+                SMARTS="[#6;X3;$([#6](=[#6])[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;X3;$([#6](=[#6])[#6]):2]>>(*[V][C:1].*[C:2])"
+                Labels="*[V]C->C:10;*[V][11C]->11C:10;*[V][11CH]->11C:10;*[V][11CH2]->11C:10;*[V][11CH3]->11C:10;*[V][13C]->13C:10;*[V][13CH]->13C:10;*[V][14C]->14C:10;*[V][14CH]->14C:10;*[V][14CH2]->14C:10;*[V][14CH3]->14c:10;*C->C:21;*[11C]->11C:21;*[11CH]->11C:21;*[11CH2]->11C:21;*[11CH3]->11C:21;*[13C]->13C:21;*[13CH]->13C:21;*[14C]->14C:21;*[14CH]->14C:21;*[14CH2]->14C:21;*[14CH3]->14C:21"
+                ReconstructionReaction="[#6;X3;$([#6](=[#6])[#6]):1][#23].[#6;X3;$([#6]=[#6]):2][#74]>>([#6:1]-[#6:2])"> </MR12.2>
+            <!-- Be carefull, for this reaction you need to create manualy the second set of synthons  -->
+            <MR12.3 name="Macrocyclization:Heck and Suzuki coupling C(Ar) - C(sp2)"
+                SMARTS="[c;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;X3;$([#6](=[#6])[#6,#1]):2]>>(*[c:1].*[C:2])"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*C->C:20;*[11C]->11C:20;*[11CH]->11C:20;*[11CH2]->11C:20;*[11CH3]->11C:20;*[13C]->13C:20;*[13CH]->13C:20;*[14C]->14C:20;*[14CH]->14C:20;*[14CH2]->14C:20;*[14CH3]->14C:20;*c->c:20;*[11c]->11c:20;*[11cH]->11c:20;*[13c]->13c:20;*[13cH]->13c:20;*[14c]->14c:20;*[14cH]->14c:20;*C->C:10;*[11C]->11C:10;*[11CH]->11C:10;*[11CH2]->11C:10;*[11CH3]->11C:10;*[13C]->13C:10;*[13CH]->13C:10;*[14C]->14C:10;*[14CH]->14C:10;*[14CH2]->14C:10;*[14CH3]->14C:10"
+                ReconstructionReaction="[#6;a:1][#23].[#6;X3;$([#6]=[#6]):2][#74]>>([#6:1]-[#6:2])"> </MR12.3>
+            <MR12.4 name="Macrocyclization:Sonogashira coupling C(Ar) - C(sp)"
+                SMARTS="[c;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;X2;$([#6]#[#6]):2]>>(*[c:1].*[C:2])"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*C->C:20;*[11C]->11C:20;*[11CH]->11C:20;*[11CH2]->11C:20;*[11CH3]->11C:20;*[13C]->13C:20;*[13CH]->13C:20;*[14C]->14C:20;*[14CH]->14C:20;*[14CH2]->14C:20;*[14CH3]->14C:20"
+                ReconstructionReaction="[#6;a:1][#23].[#6;X2;$([#6]#[#6]):2][#74]>>([#6:1]-[#6:2])"> </MR12.4>
+            <MR12.5 name="Macrocyclization:Novel methods for C(Ar)-C(sp3) coupling"
+                SMARTS="[#6;a;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;A;X4;!$([#6][#7,#8,#9,#16,#17,#35,#53]):2]>>([#6:1]*.*[#6:2])"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*C->C:20;*[11C]->11C:20;*[11CH]->11C:20;*[11CH2]->11C:20;*[11CH3]->11C:20;*[13C]->13C:20;*[13CH]->13C:20;*[14C]->14C:20;*[14CH]->14C:20;*[14CH2]->14C:20;*[14CH3]->14C:20"
+                ReconstructionReaction="[#23][#6;a:1].[#74][#6;A;X4:2]>>([#6:1]-[#6:2])"> </MR12.5>
+            <MR12.6 name="Macrocyclization:Novel methods for C(Ar)-C(sp3) coupling with boronics"
+                SMARTS="[#6;a;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;A;X4;!$([#6][#7,#8,#9,#16,#17,#35,#53]):2]>>([#6:1]*.*[#6:2])"
+                Labels="*c->c:10;*[11c]->11c:10;*[11cH]->11c:10;*[13c]->13c:10;*[13cH]->13c:10;*[14c]->14c:10;*[14cH]->14c:10;*C->C:21;*[11C]->11C:21;*[11CH]->11C:21;*[11CH2]->11C:21;*[11CH3]->11C:21;*[13C]->13C:21;*[13CH]->13C:21;*[14C]->14C:21;*[14CH]->14C:21;*[14CH2]->14C:21;*[14CH3]->14C:21"
+                ReconstructionReaction="[#23][#6;a:1].[#74][#6;A;X4:2]>>([#6:1]-[#6:2])"> </MR12.6>
+        </MR12>
+        <MR13 name="Radical_reactions">
+            <MR13.1 name="Macrocyclization:Minisci reaction and Baran diversinates C(Ar)-C(sp3)"
+                SMARTS="[#6;a;$(cn);$(cccn);!$(cnn);!$(ccnn);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;X4;!D1:2]>>(*[V][#6:1].*[#6:2])"
+                ReconstructionReaction="[#106][#6;X4;!D1:1].[#107][#6;a;$(cn);$(cccn);!$(cnn);!$(ccnn):2]>>([#6:1]-[#6:2])"
+                Labels="*[V]c->c:60;*[V][11c]->11c:60;*[V][11cH]->11c:60;*[V][13c]->13c:60;*[V][13cH]->13c:60;*[V][14c]->14c:60;*[V][14cH]->14c:60;*C->C:70;*[11C]->11C:60;*[11CH]->11C:70;*[11CH2]->11C:70;*[11CH3]->11C:70;*[13C]->13C:70;*[13CH]->13C:70;*[14C]->14C:70;*[14CH]->14C:70;*[14CH2]->14C:70;*[14CH3]->14C:70"> </MR13.1>
+            <MR13.2 name="Macrocyclization:Giese reaction C(sp3) - C(sp3)"
+                SMARTS="[#6;X4;!D1;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:1]-@[#6;X4;$([#6;D2]([#6])[#6]),$([#6;D3]([#6])([#6])[#6]);!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11:2][#6;X4;!D1;!D4;$(C-C#N),$(C-C=O),$(C-S(=O)(=O)),$([#8][#7](=O)-[#6]):3]>>(*[V][#6:1].*[#6:2][#6:3])"
+                ReconstructionReaction="[#106][#6;X4;!D1:1].[#107][#6;X4;$([#6;D2][#6]),$([#6;D3]([#6])[#6]);$([#6;!r3;!r4;!r5;!r6;!r7;!r8;!r9;!r10;!r11][#6;X4;!D1;!D4;$(C-C#N),$(C-C=O),$(C-S(=O)(=O)),$([#8][#7](=O)-[#6])]):2]>>([#6:1]-[#6:2])"
+                Labels="*[V]C->C:70;*[V][11C]->11C:70;*[V][11CH]->11C:70;*[V][11CH2]->11C:70;*[V][11CH3]->11C:70;*C->C:60;*[11C]->11C:60;*[11CH]->11C:60;*[11CH2]->11C:60;*[11CH3]->11C:60;*[13C]->13C:60;*[13CH]->13C:60;*[14C]->14C:60;*[14CH]->14C:60;*[14CH2]->14C:60;*[14CH3]->14C:60"> </MR13.2>
+        </MR13>
+        <MR14 name="None">
+            <MR14.1 name="None"
+            SMARTS="None"
+            Labels="None"
+            ReconstructionReaction="None"> </MR14.1>
+        </MR14>
+    </AvailableReactions>
+
+    <AvailableModesOfFragmentation>
+        use all;     <!-- default one; all reactions applied simultaneously -->
+        include only; <!-- input: customized list of reactions; all reactions applied simultaneously -->
+        exclude some; <!-- input: customized list of excluded reactions; all reactions applied simultaneously -->
+        one by one; <!-- input: customized list of sorted reactions; reaction applied in the specified order;
+        as soon as one bond is cut and first synthons are generated, algorithm moves to their fragmentation -->
+        block by block <!-- input: customized list of reactions, organized in blocks with respect to the order of
+        each block application; all reactions inside the block are applied simultaneously -->
+
+    </AvailableModesOfFragmentation>
+
+</N-RECAP_setup>
