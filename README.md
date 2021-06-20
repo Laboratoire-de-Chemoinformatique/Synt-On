@@ -19,6 +19,13 @@ All BBs structures need to be sanitized and standartized idependently by user pr
 
 from SynthI.src.SynthI_Classifier import BBClassifier
 BBClassifier(molSmiles="CCOC(=O)C1=C(N)SC=C1C2CC2")
+
+
+>>> for reagentSetKey in allSyntheticPathways:
+...     allSyntheticPathways[reagentSetKey].printShortReagentSetInfo()
+
+for reagentSetKey in allSyntheticPathways:
+   allSyntheticPathways[reagentSetKey].printShortReagentSetInfo()
 ```
 ```
 ['Bifunctional_Amine_Ester', 'PrimaryAmines_PriAmines_Het-Anilines']
