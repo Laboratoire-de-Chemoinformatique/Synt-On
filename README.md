@@ -10,10 +10,9 @@ All BBs structures need to be sanitized and standartized idependently by user pr
     * [Scaffold analysis]()
     * [BBs synthonization]()
     * [Bulk synthons generation for the large BBs library]()
-    *
 
 
-##Building blocks Classification
+## Building blocks Classification
 
 ## SynthI-BBs 
 
@@ -21,14 +20,14 @@ All BBs structures need to be sanitized and standartized idependently by user pr
 
 SynthI-BBs allow to generate meaningful scaffolds from BBs by removing any ring-containing moieties that are not parts that will not be kept in the reaction product and thus are irrelevant in BB analysis (e.g. protective (Bnz, Cbz, Fmoc) and leaving groups (boronics, oxiranes, etc.)):
 
-###BBs synthonization
+### BBs synthonization
 
-###Bulk synthons generation for the large BBs library
+### Bulk synthons generation for the large BBs library
 In case of large BB library, classification and synthonization of BBs can be performed using command line tool *SynthI/SynthI_BBsBulkClassificationAndSynthonization.py*:
 
-##SynthI-Fragmentation
+## SynthI-Fragmentation
 
-###Selecting customized list of reactions for fragmentation
+### Selecting customized list of reactions for fragmentation
 
 **Mode "include only"**
 
@@ -36,4 +35,4 @@ The list of RiDs of selected reactions should be specified using argument `react
   
 **Mode "exclude some"**
 
-###Detailed classes description
+### Detailed classes description
