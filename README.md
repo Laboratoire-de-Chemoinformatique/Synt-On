@@ -75,8 +75,21 @@ SynthI-BBs allows to perform scaffold analysis of BBs and generate exhaustively 
 | CHn:21 | C1CC1C[CH3:21]  | Boronics-derived nucleophilic | Boronic reagents |
 | NH:11 | R1[NH:11]R2 | Electrophilic nitrogen | Benzoyl O-acylated hydroxilamines |
 
-
 ### Scaffold analysis
+
+SynthI-BBs allow to generate meaningful scaffolds from BBs by removing any ring-containing moieties that will not be kept in the reaction product and thus are irrelevant in BB analysis (e.g. protective (Bnz, Cbz, Fmoc) and leaving groups (boronics, oxiranes, etc.))
+
+```python
+>>> from SynthI.src.SynthI_BBs import generateScaffoldForBB
+>>> generateScaffoldForBB("OC(=O)C=1C=CC=C(NC(=O)OCC2C=3C=CC=CC3C=4C=CC=CC24)C1")
+```
+```text
+# here some RdKit messages can appear, they can be ignored
+
+'c1ccccc1'
+
+```
+
 
 SynthI-BBs allow to generate meaningful scaffolds from BBs by removing any ring-containing moieties that are not parts that will not be kept in the reaction product and thus are irrelevant in BB analysis (e.g. protective (Bnz, Cbz, Fmoc) and leaving groups (boronics, oxiranes, etc.)):
 
