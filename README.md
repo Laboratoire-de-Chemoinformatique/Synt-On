@@ -153,7 +153,7 @@ Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Ko
 
 It generates four files: *outSuffixName_Scaffolds.smi*, *outSuffixName_scaffoldsCounts.smi*, *outSuffixName_cumulativeprecentage.smi*, *Scaffolds_FreqPlot_outSuffixName.png*.
 
-###BBs synthonization
+### BBs synthonization
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
@@ -248,7 +248,7 @@ Resulted synthons can be filtered according to the Ro2:
 (False, ['MolW=138.140850576', 'LogP=3.510900000000002', 'HDC=0', 'HAC=0'])
 ```
 
-###Bulk synthons generation for the large BBs library
+### Bulk synthons generation for the large BBs library
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
@@ -303,13 +303,13 @@ N[CH:10]=O EN300-50197 Reagents_Isocyanates ClC(Cl)(Cl)C(=O)N=C=O 1 outSuffixNam
 ``` 
 Files *outSuffixName_NotProcessed* and *outSuffixName_NotClassified* contain not processed by RdKit or processed but not classified BBs.
 
-##SynthI-Fragmentation
+## SynthI-Fragmentation
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
 This module allows to fragment given molecule and generate synthons that correspond to particular BBs, needed to easily synthesize input compound.
 
-###Fragmentation with a default setup
+### Fragmentation with a default setup
 
 In order to perform compoound fragmentation, first, the Fragmentor (Instant of the class fragmentation) should be initialized
 
@@ -487,7 +487,7 @@ Available. Corresponding BBs: EN300-50197
 Parent synthons: -   
 Children synthons: -      
 ```
-###Selecting customized list of reactions for fragmentation
+### Selecting customized list of reactions for fragmentation
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
