@@ -311,8 +311,11 @@ This module allows to fragment given molecule and generate synthons that corresp
 
 ### Fragmentation with a default setup
 
+<<<<<<< HEAD
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
+=======
+>>>>>>> origin/master
 In order to perform compoound fragmentation, first, the Fragmentor (Instant of the class fragmentation) should be initialized
 
 ```python
@@ -489,7 +492,10 @@ Available. Corresponding BBs: EN300-50197
 Parent synthons: -   
 Children synthons: -      
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 ### Selecting customized list of reactions for fragmentation
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
@@ -581,6 +587,7 @@ R2.2_0|R5.1_0 c1nn[nH:20]n1.Clc1ccccc1C([CH3:10])[OH:20].N[CH:10]=O Availability
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
+<<<<<<< HEAD
 Library of compounds can be fragmented using *SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
 
 ```shell script
@@ -667,6 +674,9 @@ It produces 2 files:
 ### Enumerate library of all possible compounds using given set of synthons
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+=======
+
+>>>>>>> origin/master
 
 ### Detailed classes description
 
