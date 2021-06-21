@@ -655,6 +655,19 @@ It produces 2 files:
    C1=CC=C(C(=C1)C(CN2N=CN=N2)OC(=O)N)Cl AvailableSynthons:Clc1ccccc1C([CH3:10])[OH:20].N[CH:10]=O notAvaialableSynthons:Clc1ccccc1C([OH:20])[CH3:21].Clc1cccc[cH:20]1.c1nnn(C[CH2:10][OH:20])n1.c1nn[nH:20]n1.Clc1ccccc1[CH2:10][OH:20].c1nnn([CH3:20])n1
     ```
  
+
+## SynthI-Enumeration
+
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+
+### Generate analogues of a compound
+
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+
+### Enumerate library of all possible compounds using given set of synthons
+
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+
 ### Detailed classes description
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)

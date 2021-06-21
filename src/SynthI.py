@@ -614,6 +614,7 @@ class enumeration:
         return Pool, nAlive
 
 class fragmentation:
+
     def __init__(self, mode="use_all", reactionsToWorkWith = "R1-R13", maxNumberOfReactionCentersPerFragment = 3,
                  MaxNumberOfStages = 5, FragmentsToIgnore = None,
                  setupFile = os.path.join(os.path.split(os.path.split(os.path.realpath(__file__))[0])[0], "config" , "Setup.xml"),
