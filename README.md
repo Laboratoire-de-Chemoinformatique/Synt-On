@@ -1,6 +1,13 @@
 # SynthI
 Open-source tool for synthons-based library design.
 
+For the standart usage of SynthI as a comand line tool see only [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-bbs-classification),
+[Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-synthons-generation-for-the-large-bbs-library),
+[Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#scaffold-analysis),
+[Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-compounds-fragmentation).
+
+All other chapters of this manual concern usage of SynthI as a python library inside of the customized scripts.
+
 # Table of Contents
 * [Prerequisites](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#prerequisites)
     * [System requirements](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#system-requirements)
@@ -324,7 +331,7 @@ In order to perform compoound fragmentation, first, the Fragmentor (Instant of t
 >>> SynthLibrary = "/pathToTheSynthonsLib/outENSynthmode.smi"
 >>> FragmentsToIgnore = ["*C(C)C", "*C(=O)C", "*C=O", "*[V]C=O", "*[V]C(C)C", "*[V]C(=O)C"]
 
->>> SynthIfragmentor = fragmentation(mode="use_all", maxNumderOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
+>>> SynthIfragmentor = fragmentation(mode="use_all", maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                     SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore, 
 ...                                     FindAnaloguesOfMissingSynthons=True)
 ```
@@ -503,7 +510,7 @@ Only the reactions, selected by user will be used for fragmentation. The list of
   
 ```python
 >>> SynthIfragmentorIncludeOnlyR1_R9 = fragmentation(mode="include_only", reactionsToWorkWith = "R1-R9", 
-...                                                   maxNumderOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
+...                                                   maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                                   SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore, 
 ...                                                   FindAnaloguesOfMissingSynthons=True) 
 
@@ -527,7 +534,7 @@ In the example below all reactions except R5.1 (nH-SN alkylation of NH-heterocyc
 
 ```python
 >>> SynthIfragmentorExcludeSomeR5_1 = fragmentation(mode="exclude_some", reactionsToWorkWith = "R5.1",
-...                                                 maxNumderOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
+...                                                 maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                                 SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore, 
 ...                                                 FindAnaloguesOfMissingSynthons=True) 
 
@@ -549,7 +556,7 @@ In this mode user-provided reactions are applied in the specified order; each bo
 
 ```python
 >>> SynthIfragmentorOneByOneR2_R10_R5 = fragmentation(mode="one_by_one", reactionsToWorkWith = "R2,R10,R5",
-...                                                   maxNumderOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
+...                                                   maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                                   SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore, 
 ...                                                   FindAnaloguesOfMissingSynthons=True) 
 
@@ -566,7 +573,7 @@ R10.1_1|R2.2_0 Clc1ccccc1[CH2:10][OH:20].c1nnn([CH3:20])n1.N[CH:10]=O Availabili
 If there are several ways to cut particular chemical bond, it will be cut only according to the rule that comes first in the customized ordered list of reactions to use. 
 ```python
 >>> SynthIfragmentorOneByOneR2_R5_R10  = fragmentation(mode="one_by_one", reactionsToWorkWith = "R2,R5,R10",
-...                                                    maxNumderOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
+...                                                    maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                                    SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore,
 ...                                                    FindAnaloguesOfMissingSynthons=True) 
 
@@ -717,7 +724,7 @@ The class to store information about possible syntheticPathway for compound synt
 
 Dictionary *synthLib* can be obtained using `UsefulFunctions.readSyntonLib(synthLibFile, Ro2Filtration=False, FindAnaloguesOfMissingBBs=False)` or retrieved as an attribute of the instant of the class fragmentation if the library was provided during class initiation (`fragmentation.SynthLib`).
 
-_**CLASS `fragmentation (ode="use_all", reactionsToWorkWith = "R1-R13", maxNumderOfReactionCentersPerFragment = 3, MaxNumberOfStages = 5, FragmentsToIgnore = None,
+_**CLASS `fragmentation (ode="use_all", reactionsToWorkWith = "R1-R13", maxNumberOfReactionCentersPerFragment = 3, MaxNumberOfStages = 5, FragmentsToIgnore = None,
                  FindAnaloguesOfMissingSynthons = False, parsedSynthLib = False, SynthLibrary=None, Ro2SynthonsFiltration = False)`**_
 
 The class to store setup for the fragmentation (including parsed synthons library, if providded).

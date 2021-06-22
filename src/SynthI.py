@@ -250,8 +250,6 @@ class enumeration:
             self.__MWfiltration = True
         self.__reactions = []
         self.__perpSynthonsAndReactions(Synthons, reactionSMARTS, analoguesEnumeration)
-        for key in self.__Synthons:
-            print([Chem.MolToSmiles(x) for x in self.__Synthons[key]])
         self.__minNumberOfNewMols = minNumberOfNewMols
         self.__nCores = nCores
         self.__outDir = outDir
@@ -904,6 +902,8 @@ class fragmentation:
         return allSynthons, allSyntheticPathways
 
     def __cutOneSynthonHierarchically(self, synthOld, oldComb, allSynthons, allSyntheticPathways, cutLevel):
+        if synthOld.smiles == "CC(Oc1cc(-c2c(C[NH:20]C)nn(C)c2C#N)cnc1N)c1cc(F)ccc1[CH:10]=O":
+            print("*************************************************")
         mol = Chem.MolFromSmiles(synthOld.smiles)
         mol.UpdatePropertyCache()
         Chem.GetSymmSSSR(mol)
@@ -932,6 +932,9 @@ class fragmentation:
                         Labels = self.__reactionSetup[rId]['Labels']
                         for lablesSet in Labels.split("|"):
                             labledSynthon = self.__getLabledSmiles(product, lablesSet.split(";"), cutCount=None)
+                        if Chem.MolToSmiles(product) == "*c1c(C[NH:20]C)nn(C)c1C#N" or Chem.MolToSmiles(product) == "*c1cnc(N)c(OC(C)c2cc(F)ccc2[CH:10]=O)c1":
+                            print("#################################")
+                            print(labledSynthon)
                         if not labledSynthon:
                             print(Chem.MolToSmiles(mol, canonical=True))
                             print(".".join([Chem.MolToSmiles(x, canonical=True) for x in prodSet]))
@@ -941,6 +944,9 @@ class fragmentation:
                                 (CalcNumRings(Chem.MolFromSmiles(labledSynthon)) != 0 and labledSynthon.count(
                                     ":") > (Chem.MolFromSmiles(labledSynthon).GetNumHeavyAtoms() +1) / 2):
                         #if labledSynthon and labledSynthon.count(":") > self.__maxNumberOfReactionCentersPerFragment:
+                            if Chem.MolToSmiles(product) == "*c1c(C[NH:20]C)nn(C)c1C#N" or Chem.MolToSmiles(
+                                    product) == "*c1cnc(N)c(OC(C)c2cc(F)ccc2[CH:10]=O)c1":
+                                print("Ignore1")
                             Ignore = True
                             break
                         pat = re.compile("\[\w*:\w*\]")
@@ -948,6 +954,9 @@ class fragmentation:
                             [labledSynthon[m.start():m.start() + 2] + labledSynthon[m.end() - 4:m.end()] for m in
                              re.finditer(pat, labledSynthon)])
                         if marks in self.forbiddenMarks:
+                            if Chem.MolToSmiles(product) == "*c1c(C[NH:20]C)nn(C)c1C#N" or Chem.MolToSmiles(
+                                    product) == "*c1cnc(N)c(OC(C)c2cc(F)ccc2[CH:10]=O)c1":
+                                print("Ignore2")
                             Ignore = True
                             break
                         if labledSynthon:
@@ -958,22 +967,34 @@ class fragmentation:
                         if synthOld.marks:
                             marksCheckPrev = []
                             allMarks = []
+                            oldMarksPresentInNewSynthons = []
                             for labledSynthon in synthonsProdSet:
                                 marksNew = sorted([labledSynthon[m.start():m.start() + 2] + labledSynthon[m.end() - 4:m.end()] for m
                                      in re.finditer(pat, labledSynthon)])
                                 allMarks.extend([labledSynthon[m.start():m.start() + 2] + labledSynthon[m.end() - 4:m.end()] for m
                                      in re.finditer(pat, labledSynthon)])
+                                for m in synthOld.marks:
+                                    if m in marksNew:
+                                        oldMarksPresentInNewSynthons.append(m)
                                 if len(marksNew) == len(synthOld.marks) and marksNew != synthOld.marks:
                                     marksCheckPrev.append(0)
                                 else:
                                     marksCheckPrev.append(1)
+                            if sorted(oldMarksPresentInNewSynthons) == synthOld.marks:
+                                marksCheckPrev.append(1)
                             if 1 not in set(marksCheckPrev):
+                                if labledSynthon=="Cn1nc(C[NH:20]C)[cH:21]c1C#N":
+                                    print(synthOld.marks)
+                                    print(marksNew)
+                                    print("Continue 1")
                                 continue
                             else:
                                 allNewMarks = set(allMarks)
 
                                 checkTotalMarks = [1 for mark in synthOld.marks if mark not in allNewMarks]
                                 if checkTotalMarks:
+                                    if labledSynthon == "Cn1nc(C[NH:20]C)[cH:21]c1C#N":
+                                        print("Continue 2")
                                     continue
                         successfulCut = True
                         reagSetName1 = oldComb.name.split("|")
@@ -1091,7 +1112,6 @@ def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, si
         """fsynthonsAfterOneCut = getShortestSyntheticPathways(allSyntheticPathways)
         shortestSynthesis = findShortestSynthPathWithAvailableSynthLib(fsynthonsAfterOneCut, showAll=False,
                                                                     firstLaunch=True)"""
-        print(Smiles_molNumbTuple)
         if allSyntheticPathways and len(allSyntheticPathways) > 1:
             CompletePath = False
             leafsComb = getLongestSyntheticPathways(allSyntheticPathways)
@@ -1103,15 +1123,11 @@ def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, si
                     continue
                 synthonsDict, SynthonsForAnaloguesSynthesisLocal = comb.getSynthonsForAnaloguesGeneration(SynthIfragmentor.SynthLib,
                                                              simTh, strictAvailabilityMode = strictAvailabilityMode)
-                """comb.printReagentsSetInfo()"""
                 if synthonsDict and SynthonsForAnaloguesSynthesisLocal:
                     outSynthons.write("****************************************** " + comb.name + " ******************************************\n")
                     outSynthons.writelines(SynthonsForAnaloguesSynthesisLocal)
                     reactionsUsedInFragmentationReactions = [rid.split("_")[0] for rid in comb.name.split("|")]
                     reactionForReconstruction = SynthIfragmentor.getReactionForReconstruction(reactionsUsedInFragmentationReactions)
-                    """print("_______________-----------------------------_______________")
-                    print(synthonsDict)
-                    print("_______________-----------------------------_______________")"""
                     enumerator = enumeration(outDir=outDir, Synthons=synthonsDict,
                                                    reactionSMARTS=reactionForReconstruction, maxNumberOfReactedSnthons=len(synthonsDict),
                                                    minNumberOfNewMols=1000000, nCores=1, analoguesEnumeration=True)

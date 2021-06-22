@@ -37,6 +37,8 @@ def main(args):
     scaffoldsCountSorted.clear()
     scaffoldPlot(args.output + "_cumulativeprecentage.smi", args.output)
 
+
+
 def scaffoldPlot(cumPercentageFile, outName):
     from matplotlib import pyplot as plt
     from numpy import genfromtxt
