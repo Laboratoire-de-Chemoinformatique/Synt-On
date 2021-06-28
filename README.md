@@ -4,7 +4,8 @@ Open-source tool for synthons-based library design.
 For the standart usage of SynthI as a comand line tool see only [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-bbs-classification),
 [Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-synthons-generation-for-the-large-bbs-library),
 [Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#scaffold-analysis),
-[Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-compounds-fragmentation).
+[Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-compounds-fragmentation),
+[Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-analogues-enumeration).
 
 All other chapters of this manual concern usage of SynthI as a python library inside of the customized scripts.
 
