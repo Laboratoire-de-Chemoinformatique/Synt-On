@@ -24,6 +24,7 @@ All other chapters of this manual concern usage of SynthI as a python library in
 * [SynthI-Enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#synthi-enumeration)
     * [Generate analogues of a compound](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#generate-analogues-of-a-compound)
     * [Enumerate library of all possible compounds using given set of synthons](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#enumerate-library-of-all-possible-compounds-using-given-set-of-synthons)
+    * [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-analogues-enumeration)
 * [Detailed classes description](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#detailed-classes-description)
 
 ## Prerequisites
@@ -616,8 +617,7 @@ optional arguments:
   --simTh SIMTH         Similarity threshold for BB analogues search. If not specified, only positional variational approach will be used for BBs search             
   --analoguesLibGen     Generate library of analogues from input mol                                                       
   --strictAvailabilityMode         
-                        Only fully synthesizable analogues are generated. Alternatively, unavailable synthons resulted from compound fragmentation will still be used for its analogues generation.
-  --simBBselection       Used always with analoguesLibGen.For library generation will be used not only synthons from input molecules but also their closest analogues                                              
+                        Only fully synthesizable analogues are generated. Alternatively, unavailable synthons resulted from compound fragmentation will still be used for its analogues generation.                                              
   --Ro2Filtration       Filter input synthons library by Ro2 (MW <= 200, logP <= 2, H-bond donors count <= 2 and H-bond acceptors count <= 4) 
   --mode MODE           Mode of fragmentation (defines how the reaction list is specified)          
                         Possible options: use_all, include_only, exclude_some, one_by_one      
@@ -670,6 +670,8 @@ It produces 2 files:
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
 
+SynthI-Enumeration applies the list of the reaction rules in order to generate the full combinatorial library of all compounds that can be synthesized using a given set of synthons.
+
 ### Generate analogues of a compound
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
@@ -677,6 +679,105 @@ It produces 2 files:
 ### Enumerate library of all possible compounds using given set of synthons
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+
+### Bulk analogues enumeration
+
+Analogues for each compound from defined library can be generated using *SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
+
+```shell script
+$ python3 SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -h
+
+usage: SynthI_BulkFragmentationEnumerationAndAnaloguesDesign [-h] [-i INPUT] [-oD OUTDIR] [--SynthLibrary SYNTHLIBRARY] 
+                                                     [--nCores NCORES]  [--analoguesLibGen] [--strictAvailabilityMode]
+                                                     [--simBBselection] [--Ro2Filtration] [--mode MODE] [--simTh SIMTH]
+                                                     [--reactionsToWorkWith REACTIONSTOWORKWITH] [--MaxNumberOfStages MAXNUMBEROFSTAGES]
+                                                     [--maxNumberOfReactionCentersPerFragment MAXNUMBEROFREACTIONCENTERSPERFRAGMENT]
+
+Compound fragmentaitiona and analogues generation. 
+
+optional arguments:
+  -h, --help            show this help message and exit       
+  -i INPUT, --input INPUT        
+                        input file        
+  -oD OUTDIR, --outDir OUTDIR   
+                        Output directory to write analogues. 
+  --SynthLibrary SYNTHLIBRARY                        
+                        Library of available synthons. Generated from avaialable BBs using SynthI_BBsBulkClassificationAndSynthonization.py  
+  --nCores NCORES       Number of CPUs available for parallelization.          
+  --simTh SIMTH         Similarity threshold for BB analogues search. If not specified, only positional variational approach will be used for BBs search             
+  --analoguesLibGen     Generate library of analogues from input mol                                                       
+  --strictAvailabilityMode         
+                        Only fully synthesizable analogues are generated. Alternatively, unavailable synthons resulted from compound fragmentation will still be used for its analogues generation.                                              
+  --Ro2Filtration       Filter input synthons library by Ro2 (MW <= 200, logP <= 2, H-bond donors count <= 2 and H-bond acceptors count <= 4) 
+  --mode MODE           Mode of fragmentation (defines how the reaction list is specified)          
+                        Possible options: use_all, include_only, exclude_some, one_by_one      
+                        (default: use_all)        
+  --reactionsToWorkWith REACTIONSTOWORKWITH    
+                        List of RiDs to be used.        
+                        (default: R1-R13 (all reactions) 
+  --desiredNumberOfNewMols DESIREDNUMBEROFNEWMOLS      
+                        Desired number of new compounds to be generated (in case of anaogues generation - number of analogues per compound).
+                        (default: 1000)                
+  --MaxNumberOfStages MAXNUMBEROFSTAGES           
+                        Maximal number of stages during fragmentation.        
+                        (default: 5)           
+  --maxNumberOfReactionCentersPerFragment MAXNUMBEROFREACTIONCENTERSPERFRAGMENT  
+                        Maximal number of reaction centers per fragment.    
+                        (default: 3)          
+
+_________________________________________________________________________________________________________________________ 
+
+Code implementation:                Yuliana Zabolotna, Alexandre Varnek             
+                                    Laboratoire de Chémoinformatique, Université de Strasbourg.        
+Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Kostiantyn Gavrylenko, Olexandre Oksiuta   
+                                    Institute of Organic Chemistry, National Academy of Sciences of Ukraine    
+                                    Kyiv National Taras Shevchenko University      
+2021 Strasbourg, Kiev   
+
+```
+Example of launch:
+```shell script
+python3 ../SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -i FDA_small_drugs_SMILES.smiles 
+--SynthLibrary outEN_Synthmode.smi --nCores 10 -oD /data/yuliana/DrugsFragmentation/newLaunch  --simTh 0.5 
+--analoguesLibGen --MaxNumberOfStages 5 --maxNumberOfReactionCentersPerFragment 3  --mode use_all 
+--reactionsToWorkWith R1-R13 --strictAvailabilityMode --desiredNumberOfNewMols 100000 
+```
+It will create a list of files for each compound from the preovided file: *AnalogsForMol"n".smi* and *SynthonsForAnalogsGenerationForMol"n".smi*, where n is a line number of the molecule in the initial file.  
+The first file simply contains generated compounds, while the second one features the synthons and respective availble BBs:
+```text
+****************************************** R3.2_0|R3.2_2|R4.2_0 ****************************************** 
+NC1CC(O)CC1[NH2:20] EN300-392848+EN300-391786 CC1(C)COC([NH2:20])=N1 analog
+c1ccc2n[cH:10]c([NH2:20])nc2c1 EN300-51097 c1nc([NH2:20])c2c[cH:10]ccc2n1 analog
+c1cc2nc([OH:20])ccn2n1 EN300-115652 c1nc2cc([OH:20])ccn2n1 analog
+ C1COC(CN[NH2:20])C1 EN300-54308+EN300-58463 CC1(C)COC([NH2:20])=N1 analog
+c1cnc2c([NH2:20])cc[cH:10]c2c1 EN300-199914 c1nc([NH2:20])c2c[cH:10]ccc2n1 analog
+c1ccc2c(N[NH2:20])n[cH:10]nc2c1 EN300-370897 c1nc([NH2:20])c2c[cH:10]ccc2n1 analog
+Cc1c(N)c[cH:10]c[cH:10]1 EN300-322915 Cc1c[cH:10]cc[cH:10]1 analog
+c1nc2cc[cH:10]cc2cc1[NH2:20] EN300-361747 c1nc([NH2:20])c2c[cH:10]ccc2n1 analog
+c1cn2ccc([OH:20])cc2n1 EN300-1725875 c1nc2cc([OH:20])ccn2n1 analog
+O=C1CCC(C[NH2:20])N1 EN300-75030+EN300-297938+EN300-736753+EN300-736752 CC1(C)COC([NH2:20])=N1 analog
+NC1COCC[NH:20]C1 EN300-342409 CC1(C)COC([NH2:20])=N1 analog
+CC1(C(=O)N[NH2:20])CC1 EN300-6482488 CC1(C)COC([NH2:20])=N1 analog
+c1nc([NH2:20])c2c[cH:10]ccc2n1 EN300-51562 originalBB
+c1cc([NH2:20])c2c[cH:10]cnc2c1 EN300-3012338 c1nc([NH2:20])c2c[cH:10]ccc2n1 analog
+OCCC1([NH2:20])CNC1 EN300-254360 CC1(C)COC([NH2:20])=N1 analog    
+.....
+****************************************** R3.2_0|R3.2_2|R4.2_1 ****************************************** 
+c1nc2cc[nH]c2[cH:10]n1 EN300-96120 c1nc2c[cH:10]ccn2n1 analog
+c1cnc2c([NH2:20])cc[cH:10]c2c1 EN300-199914 c1nc([NH2:20])c2c[cH:10]ccc2n1 analog
+c1nc2[nH]nnc2c[cH:10]1 EN300-72939 c1nc2c[cH:10]ccn2n1 analog
+c1cc2nnnn2[cH:10]c1 EN300-65144 c1nc2c[cH:10]ccn2n1 analog
+CC1(C(=O)N[NH2:20])CC1 EN300-6482488 CC1(C)COC([NH2:20])=N1 analog
+c1nc([NH2:20])c2c[cH:10]ccc2n1 EN300-51562 originalBB
+c1cc([NH2:20])c2c[cH:10]cnc2c1 EN300-3012338 c1nc([NH2:20])c2c[cH:10]ccc2n1 analog
+c1cc([NH2:20])c2nc[cH:10]cc2n1 EN300-133878 c1nc([NH2:20])c2c[cH:10]ccc2n1 analog
+.....
+```
+The lines, containing RiDs specify the synthetic path, according to which analogues will be generated. In the first column 
+of the file smiles of the synthon used for new compounds generation is given. Second column provides the IDs of the
+ availble BBs producing this synthon. If the synthons has originated from fragmentation of the initial compound in the 
+ last column it will be specified *originalBB*, if synthons was selected as an analogue of the original fragment *analog*
+ will be stated there and smiles of the original synthon will be provided in the third column. 
 
 ## Detailed classes description
 
