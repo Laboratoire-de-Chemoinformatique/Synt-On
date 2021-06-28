@@ -19,12 +19,15 @@ from src.UsefulFunctions import *
 from src.SynthI import *
 
 
-def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, analoguesLibGen=False, simBBselection=False,
-         Ro2Filtration=False, mode="use_all", reactionsToWorkWith = "R1-R13", MaxNumberOfStages=5, maxNumberOfReactionCentersPerFragment=3):
+def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, analoguesLibGen=False,
+         Ro2Filtration=False, mode="use_all", reactionsToWorkWith = "R1-R13", MaxNumberOfStages=5,
+         maxNumberOfReactionCentersPerFragment=3, desiredNumberOfNewMols = 1000):
 
     SmilesToIgnore = ["*C(C)C", "*C(=O)C", "*C=O", "*[V]C=O", "*[V]C(C)C", "*[V]C(=O)C"]
     if simTh == -1:
         simBBselection = False
+    else:
+        simBBselection = True
     SynthIfragmentor = fragmentation(mode=mode, reactionsToWorkWith=reactionsToWorkWith,
                     maxNumberOfReactionCentersPerFragment=maxNumberOfReactionCentersPerFragment,
                     MaxNumberOfStages = MaxNumberOfStages, FragmentsToIgnore=SmilesToIgnore,
@@ -35,7 +38,8 @@ def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, an
             if line.strip():
                 Smiles = line.strip().split()[0]
                 analoguesLibraryGeneration((Smiles, molNumb+1), SynthIfragmentor, outDir, simTh = simTh,
-                                           strictAvailabilityMode=strictAvailabilityMode)
+                                           strictAvailabilityMode=strictAvailabilityMode,
+                                           desiredNumberOfNewMols=desiredNumberOfNewMols)
     elif analoguesLibGen:
         Smiles_molNumb_List = []
         for molNumb, line in enumerate(open(inp)):
@@ -43,7 +47,8 @@ def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, an
                 Smiles = line.strip().split()[0]
                 Smiles_molNumb_List.append((Smiles, molNumb+1))
         fixed_analogsGenerationFunction = partial(analoguesLibraryGeneration, outDir=outDir, simTh=simTh,
-                             SynthIfragmentor=SynthIfragmentor, strictAvailabilityMode=strictAvailabilityMode)
+                             SynthIfragmentor=SynthIfragmentor, strictAvailabilityMode=strictAvailabilityMode,
+                                                  desiredNumberOfNewMols=desiredNumberOfNewMols)
         nCores = args.nCores
         finalLog = []
         with ProcessPoolExecutor(max_workers=nCores) as executor:
@@ -133,14 +138,16 @@ if __name__ == '__main__':
     parser.add_argument("--strictAvailabilityMode", action="store_true", help="Only fully synthesizable analogues are generated. "
                                     "Alternatively, unavailable synthons resulted from compound fragmentation"
                                     " will still be used for its analogues generation.")
-    parser.add_argument("--simBBselection", action="store_true", help=" Used always with analoguesLibGen."
-        "For library generation will be used not only synthons from input molecules but also their closest analogues")
     parser.add_argument("--Ro2Filtration", action="store_true", help="Filter input synthons library by Ro2 (MW <= 200, logP <= 2, H-bond donors count <= 2 and H-bond acceptors count <= 4)")
     parser.add_argument("--mode", default="use_all", type=str, help="Mode of fragmentation (defines how the reaction list is specified)"
                                                                     "\nPossible options: use_all, include_only, exclude_some, one_by_one"
                                                                     "\n(default: use_all)")
     parser.add_argument("--reactionsToWorkWith", default="R1-R13", type=str, help="List of RiDs to be used."
                                                                                   "\n(default: R1-R13 (all reactions) ")
+    parser.add_argument("--desiredNumberOfNewMols", default=1000, type=int,
+                        help="Desired number of new compounds to be generated (in case of anaogues generation - number of analogues per compound)."
+                             "\n(default: 1000)")
+
     parser.add_argument("--MaxNumberOfStages", default=5, type=int, help="Maximal number of stages during fragmentation."
                                                                          "\n(default: 5)")
     parser.add_argument("--maxNumberOfReactionCentersPerFragment", default=3, type=int, help="Maximal number of reaction centers per fragment."
@@ -149,10 +156,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.nCores == -1 or args.analoguesLibGen:
         main(args.input, args.SynthLibrary, args.outDir, args.simTh, args.strictAvailabilityMode, args.nCores,
-             args.analoguesLibGen, args.simBBselection, args.Ro2Filtration, mode=args.mode,
+             args.analoguesLibGen, args.Ro2Filtration, mode=args.mode,
              reactionsToWorkWith = args.reactionsToWorkWith,
              MaxNumberOfStages=args.MaxNumberOfStages,
-             maxNumberOfReactionCentersPerFragment=args.maxNumberOfReactionCentersPerFragment)
+             maxNumberOfReactionCentersPerFragment=args.maxNumberOfReactionCentersPerFragment,
+             desiredNumberOfNewMols=args.desiredNumberOfNewMols)
     else:
         wc = countLines(args.input)
         if wc<args.nCores:
@@ -165,8 +173,8 @@ if __name__ == '__main__':
                              strictAvailabilityMode=args.strictAvailabilityMode, Ro2Filtration=args.Ro2Filtration,
                              mode = args.mode, reactionsToWorkWith = args.reactionsToWorkWith,
                              MaxNumberOfStages = args.MaxNumberOfStages,
-                             simBBselection = args.simBBselection,
-                             maxNumberOfReactionCentersPerFragment = args.maxNumberOfReactionCentersPerFragment)
+                             maxNumberOfReactionCentersPerFragment = args.maxNumberOfReactionCentersPerFragment,
+                             desiredNumberOfNewMols=args.desiredNumberOfNewMols)
         finalLog = []
         with ProcessPoolExecutor(max_workers=nCores) as executor:
             for out in executor.map(fixed_main, outNamesList):
