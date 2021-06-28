@@ -228,7 +228,7 @@ class syntheticPathway:
 
 class enumeration:
     def __init__(self, outDir, Synthons = None, reactionSMARTS = None, maxNumberOfReactedSnthons=6, MWupperTh=None, MWlowerTh=None,
-                  minNumberOfNewMols = 1000, nCores=1, analoguesEnumeration=False):
+                  desiredNumberOfNewMols = 1000, nCores=1, analoguesEnumeration=False):
         if analoguesEnumeration and Synthons!=None:
             self.__Synthons = None
             self.__monoFuncBB = None
@@ -250,7 +250,7 @@ class enumeration:
             self.__MWfiltration = True
         self.__reactions = []
         self.__perpSynthonsAndReactions(Synthons, reactionSMARTS, analoguesEnumeration)
-        self.__minNumberOfNewMols = minNumberOfNewMols
+        self.__desiredNumberOfNewMols = desiredNumberOfNewMols
         self.__nCores = nCores
         self.__outDir = outDir
         self.__genNonUniqMols = 0
@@ -302,9 +302,9 @@ class enumeration:
 
         whileCount = 0
         while mainRun:
-            if not allowedToRunSubprocesses and len(self.results) >= self.__minNumberOfNewMols :
+            if not allowedToRunSubprocesses and len(self.results) >= self.__desiredNumberOfNewMols :
                 break
-            elif allowedToRunSubprocesses and self.__genNonUniqMols >= self.__minNumberOfNewMols :
+            elif allowedToRunSubprocesses and self.__genNonUniqMols >= self.__desiredNumberOfNewMols :
                 break
             whileCount += 1
             seed = list(seed)
@@ -340,6 +340,8 @@ class enumeration:
                                     SynthonsetsUsed.add(SynthonsetPartner)
                                     self.results.update(self.__molAnaloguesLibEnumeration(reagent=firstBB, partner=secondBB,
                                       numberOfBBalreadyReacted=1, SynthonsetsUsed=SynthonsetsUsed, reactionToUse = rid))
+                                    if len(self.results) >= self.__desiredNumberOfNewMols:
+                                        return self.results
             return self.results
         else:
             print("Separate reconstructur should be evocken for Molecule analogues generation "
@@ -348,7 +350,7 @@ class enumeration:
             exit()
 
     def __molAnaloguesLibEnumeration(self, reagent, partner, numberOfBBalreadyReacted,
-                                                    SynthonsetsUsed, reactionToUse, usedReactions = None):
+                                                    SynthonsetsUsed, reactionToUse, usedReactions = None, firstLaunch=True):
         if not usedReactions:
             usedReactions = []
         allProducts = set()
@@ -379,11 +381,16 @@ class enumeration:
                                             newSynthonsetsUsed.add(SynthonsetPartner)
                                             subResults = self.__molAnaloguesLibEnumeration(reagent=prod,
                                                   partner=secondBB, numberOfBBalreadyReacted=numberOfBBalreadyReacted +1,
-                                                  SynthonsetsUsed=newSynthonsetsUsed, reactionToUse=rid, usedReactions = newUsedReactions)
+                                                  SynthonsetsUsed=newSynthonsetsUsed, reactionToUse=rid, usedReactions = newUsedReactions,
+                                                                                           firstLaunch=False)
                                             if subResults:
                                                 allProducts.update(subResults)
+                                            if len(allProducts)>=self.__desiredNumberOfNewMols and firstLaunch:
+                                                return list(allProducts)
                     elif not functionality and numberOfBBalreadyReacted + 1 >= len(self.__Synthons):
                         allProducts.add(prodSMILES)
+                        if len(allProducts) >= self.__desiredNumberOfNewMols and firstLaunch:
+                            return list(allProducts)
         return list(allProducts)
 
     def __checkBB_reactionCombination(self, reagent, partner, reaction):
@@ -1105,7 +1112,7 @@ def fragmentMolecule(smiles, SynthIfragmentor, simTh=-1):
     else:
         return None
 
-def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, simTh, strictAvailabilityMode):
+def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, simTh, strictAvailabilityMode, desiredNumberOfNewMols=1000):
     with open(os.path.join(outDir, "SynthonsForAnalogsGenerationForMol" + str(Smiles_molNumbTuple[1]) + ".smi"),
               "w") as outSynthons:
         allSyntheticPathways, allSynthons = fragmentMolecule(Smiles_molNumbTuple[0], SynthIfragmentor, simTh=simTh)
@@ -1130,9 +1137,11 @@ def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, si
                     reactionForReconstruction = SynthIfragmentor.getReactionForReconstruction(reactionsUsedInFragmentationReactions)
                     enumerator = enumeration(outDir=outDir, Synthons=synthonsDict,
                                                    reactionSMARTS=reactionForReconstruction, maxNumberOfReactedSnthons=len(synthonsDict),
-                                                   minNumberOfNewMols=1000000, nCores=1, analoguesEnumeration=True)
+                                                   desiredNumberOfNewMols=desiredNumberOfNewMols, nCores=1, analoguesEnumeration=True)
                     #reconstructedMols.update(enumerator.newAnaloguesGeneration())
                     reconstructedMols.update(enumerator.AnaloguesGeneration())
+                    if len(reconstructedMols)>=desiredNumberOfNewMols:
+                        break
                     #print(comb.name)
             if not CompletePath:
                 synthonsAfterOneCut = getShortestSyntheticPathways(allSyntheticPathways)
@@ -1159,7 +1168,7 @@ def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, si
                             enumerator = enumeration(outDir=outDir, Synthons=synthonsDict,
                                                            reactionSMARTS=reactionForReconstruction,
                                                            maxNumberOfReactedSnthons=len(synthonsDict),
-                                                           minNumberOfNewMols=1000000, nCores=1,
+                                                           desiredNumberOfNewMols=1000000, nCores=1,
                                                            analoguesEnumeration=True)
                             # reconstructedMols.update(enumerator.newAnaloguesGeneration())
                             reconstructedMols.update(enumerator.AnaloguesGeneration())
