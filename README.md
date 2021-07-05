@@ -24,8 +24,8 @@ All other chapters of this manual concern usage of SynthI as a python library in
     * [Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-compounds-fragmentation)
 * [SynthI-Enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#synthi-enumeration)
     * [Generate analogues of a compound](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#generate-analogues-of-a-compound)
-    * [Enumerate library of all possible compounds using given set of synthons](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#enumerate-library-of-all-possible-compounds-using-given-set-of-synthons)
     * [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-analogues-enumeration)
+    * [Enumerate library of all possible compounds using given set of synthons](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#enumerate-library-of-all-possible-compounds-using-given-set-of-synthons)
 * [Detailed classes description](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#detailed-classes-description)
 
 ## Prerequisites
@@ -732,82 +732,6 @@ Alternatively, unavailable synthons resulted from compound fragmentation will st
 It produces 2 files. The first one contains analogues of the specified compound, while the second one consists of the synthons
 used for the analogues library design (see example at [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-analogues-enumeration))
 
- 
-### Enumerate library of all possible compounds using given set of synthons
-
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
-
-New compounds can enumerated from defined library of synthons using *SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
-
-```shell script
-$ python3 SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -h
-
-usage: SynthI_BulkFragmentationEnumerationAndAnaloguesDesign [-h] [-i INPUT] [-oD OUTDIR] [--SynthLibrary SYNTHLIBRARY] 
-                                                     [--nCores NCORES]  [--analoguesLibGen] [--strictAvailabilityMode]
-                                                     [--simBBselection] [--Ro2Filtration] [--fragmentationMode  MODE] [--simTh SIMTH]
-                                                     [--reactionsToWorkWith REACTIONSTOWORKWITH] [--MaxNumberOfStages MAXNUMBEROFSTAGES]
-                                                     [--maxNumberOfReactionCentersPerFragment MAXNUMBEROFREACTIONCENTERSPERFRAGMENT]
-
-Compound fragmentaitiona and analogues generation. 
-
-optional arguments:
-  -h, --help            show this help message and exit       
-  -i INPUT, --input INPUT        
-                        input file        
-  -oD OUTDIR, --outDir OUTDIR   
-                        Output directory to write analogues. 
-  --SynthLibrary SYNTHLIBRARY                        
-                        Library of available synthons. Generated from avaialable BBs using SynthI_BBsBulkClassificationAndSynthonization.py  
-  --nCores NCORES       Number of CPUs available for parallelization.          
-  --simTh SIMTH         Similarity threshold for BB analogues search. If not specified, only positional variational approach will be used for BBs search             
-  --analoguesLibGen     Generate library of analogues from input mol                                                       
-  --strictAvailabilityMode         
-                        Only fully synthesizable analogues are generated. Alternatively, unavailable synthons resulted from compound fragmentation will still be used for its analogues generation.                                              
-  --Ro2Filtration       Filter input synthons library by Ro2 (MW <= 200, logP <= 2, H-bond donors count <= 2 and H-bond acceptors count <= 4) 
-  --fragmentationMode FRAGMENTATIONMODE 
-                        Mode of fragmentation (defines how the reaction list is specified)          
-                        Possible options: use_all, include_only, exclude_some, one_by_one      
-                        (default: use_all)        
-  --reactionsToWorkWith REACTIONSTOWORKWITH    
-                        List of RiDs to be used.        
-                        (default: R1-R13 (all reactions)    
-  --desiredNumberOfNewMols DESIREDNUMBEROFNEWMOLS
-                        Desired number of new compounds to be generated (in case of anaogues generation - number of analogues per compound).
-                        (default: 1000)             
-  --MaxNumberOfStages MAXNUMBEROFSTAGES           
-                        Maximal number of stages during fragmentation.        
-                        (default: 5)           
-  --maxNumberOfReactionCentersPerFragment MAXNUMBEROFREACTIONCENTERSPERFRAGMENT  
-                        Maximal number of reaction centers per fragment.    
-                        (default: 3)
-  --enumerationMode     Enumerate library using input synthons 
-  
-  --MWupperTh MWUPPERTH
-                        Maximum molecular weight allowed for generated compounds.
-                        (default: 1000)
-  --MWlowerTh MWLOWERTH
-                        Minimum molecular weight allowed for generated compounds.
-                        (default: 100)  
-          
-
-_________________________________________________________________________________________________________________________ 
-
-Code implementation:                Yuliana Zabolotna, Alexandre Varnek             
-                                    Laboratoire de Chémoinformatique, Université de Strasbourg.        
-Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Kostiantyn Gavrylenko, Olexandre Oksiuta   
-                                    Institute of Organic Chemistry, National Academy of Sciences of Ukraine    
-                                    Kyiv National Taras Shevchenko University      
-2021 Strasbourg, Kiev   
-
-```
-
-Example of launch:
-```shell script
-python3 ../SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -i -i SynthonsForLibraryGeneration.smi 
---nCores 10 -oD /data/yuliana/DrugsFragmentation/newLaunch --maxNumberOfStages 5 --desiredNumberOfNewMols 1000 
---enumerationMode --MWupperTh 460 --MWlowerTh 200  
-```
-It will create a list of temporary files, that will be combine into one final file *FinalOut_allEnumeratedCompounds_DuplicatesCanBePresent.smi*
 
 ### Bulk analogues enumeration
 
@@ -918,6 +842,81 @@ of the file smiles of the synthon used for new compounds generation is given. Se
  last column it will be specified *originalBB*, if synthons was selected as an analogue of the original fragment *analog*
  will be stated there and smiles of the original synthon will be provided in the third column. 
 
+### Enumerate library of all possible compounds using given set of synthons
+
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+
+New compounds can enumerated from defined library of synthons using *SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
+
+```shell script
+$ python3 SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -h
+
+usage: SynthI_BulkFragmentationEnumerationAndAnaloguesDesign [-h] [-i INPUT] [-oD OUTDIR] [--SynthLibrary SYNTHLIBRARY] 
+                                                     [--nCores NCORES]  [--analoguesLibGen] [--strictAvailabilityMode]
+                                                     [--simBBselection] [--Ro2Filtration] [--fragmentationMode  MODE] [--simTh SIMTH]
+                                                     [--reactionsToWorkWith REACTIONSTOWORKWITH] [--MaxNumberOfStages MAXNUMBEROFSTAGES]
+                                                     [--maxNumberOfReactionCentersPerFragment MAXNUMBEROFREACTIONCENTERSPERFRAGMENT]
+
+Compound fragmentaitiona and analogues generation. 
+
+optional arguments:
+  -h, --help            show this help message and exit       
+  -i INPUT, --input INPUT        
+                        input file        
+  -oD OUTDIR, --outDir OUTDIR   
+                        Output directory to write analogues. 
+  --SynthLibrary SYNTHLIBRARY                        
+                        Library of available synthons. Generated from avaialable BBs using SynthI_BBsBulkClassificationAndSynthonization.py  
+  --nCores NCORES       Number of CPUs available for parallelization.          
+  --simTh SIMTH         Similarity threshold for BB analogues search. If not specified, only positional variational approach will be used for BBs search             
+  --analoguesLibGen     Generate library of analogues from input mol                                                       
+  --strictAvailabilityMode         
+                        Only fully synthesizable analogues are generated. Alternatively, unavailable synthons resulted from compound fragmentation will still be used for its analogues generation.                                              
+  --Ro2Filtration       Filter input synthons library by Ro2 (MW <= 200, logP <= 2, H-bond donors count <= 2 and H-bond acceptors count <= 4) 
+  --fragmentationMode FRAGMENTATIONMODE 
+                        Mode of fragmentation (defines how the reaction list is specified)          
+                        Possible options: use_all, include_only, exclude_some, one_by_one      
+                        (default: use_all)        
+  --reactionsToWorkWith REACTIONSTOWORKWITH    
+                        List of RiDs to be used.        
+                        (default: R1-R13 (all reactions)    
+  --desiredNumberOfNewMols DESIREDNUMBEROFNEWMOLS
+                        Desired number of new compounds to be generated (in case of anaogues generation - number of analogues per compound).
+                        (default: 1000)             
+  --MaxNumberOfStages MAXNUMBEROFSTAGES           
+                        Maximal number of stages during fragmentation.        
+                        (default: 5)           
+  --maxNumberOfReactionCentersPerFragment MAXNUMBEROFREACTIONCENTERSPERFRAGMENT  
+                        Maximal number of reaction centers per fragment.    
+                        (default: 3)
+  --enumerationMode     Enumerate library using input synthons 
+  
+  --MWupperTh MWUPPERTH
+                        Maximum molecular weight allowed for generated compounds.
+                        (default: 1000)
+  --MWlowerTh MWLOWERTH
+                        Minimum molecular weight allowed for generated compounds.
+                        (default: 100)  
+          
+
+_________________________________________________________________________________________________________________________ 
+
+Code implementation:                Yuliana Zabolotna, Alexandre Varnek             
+                                    Laboratoire de Chémoinformatique, Université de Strasbourg.        
+Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Kostiantyn Gavrylenko, Olexandre Oksiuta   
+                                    Institute of Organic Chemistry, National Academy of Sciences of Ukraine    
+                                    Kyiv National Taras Shevchenko University      
+2021 Strasbourg, Kiev   
+
+```
+
+Example of launch:
+```shell script
+python3 ../SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -i -i SynthonsForLibraryGeneration.smi 
+--nCores 10 -oD /data/yuliana/DrugsFragmentation/newLaunch --maxNumberOfStages 5 --desiredNumberOfNewMols 1000 
+--enumerationMode --MWupperTh 460 --MWlowerTh 200  
+```
+It will create a list of temporary files, that will be combine into one final file *FinalOut_allEnumeratedCompounds_DuplicatesCanBePresent.smi*
 ## Detailed classes description
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
