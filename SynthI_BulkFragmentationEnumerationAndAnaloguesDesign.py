@@ -20,15 +20,16 @@ from src.SynthI import *
 
 
 def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, analoguesLibGen=False,
-         Ro2Filtration=False, mode="use_all", reactionsToWorkWith = "R1-R13", MaxNumberOfStages=5,
-         maxNumberOfReactionCentersPerFragment=3, desiredNumberOfNewMols = 1000):
+         Ro2Filtration=False, fragmentationMode="use_all", reactionsToWorkWith = "R1-R13", MaxNumberOfStages=5,
+         maxNumberOfReactionCentersPerFragment=3, desiredNumberOfNewMols = 1000, enumerationMode=False, MWupperTh=1000,
+         MWlowerTh=100):
 
     SmilesToIgnore = ["*C(C)C", "*C(=O)C", "*C=O", "*[V]C=O", "*[V]C(C)C", "*[V]C(=O)C"]
     if simTh == -1:
         simBBselection = False
     else:
         simBBselection = True
-    SynthIfragmentor = fragmentation(mode=mode, reactionsToWorkWith=reactionsToWorkWith,
+    SynthIfragmentor = fragmentation(fragmentationMode=fragmentationMode, reactionsToWorkWith=reactionsToWorkWith,
                     maxNumberOfReactionCentersPerFragment=maxNumberOfReactionCentersPerFragment,
                     MaxNumberOfStages = MaxNumberOfStages, FragmentsToIgnore=SmilesToIgnore,
                     SynthLibrary=SynthLibrary, FindAnaloguesOfMissingSynthons=simBBselection,
@@ -55,7 +56,7 @@ def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, an
             for out in executor.map(fixed_analogsGenerationFunction, Smiles_molNumb_List):
                 finalLog.append(out)
         print(finalLog)
-    else:
+    elif not enumerationMode:
         outOnePath = open(inp + "_out", "w")
         outAllSynthons = open("allSythons_" + inp + "_out", "w")
         for line in open(inp):
@@ -115,8 +116,18 @@ def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, an
         outOnePath.close()
         outAllSynthons.close()
         return "Finished"
-
-#print(list(N_SynthI_setup))
+    else:
+        reactionForReconstruction = SynthIfragmentor.getReactionForReconstruction()
+        synthons = []
+        for line in open(inp):
+            sline = line.strip()
+            if sline and "*" not in sline:
+                synthons.append(sline.split()[0])
+        enumerator = enumeration(outDir=outDir, Synthons=list(set(synthons)),
+                                 reactionSMARTS=reactionForReconstruction, maxNumberOfReactedSynthons=MaxNumberOfStages+1,
+                                 MWupperTh=MWupperTh, MWlowerTh = MWlowerTh,
+                                 desiredNumberOfNewMols = desiredNumberOfNewMols, nCores = nCores)
+        reconstructedMols = enumerator.getReconstructedMols(allowedToRunSubprocesses=True)
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description="Compound fragmentaitiona and analogues generation.",
@@ -139,7 +150,7 @@ if __name__ == '__main__':
                                     "Alternatively, unavailable synthons resulted from compound fragmentation"
                                     " will still be used for its analogues generation.")
     parser.add_argument("--Ro2Filtration", action="store_true", help="Filter input synthons library by Ro2 (MW <= 200, logP <= 2, H-bond donors count <= 2 and H-bond acceptors count <= 4)")
-    parser.add_argument("--mode", default="use_all", type=str, help="Mode of fragmentation (defines how the reaction list is specified)"
+    parser.add_argument("--fragmentationMode", default="use_all", type=str, help="Mode of fragmentation (defines how the reaction list is specified)"
                                                                     "\nPossible options: use_all, include_only, exclude_some, one_by_one"
                                                                     "\n(default: use_all)")
     parser.add_argument("--reactionsToWorkWith", default="R1-R13", type=str, help="List of RiDs to be used."
@@ -148,19 +159,27 @@ if __name__ == '__main__':
                         help="Desired number of new compounds to be generated (in case of anaogues generation - number of analogues per compound)."
                              "\n(default: 1000)")
 
-    parser.add_argument("--MaxNumberOfStages", default=5, type=int, help="Maximal number of stages during fragmentation."
+    parser.add_argument("--MaxNumberOfStages", default=5, type=int, help="Maximal number of stages during fragmentation or enumeration."
                                                                          "\n(default: 5)")
     parser.add_argument("--maxNumberOfReactionCentersPerFragment", default=3, type=int, help="Maximal number of reaction centers per fragment."
                                                                                              "\n(default: 3)")
+    parser.add_argument("--enumerationMode",  action="store_true", help="Enumerate library using input synthons")
+    parser.add_argument("--MWupperTh", default=1000, type=int,
+                        help="Maximum molecular weight allowed for generated compounds."
+                             "\n(default: 1000)")
+    parser.add_argument("--MWlowerTh", default=100, type=int,
+                        help="Minimum molecular weight allowed for generated compounds."
+                             "\n(default: 100)")
 
     args = parser.parse_args()
-    if args.nCores == -1 or args.analoguesLibGen:
+    if args.nCores == -1 or args.analoguesLibGen or args.enumerationMode:
         main(args.input, args.SynthLibrary, args.outDir, args.simTh, args.strictAvailabilityMode, args.nCores,
-             args.analoguesLibGen, args.Ro2Filtration, mode=args.mode,
+             args.analoguesLibGen, args.Ro2Filtration, fragmentationMode=args.fragmentationMode,
              reactionsToWorkWith = args.reactionsToWorkWith,
              MaxNumberOfStages=args.MaxNumberOfStages,
              maxNumberOfReactionCentersPerFragment=args.maxNumberOfReactionCentersPerFragment,
-             desiredNumberOfNewMols=args.desiredNumberOfNewMols)
+             desiredNumberOfNewMols=args.desiredNumberOfNewMols,enumerationMode=args.enumerationMode,
+             MWupperTh=args.MWupperTh, MWlowerTh=args.MWlowerTh)
     else:
         wc = countLines(args.input)
         if wc<args.nCores:
@@ -171,7 +190,7 @@ if __name__ == '__main__':
         outNamesList = splitFileByLines(args.input, args.input, linesPerFile)
         fixed_main = partial(main, outDir=args.outDir, simTh=args.simTh, SynthLibrary=args.SynthLibrary,
                              strictAvailabilityMode=args.strictAvailabilityMode, Ro2Filtration=args.Ro2Filtration,
-                             mode = args.mode, reactionsToWorkWith = args.reactionsToWorkWith,
+                             fragmentationMode = args.fragmentationMode, reactionsToWorkWith = args.reactionsToWorkWith,
                              MaxNumberOfStages = args.MaxNumberOfStages,
                              maxNumberOfReactionCentersPerFragment = args.maxNumberOfReactionCentersPerFragment,
                              desiredNumberOfNewMols=args.desiredNumberOfNewMols)
@@ -191,9 +210,3 @@ if __name__ == '__main__':
                 os.remove("allSythons_" + inp + "_out")
         for file in outNamesList:
             os.remove(file)
-
-
-
-
-
-
