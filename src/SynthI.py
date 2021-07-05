@@ -13,6 +13,8 @@ from collections import Counter
 srcPath = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(1, srcPath)
 from UsefulFunctions import *
+from concurrent.futures import ProcessPoolExecutor
+from functools import partial
 
 class synthon:
     def __init__(self, smiles, cutLevel=1, directParent=None, directChildren=None, syntheticPathway=None, SynthLibProvided=False):
@@ -227,20 +229,20 @@ class syntheticPathway:
             return synthonsDict, SynthonsForAnaloguesSynthesis
 
 class enumeration:
-    def __init__(self, outDir, Synthons = None, reactionSMARTS = None, maxNumberOfReactedSnthons=6, MWupperTh=None, MWlowerTh=None,
+    def __init__(self, outDir, Synthons = None, reactionSMARTS = None, maxNumberOfReactedSynthons=6, MWupperTh=None, MWlowerTh=None,
                   desiredNumberOfNewMols = 1000, nCores=1, analoguesEnumeration=False):
         if analoguesEnumeration and Synthons!=None:
             self.__Synthons = None
             self.__monoFuncBB = None
             self.__poliFuncBB = None
             self.__biFuncBB = None
-            self.__maxNumberOfReactedSnthons = len(Synthons)
+            self.__maxNumberOfReactedSynthons = len(Synthons)
         else:
             self.__Synthons = []
             self.__monoFuncBB = []
             self.__poliFuncBB = []
             self.__biFuncBB = []
-            self.__maxNumberOfReactedSnthons = maxNumberOfReactedSnthons
+            self.__maxNumberOfReactedSynthons = maxNumberOfReactedSynthons
         self.__MWfiltration=False
         if MWupperTh:
             self.__MWupperTh = MWupperTh
@@ -291,9 +293,13 @@ class enumeration:
                         process = Process(target=self.__molReconsrtuction, args=(randomSeed, partner, 1, None, queue,))
                         process.start()
                         Pool.append([process, queue, False]) # [the process, queue, was it already joined]
+                        if self.__genNonUniqMols >= self.__desiredNumberOfNewMols:
+                            break
                     else:
                         self.results.update(self.__molReconsrtuction(randomSeed, partner, 1, queue=None))
                         print("Number of so far reconstructed unique molecules = " + str(len(self.results)))
+                        if len(self.results) >= self.__desiredNumberOfNewMols:
+                            break
             if allowedToRunSubprocesses:
                 Pool, nAlive = self.__countAndMergeActiveThreads(Pool)
                 while nAlive > 0:
@@ -315,7 +321,7 @@ class enumeration:
                 break
             self.results.update(self.getReconstructedMols(allowedToRunSubprocesses, randomSeed, seed, mainRun = False))
         d_names, f_names, main_dir = listDir(self.__outDir)
-        with open(os.path.join(self.__outDir, "FinalOut_withDuplicates.smi"), "ab") as out:
+        with open(os.path.join(self.__outDir, "FinalOut_allEnumeratedCompounds_DuplicatesCanBePresent.smi"), "ab") as out:
             for file in f_names:
                 if "temp_" in file:
                     with open(os.path.join(self.__outDir, file), "rb") as f:
@@ -429,8 +435,8 @@ class enumeration:
                                         re.finditer(pat, prodSMILES)]:
                                 allowedMarks.extend(self.__marksCombinations[key])
                             allowedMarks = set(allowedMarks)
-                            if numberOfBBalreadyReacted + 1 <= self.__maxNumberOfReactedSnthons - functionality:
-                                if numberOfBBalreadyReacted + 1 == self.__maxNumberOfReactedSnthons - functionality:
+                            if numberOfBBalreadyReacted + 1 <= self.__maxNumberOfReactedSynthons - functionality:
+                                if numberOfBBalreadyReacted + 1 == self.__maxNumberOfReactedSynthons - functionality:
                                     for newPartner in self.__monoFuncBB:
                                         partnerMarks = set([
                                             Chem.MolToSmiles(newPartner, canonical=True)[m.start() + 1] + ":" + Chem.MolToSmiles(newPartner, canonical=True)[
@@ -469,16 +475,18 @@ class enumeration:
                                                 allProducts.extend(subResults)
                                                 allProducts = list(set(allProducts))
                         else:
-
                             if prodSMILES not in allProducts:
                                 if self.__MWfiltration:
                                     molW = ExactMolWt(prod)
-                                    if self.__MWlowerTh and self.__MWupperTh and molW <= self.__MWupperTh and molW >= self.__MWlowerTh:
-                                        allProducts.append(prodSMILES)
-                                    elif self.__MWlowerTh and molW >= self.__MWlowerTh:
-                                        allProducts.append(prodSMILES)
-                                    elif self.__MWupperTh and molW <= self.__MWupperTh:
-                                        allProducts.append(prodSMILES)
+                                    if self.__MWlowerTh and self.__MWupperTh:
+                                        if molW <= self.__MWupperTh and molW >= self.__MWlowerTh:
+                                            allProducts.append(prodSMILES)
+                                    elif self.__MWlowerTh:
+                                        if molW >= self.__MWlowerTh:
+                                            allProducts.append(prodSMILES)
+                                    elif self.__MWupperTh:
+                                        if molW <= self.__MWupperTh:
+                                            allProducts.append(prodSMILES)
                                 else:
                                     allProducts.append(prodSMILES)
 
@@ -620,7 +628,7 @@ class enumeration:
 
 class fragmentation:
 
-    def __init__(self, mode="use_all", reactionsToWorkWith = "R1-R13", maxNumberOfReactionCentersPerFragment = 3,
+    def __init__(self, fragmentationMode="use_all", reactionsToWorkWith = "R1-R13", maxNumberOfReactionCentersPerFragment = 3,
                  MaxNumberOfStages = 5, FragmentsToIgnore = None,
                  setupFile = os.path.join(os.path.split(os.path.split(os.path.realpath(__file__))[0])[0], "config" , "Setup.xml"),
                  macroCycleSetupFile = os.path.join(os.path.split(os.path.split(os.path.realpath(__file__))[0])[0], "config" , "SetupForMacrocycles.xml"),
@@ -630,7 +638,7 @@ class fragmentation:
         resource.setrlimit(resource.RLIMIT_STACK, [0x100 * max_rec, resource.RLIM_INFINITY])
         sys.setrecursionlimit(max_rec)
         sys.getrecursionlimit()
-        self.__mode = mode
+        self.__fragmentationMode = fragmentationMode
         if FragmentsToIgnore:
             self.__SmilesToIgnore = FragmentsToIgnore
         else:
@@ -663,7 +671,7 @@ class fragmentation:
         resource.setrlimit(resource.RLIMIT_STACK, [0x100 * max_rec, resource.RLIM_INFINITY])
         sys.setrecursionlimit(max_rec)
         sys.getrecursionlimit()
-        if self.__mode == "one_by_one":
+        if self.__fragmentationMode == "one_by_one":
             allSynthons, allSyntheticPathways, ind = self.__firstMolCut(mol)
         else:
             allSynthons, allSyntheticPathways = self.__firstMolCut(mol)
@@ -675,7 +683,7 @@ class fragmentation:
                         if synth != allSynthons["InitMol"]:
                             self.__cutOneSynthonHierarchically(allSynthons[synth.smiles], allSyntheticPathways[comb],
                                                                    allSynthons, allSyntheticPathways, cutLevel=2)
-                            if self.__mode == "one_by_one" and allSyntheticPathways!=startingCombintaions:
+                            if self.__fragmentationMode == "one_by_one" and allSyntheticPathways!=startingCombintaions:
                                 break
 
         return allSyntheticPathways,allSynthons
@@ -684,10 +692,12 @@ class fragmentation:
         reactionForReconstruction = []
         if reactionList:
             for key in reactionList:
-                reactionForReconstruction.append(self.__reactionSetup[key]["ReconstructionSMARTS"])
+                if "R14" not in key:
+                    reactionForReconstruction.append(self.__reactionSetup[key]["ReconstructionSMARTS"])
         else:
             for key in self.__reactionSetup:
-                reactionForReconstruction.append(self.__reactionSetup[key]["ReconstructionSMARTS"])
+                if "R14" not in key:
+                    reactionForReconstruction.append(self.__reactionSetup[key]["ReconstructionSMARTS"])
         return reactionForReconstruction
 
     def __readSynthLib(self, SynthLib, Ro2Filtration):
@@ -728,15 +738,15 @@ class fragmentation:
             tree = ET.parse("Setup.xml")
         N_SynthI_setup = tree.getroot()
         allReactions, reactionSetup = self.__getReactionSMARTS(N_SynthI_setup)
-        if self.__mode == "use_all":
+        if self.__fragmentationMode == "use_all":
             reaction_list = allReactions[:-1]
-        elif self.__mode == "include_only" or self.__mode == "one_by_one":
+        elif self.__fragmentationMode == "include_only" or self.__fragmentationMode == "one_by_one":
             reaction_list = self.__getReactionList(reactionsToWorkWith, allReactions)
-        elif self.__mode == "block by block":
+        elif self.__fragmentationMode == "block by block":
             reaction_list = []
             for block in reactionsToWorkWith.split(";"):
                 reaction_list.append(self.__getReactionList(block, allReactions))
-        elif self.__mode == "exclude_some":
+        elif self.__fragmentationMode == "exclude_some":
             reaction_list = [reaction for reaction in allReactions if
                              reaction not in self.__getReactionList(reactionsToWorkWith, allReactions)]
         #reaction_list -> Ids of reactions that were specified by user to be used for the fragmentation
@@ -749,15 +759,15 @@ class fragmentation:
             tree = ET.parse("Setup.xml")
         N_SynthI_setup = tree.getroot()
         allReactions, reactionSetup = self.__getReactionSMARTS(N_SynthI_setup)
-        if self.__mode == "use_all":
+        if self.__fragmentationMode == "use_all":
             reaction_list = allReactions[:-1]
-        elif self.__mode == "include_only" or self.__mode == "one_by_one":
+        elif self.__fragmentationMode == "include_only" or self.__fragmentationMode == "one_by_one":
             reaction_list = self.__getReactionList(reactionsToWorkWith, allReactions, MacroCycles=True)
-        elif self.__mode == "block by block":
+        elif self.__fragmentationMode == "block by block":
             reaction_list = []
             for block in self.__macroCyclicReactionsToWorkWith.split(";"):
                 reaction_list.append(self.__getReactionList(block, allReactions, MacroCycles=True))
-        elif self.__mode == "exclude_some":
+        elif self.__fragmentationMode == "exclude_some":
             reaction_list = [reaction for reaction in allReactions if
                              reaction not in self.__getReactionList(reactionsToWorkWith, allReactions, MacroCycles=True)]
         #reaction_list -> Ids of reactions that were specified by user to be used for the fragmentation
@@ -901,10 +911,10 @@ class fragmentation:
                             elif allSyntheticPathways[reagSetKey] not in set(allSynthons[synth].syntheticPathway):
                                 allSynthons[synth].syntheticPathway.append(allSyntheticPathways[reagSetKey])
                             allSyntheticPathways[reagSetKey].participatingSynthon.append(allSynthons[synth])
-                            if self.__mode == "one_by_one":
+                            if self.__fragmentationMode == "one_by_one":
                                 allSynthons[synth].rIdsToGetIt.append(ind)
                         #allSyntheticPathways[reagSetKey].printDetailedReagentsSetInfo()
-                if self.__mode == "one_by_one":
+                if self.__fragmentationMode == "one_by_one":
                     return allSynthons, allSyntheticPathways, ind
         return allSynthons, allSyntheticPathways
 
@@ -918,7 +928,7 @@ class fragmentation:
         synthOld.AtomNumbers = mol.GetNumAtoms()
         successfulCut = False
         for ind,rId in enumerate(self.__reactionsToWorkWith):
-            if self.__mode == "one_by_one" and ind < synthOld.rIdsToGetIt[-1]:
+            if self.__fragmentationMode == "one_by_one" and ind < synthOld.rIdsToGetIt[-1]:
                 continue
             cuttingRule = Reactions.ReactionFromSmarts(self.__reactionSetup[rId]['SMARTS'])
             products = cuttingRule.RunReactants((mol,))
@@ -1051,7 +1061,7 @@ class fragmentation:
                             allSyntheticPathways[reagSetKey].participatingSynthon.append(allSynthons[synth])
                             allSynthons[synth].directParents.append(synthOld)
                             synthOld.directChildren.append(allSynthons[synth])
-                            if self.__mode == "one_by_one":
+                            if self.__fragmentationMode == "one_by_one":
                                 allSynthons[synth].rIdsToGetIt.append(ind)
                         parentMarksList = [m[0] for m in re.finditer(pat, synthOld.smiles)]
                         kidsMarksList = [m[0] for m in re.finditer(pat, "".join(synthonsProdSet))]
@@ -1068,7 +1078,7 @@ class fragmentation:
                                                                    allSyntheticPathways[reagSetKey], allSynthons,
                                                                            allSyntheticPathways, cutLevel + 1)
                         #allSyntheticPathways[reagSetKey].printDetailedReagentsSetInfo()
-                if self.__mode == "one_by_one" and successfulCut:
+                if self.__fragmentationMode == "one_by_one" and successfulCut:
                     break
 
     def __getMacroCycleLabledSmiles(self, productMolecule: Chem.rdchem.Mol, Labels:list, cutCount):
@@ -1112,10 +1122,10 @@ def fragmentMolecule(smiles, SynthIfragmentor, simTh=-1):
     else:
         return None
 
-def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, simTh, strictAvailabilityMode, desiredNumberOfNewMols=1000):
-    with open(os.path.join(outDir, "SynthonsForAnalogsGenerationForMol" + str(Smiles_molNumbTuple[1]) + ".smi"),
+def analoguesLibraryGeneration(Smiles_molNameTuple, SynthIfragmentor, outDir, simTh=-1, strictAvailabilityMode=False, desiredNumberOfNewMols=1000):
+    with open(os.path.join(outDir, "SynthonsForAnalogsGenerationForMol" + str(Smiles_molNameTuple[1]) + ".smi"),
               "w") as outSynthons:
-        allSyntheticPathways, allSynthons = fragmentMolecule(Smiles_molNumbTuple[0], SynthIfragmentor, simTh=simTh)
+        allSyntheticPathways, allSynthons = fragmentMolecule(Smiles_molNameTuple[0], SynthIfragmentor, simTh=simTh)
         """fsynthonsAfterOneCut = getShortestSyntheticPathways(allSyntheticPathways)
         shortestSynthesis = findShortestSynthPathWithAvailableSynthLib(fsynthonsAfterOneCut, showAll=False,
                                                                     firstLaunch=True)"""
@@ -1136,7 +1146,7 @@ def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, si
                     reactionsUsedInFragmentationReactions = [rid.split("_")[0] for rid in comb.name.split("|")]
                     reactionForReconstruction = SynthIfragmentor.getReactionForReconstruction(reactionsUsedInFragmentationReactions)
                     enumerator = enumeration(outDir=outDir, Synthons=synthonsDict,
-                                                   reactionSMARTS=reactionForReconstruction, maxNumberOfReactedSnthons=len(synthonsDict),
+                                                   reactionSMARTS=reactionForReconstruction, maxNumberOfReactedSynthons=len(synthonsDict),
                                                    desiredNumberOfNewMols=desiredNumberOfNewMols, nCores=1, analoguesEnumeration=True)
                     #reconstructedMols.update(enumerator.newAnaloguesGeneration())
                     reconstructedMols.update(enumerator.AnaloguesGeneration())
@@ -1162,18 +1172,15 @@ def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, si
                             reactionsUsedInFragmentationReactions = [rid.split("_")[0] for rid in comb.name.split("|")]
                             reactionForReconstruction = SynthIfragmentor.getReactionForReconstruction(
                                 reactionsUsedInFragmentationReactions)
-                            """print("_______________-----------------------------_______________")
-                            print(synthonsDict)
-                            print("_______________-----------------------------_______________")"""
                             enumerator = enumeration(outDir=outDir, Synthons=synthonsDict,
                                                            reactionSMARTS=reactionForReconstruction,
-                                                           maxNumberOfReactedSnthons=len(synthonsDict),
+                                                           maxNumberOfReactedSynthons=len(synthonsDict),
                                                            desiredNumberOfNewMols=1000000, nCores=1,
                                                            analoguesEnumeration=True)
                             # reconstructedMols.update(enumerator.newAnaloguesGeneration())
                             reconstructedMols.update(enumerator.AnaloguesGeneration())
 
-            with open(os.path.join(outDir, "AnalogsForMol" + str(Smiles_molNumbTuple[1]) + ".smi"), "w") as out:
+            with open(os.path.join(outDir, "AnalogsForMol" + str(Smiles_molNameTuple[1]) + ".smi"), "w") as out:
                 for recMolsSmiles in reconstructedMols:
                     out.write(recMolsSmiles + "\n")
 
@@ -1229,11 +1236,3 @@ def getLongestSyntheticPathways(allSyntheticPathways):
             #print(str(allSyntheticPathways[comb].name) + " " + ".".join([x.smiles for x in allSyntheticPathways[comb].participatingSynthon]))
             leafs.append(allSyntheticPathways[comb])
     return leafs
-
-
-
-
-
-
-
-
