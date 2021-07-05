@@ -903,7 +903,7 @@ class fragmentation:
                             allSyntheticPathways[reagSetKey].participatingSynthon.append(allSynthons[synth])
                             if self.__mode == "one_by_one":
                                 allSynthons[synth].rIdsToGetIt.append(ind)
-                        #allSyntheticPathways[reagSetKey].printReagentsSetInfo()
+                        #allSyntheticPathways[reagSetKey].printDetailedReagentsSetInfo()
                 if self.__mode == "one_by_one":
                     return allSynthons, allSyntheticPathways, ind
         return allSynthons, allSyntheticPathways
@@ -1067,7 +1067,7 @@ class fragmentation:
                                 self.__cutOneSynthonHierarchically(allSynthons[synth.smiles],
                                                                    allSyntheticPathways[reagSetKey], allSynthons,
                                                                            allSyntheticPathways, cutLevel + 1)
-                        #allSyntheticPathways[reagSetKey].printReagentsSetInfo()
+                        #allSyntheticPathways[reagSetKey].printDetailedReagentsSetInfo()
                 if self.__mode == "one_by_one" and successfulCut:
                     break
 
@@ -1151,10 +1151,10 @@ def analoguesLibraryGeneration(Smiles_molNumbTuple, SynthIfragmentor, outDir, si
                     if comb.availabilityRate == 1.0:
                         if "MR" in comb.name:
                             continue
-                        #comb.printReagentsSetInfo()
+                        #comb.printDetailedReagentsSetInfo()
                         synthonsDict, SynthonsForAnaloguesSynthesisLocal = comb.getSynthonsForAnaloguesGeneration(
                             SynthIfragmentor.SynthLib, simTh, strictAvailabilityMode=strictAvailabilityMode)
-                        comb.printReagentsSetInfo()
+                        #comb.printDetailedReagentsSetInfo()
                         if synthonsDict and SynthonsForAnaloguesSynthesisLocal:
                             outSynthons.write(
                                 "****************************************** " + comb.name + " ******************************************\n")
