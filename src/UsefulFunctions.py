@@ -106,8 +106,11 @@ def listDir(path):
 
 def Ro2Filtration(synthonSmiles):
     mol = Chem.MolFromSmiles(synthonSmiles)
-    mol = AddHs(mol)
-    MolW = ExactMolWt(mol)
+    functionality = synthonSmiles.count(":")
+    Bivalent_electrophilic = synthonSmiles.count(":30")
+    Bivalent_nucleophilic = synthonSmiles.count(":40")
+    Bivalent_neutral = synthonSmiles.count(":50")
+    MolW = ExactMolWt(mol) - functionality - Bivalent_electrophilic - Bivalent_nucleophilic - Bivalent_neutral
     LogP = MolLogP(mol)
     HDC = CalcNumHBD(mol)
     HAC = CalcNumHBA(mol)
