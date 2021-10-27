@@ -39,9 +39,9 @@ The scripts were run in a linux workstation with 15 processors.
 
 The full list of packages is listed in the file SynthI_environment.yml. You can create required environlent using this command:
 
-'''shell script
+```shell script
 $ conda env create -f SynthI_environment.yml  -p /home/user/anaconda3/envs/synthI_env)
-'''
+```
 
 
 ### Comopounds preprocessing
