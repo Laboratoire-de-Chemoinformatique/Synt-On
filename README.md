@@ -37,6 +37,13 @@ Several build-in python modules are also used, but they are usually installed by
 
 The scripts were run in a linux workstation with 15 processors.
 
+The full list of packages is listed in the file SynthI_environment.yml. You can create required environlent using this command:
+
+'''shell script
+$ conda env create -f SynthI_environment.yml  -p /home/user/anaconda3/envs/synthI_env)
+'''
+
+
 ### Comopounds preprocessing
 
 All BBs structures need to be sanitized and standartized idependently by user prior to SynthI usage. Solvents and contriones should be deleted. There is no need to generate major tautomer form as soon as SynthI will do it for each generated synthons separately.
