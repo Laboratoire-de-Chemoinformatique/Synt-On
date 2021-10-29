@@ -670,7 +670,7 @@ Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Ko
 ```
 Example of launch:
 ```shell script
-python3 SynthI/SynthI_FragmentationEnumerationUsedInArticle.py -i FDA_small_drugs_SMILES_ForFragmentation.smiles  
+python3 SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -i FDA_small_drugs_SMILES_ForFragmentation.smiles  
 -oD testDir --SynthLibrary outENSynthmode.smi --MaxNumberOfStages 5 --maxNumberOfReactionCentersPerFragment 3 
 --fragmentationMode  use_all --reactionsToWorkWith R1-R13 --nCores 15
 
