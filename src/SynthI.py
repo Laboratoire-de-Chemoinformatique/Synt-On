@@ -871,7 +871,7 @@ class fragmentation:
                                 labledSynthon =self.__getMacroCycleLabledSmiles(product, lablesSet.split(";"), cutCount=None)
                             else:
                                 labledSynthon = self.__getLabledSmiles(product, lablesSet.split(";"), cutCount=None)
-                        if labledSynthon.count(":") > self.__maxNumberOfReactionCentersPerFragment or (
+                        if not labledSynthon or labledSynthon.count(":") > self.__maxNumberOfReactionCentersPerFragment or (
                                 CalcNumRings(Chem.MolFromSmiles(labledSynthon)) == 0 and
                                 labledSynthon.count(":") > (Chem.MolFromSmiles(labledSynthon).GetNumHeavyAtoms()+1) / 3) or \
                                 (CalcNumRings(Chem.MolFromSmiles(labledSynthon)) != 0 and labledSynthon.count(
