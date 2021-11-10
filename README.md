@@ -9,7 +9,7 @@ For the standart usage of SynthI as a comand line tool see only [Bulk BBs classi
 
 All other chapters of this manual concern usage of SynthI as a python library inside of the customized scripts.
 
-**Be careful: prior to BBs synthonization the SMILES should be preprocessed and contrions and solvents should be removed. SynthI-BBs consider every molecule while processing mixture SMILES and for each of them synthons will be generated if possible, therefore take care of them before synthonization**
+**Be careful: prior to BBs synthonization the SMILES should be preprocessed and conterions and solvents should be removed. SynthI-BBs consider every molecule while processing mixture SMILES and for each of them synthons will be generated if possible, therefore take care of them before synthonization**
 
 # Table of Contents
 * [Prerequisites](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#prerequisites)
