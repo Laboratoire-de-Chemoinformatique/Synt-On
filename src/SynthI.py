@@ -1120,7 +1120,7 @@ def fragmentMolecule(smiles, SynthIfragmentor, simTh=-1):
                 comb.checkAvailability(SynthIfragmentor.SynthLib, simTh, SynthIfragmentor.FindAnaloguesOfMissingSynthons)
         return allSyntheticPathways, allSynthons
     else:
-        return None
+        return None,None
 
 def analoguesLibraryGeneration(Smiles_molNameTuple, SynthIfragmentor, outDir, simTh=-1, strictAvailabilityMode=False, desiredNumberOfNewMols=1000):
     with open(os.path.join(outDir, "SynthonsForAnalogsGenerationForMol" + str(Smiles_molNameTuple[1]) + ".smi"),
