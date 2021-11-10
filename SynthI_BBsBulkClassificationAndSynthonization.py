@@ -98,6 +98,8 @@ if __name__ == '__main__':
 
     parser.add_argument("--nCores", default=-1, type=int, help="Number of available cores for parallel calculations. Memory usage is optimized, so maximal number of parallel processes can be launched.")
     args = parser.parse_args()
+    with open(args.input) as f:
+        colNumb = len(f.readline().strip().split())
     if args.nCores == -1:
         main(args.input, args.keepPG, args.output, args.Ro2Filtr)
     else:
@@ -136,7 +138,7 @@ if __name__ == '__main__':
         synthons = {}
         for line in inpS:
             sline = line.strip()
-            if sline and len(sline.split()) == 4:
+            if sline and len(sline.split()) == colNumb+2:
                 if sline.split()[0] not in synthons:
                     synthons[sline.split()[0]] = {"Class": set(sline.split()[1].split(",")),
                                                   "BBs": {sline.split()[2]}, "BB_Ids": {sline.split()[3]},
