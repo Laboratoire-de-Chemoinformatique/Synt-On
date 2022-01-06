@@ -100,12 +100,22 @@ if __name__ == '__main__':
     args = parser.parse_args()
     with open(args.input) as f:
         colNumb = len(f.readline().strip().split())
-    if args.nCores == -1:
-        main(args.input, args.keepPG, args.output, args.Ro2Filtr)
+    if colNumb == 1:
+        with open(args.input + "_withIDs", "w") as out:
+            for ind,line in enumerate(open(args.input)):
+                sline = line.strip()
+                if sline:
+                    out.write(sline + " BB_" + str(ind+1) + "\n")
+        inPut = args.input + "_withIDs"
+        colNumb = 2
     else:
-        wc = countLines(args.input)
+        inPut = args.input
+    if args.nCores == -1:
+        main(inPut, args.keepPG, args.output, args.Ro2Filtr)
+    else:
+        wc = countLines(inPutt)
         linesPerFile = wc // args.nCores
-        outNamesList = splitFileByLines(args.input, args.input, linesPerFile)
+        outNamesList = splitFileByLines(inPut, inPut, linesPerFile)
         fixed_main = partial(main,  keepPG=args.keepPG,
                              Ro2Filtr=args.Ro2Filtr)
         nCores = args.nCores
