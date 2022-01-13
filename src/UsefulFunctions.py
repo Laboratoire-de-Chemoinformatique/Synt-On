@@ -151,10 +151,10 @@ def CheckMolStructure(goodValenceSmiles, label):
 def generateMajorTautFromSynthonSmiles(initSmiles):
     enumerator = rdMolStandardize.TautomerEnumerator()
     initMol = Chem.MolFromSmiles(initSmiles)
-    nHinit = set()
+    nHinit = []
     for atom in initMol.GetAtoms():
         if atom.GetAtomMapNum() != 0:
-            nHinit.add(atom.GetTotalNumHs())
+            nHinit.append(atom.GetTotalNumHs())
     initMol.UpdatePropertyCache()
     Chem.GetSymmSSSR(initMol)
     tautMol = enumerator.Canonicalize(initMol)
@@ -162,10 +162,10 @@ def generateMajorTautFromSynthonSmiles(initSmiles):
     initSmiles = Chem.MolToSmiles(Chem.MolFromSmiles(initSmiles), canonical=True)
     if tautSmiles == initSmiles:
         return tautSmiles
-    nHtaut = set()
+    nHtaut = []
     for atom in tautMol.GetAtoms():
         if atom.GetAtomMapNum() != 0:
-            nHtaut.add(atom.GetTotalNumHs())
+            nHtaut.append(atom.GetTotalNumHs())
     if nHinit == nHtaut:
         return tautSmiles
     else:
