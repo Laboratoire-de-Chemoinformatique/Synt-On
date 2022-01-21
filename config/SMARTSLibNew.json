@@ -216,7 +216,7 @@
 
 "Alcohols":
   {"Heterols":
-  {"ShouldContainAtLeastOne": ["[OH][c;!$(c1ccccc1)]"],
+  {"ShouldContainAtLeastOne": ["[OH;+0][c;!$(c1ccccc1)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[OH]c.[OH]c",
     "[C,S,P](!@=[O,N,S])[F,Cl,Br]",
@@ -230,7 +230,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "Aliphatic_alcohols":
-  {"ShouldContainAtLeastOne": ["[OH][CX4;!$(C[S,N,P,OD2]C=O)]"],
+  {"ShouldContainAtLeastOne": ["[OH;+0][CX4;!$(C[S,N,P,OD2]C=O)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[OH]C.[OH]C",
       "[CX4,c]O[PD4](=O)(O[CX4,c])[CH;X4;$([OH])][$([C,S](=O)O[CX4,c]),$(C([CX4])(=O)[CX4,c]),$(C#N),$(S(=O)[N,O]),$([ND3]=O)]",
@@ -245,7 +245,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "Phenols":
-  {"ShouldContainAtLeastOne": ["[OH]c1ccccc1"],
+  {"ShouldContainAtLeastOne": ["[OH;+0]c1ccccc1"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[OH]c.[OH]c",
     "[C,S,P](!@=[O,N,S])[F,Cl,Br]",
@@ -367,7 +367,7 @@
 
 "Amides":
   {"Amides":
-  {"ShouldContainAtLeastOne": ["[#6][C!$(CNC=[O,S])](=O)[N$([NH,NH2])!$(N[N,O,S,P])!$(NC=[N,S,P])]"],
+  {"ShouldContainAtLeastOne": ["[#6][C!$(CNC=[O,S])](=O)[N;+0;$([NH,NH2])!$(N[N,O,S,P])!$(NC=[N,S,P])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P](!@=[O,N,S])[F,Cl,Br]",
     "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
@@ -406,7 +406,7 @@
 
 "Aminoacids":
   {"AlphaAmino_Acid":
-  {"ShouldContainAtLeastOne": ["[N;$([NH,NH2]);$(N[CX4]C(=O)[OD1]);!$(NC=[N,O,S,P,C])!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)]"],
+  {"ShouldContainAtLeastOne": ["[N;+0;$([NH,NH2]);$(N[CX4]C(=O)[OD1]);!$(NC=[N,O,S,P,C])!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S])[OD1,F,Cl].O=C([OD1])[#6]",
     "[CH,SH,PH;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S]).O=C([OD1])[#6]",
@@ -427,7 +427,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "N-AromaticAmino_Acid":
-  {"ShouldContainAtLeastOne": ["[#6]C(=O)[OH].[N;$([NH,NH2]c);!$(NC=[N,O,S,P,C])!$(N=[C,N,O])!$(N[#7,O,S,P])!$(N#C)]"],
+  {"ShouldContainAtLeastOne": ["[#6]C(=O)[OH].[N;+0;$([NH,NH2]c);!$(NC=[N,O,S,P,C])!$(N=[C,N,O])!$(N[#7,O,S,P])!$(N#C)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S])[OD1,F,Cl].O=C([OD1])[#6]",
     "[CH,SH,PH;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S]).O=C([OD1])[#6]",
@@ -448,7 +448,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "GammaAmino_Acid":
-  {"ShouldContainAtLeastOne": ["[N;$([NH,NH2]);$(N[CX4,O][CX4][CX4]C(=O)[OD1]);!$(N[CX4,O][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(NC=[N,O,S,P,C])!$(N=,#[C,N,O])!$(N[c,#7,S,P])]"],
+  {"ShouldContainAtLeastOne": ["[N;+0;$([NH,NH2]);$(N[CX4,O][CX4][CX4]C(=O)[OD1]);!$(N[CX4,O][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(NC=[N,O,S,P,C])!$(N=,#[C,N,O])!$(N[c,#7,S,P])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S])[OD1,F,Cl].O=C([OD1])[#6]",
     "[CH,SH,PH;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S]).O=C([OD1])[#6]",
@@ -471,7 +471,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "N-AliphaticAmino_Acid":
-  {"ShouldContainAtLeastOne": ["[#6]C(=O)[OH].[N;$([NH,NH2]);!$(NC=[N,O,S,P,C])!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)]"],
+  {"ShouldContainAtLeastOne": ["[#6]C(=O)[OH].[N;+0;$([NH,NH2]);!$(NC=[N,O,S,P,C])!$(N=[C,N,O])!$(N[c,#7,O,S,P])!$(N#C)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S])[OD1,F,Cl].O=C([OD1])[#6]",
     "[CH,SH,PH;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S]).O=C([OD1])[#6]",
@@ -492,7 +492,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "BetaAmino_Acid":
-  {"ShouldContainAtLeastOne": ["[N;$([NH,NH2]);$(N[CX4,O][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(NC=[N,O,S,P,C])!$(N=,#[C,N,O])!$(N[c,#7,S,P])]"],
+  {"ShouldContainAtLeastOne": ["[N;+0;$([NH,NH2]);$(N[CX4,O][CX4]C(=O)[OD1]);!$(N[CX4]C(=O)[OD1]);!$(NC=[N,O,S,P,C])!$(N=,#[C,N,O])!$(N[c,#7,S,P])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S])[OD1,F,Cl].O=C([OD1])[#6]",
     "[CH,SH,PH;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](=[O,N,S]).O=C([OD1])[#6]",
@@ -781,7 +781,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "Hydroxy_Aldehyde":
-  {"ShouldContainAtLeastOne": ["[O;$(O=[CH][#6])].[#6;!$(C=O)][OH]"],
+  {"ShouldContainAtLeastOne": ["[O;+0;$(O=[CH][#6])].[#6;!$(C=O)][OH]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[O;$(O=[CH][#6])].[O;$(O=[CH][#6])]",
     "[C,S,P](!@=[O,N,S])[F,Cl,Br]",
@@ -800,7 +800,7 @@
     "[Mg,Li,Zn][#6]"]},
 
   "NfmocAmino_Acid":
-  {"ShouldContainAtLeastOne": ["NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[O;$([OD1]C(=O)[#6])]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[O;$([OD1]C(=O)[#6])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S](=[O,S,N])[#6]",
     "[O;$(O=[CH][#6])]",
@@ -827,7 +827,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "NbocAmino_Acid":
-  {"ShouldContainAtLeastOne": ["NC(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])]"],
       "ShouldAlsoContain": [],
       "shouldNotContain": ["[Cl,F,Br][C,P,S](=[O,S,N])[#6]",
         "[#6][N;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O)]",
@@ -855,7 +855,7 @@
       "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
       "[Mg,Li,Zn][#6]"]},
   "NcbzAmino_Acid":
-  {"ShouldContainAtLeastOne": ["[N;$(NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1)].[O;$(O=C([#6])[OD1])]"],
+  {"ShouldContainAtLeastOne": ["[N;+0;$(NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1)].[O;$(O=C([#6])[OD1])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S](=[O,S,N])[#6]",
     "[O;$(O=C([#6])[OD1])].[O;$(O=C([#6])[OD1])]",
@@ -956,7 +956,7 @@
     "[Mg,Li,Zn][#6]"]},
 
   "NbnDi_Amines":
-  {"ShouldContainAtLeastOne": ["[ND3;$(N[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[C,S,P]=[O,S,N])].[$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])]"],
+  {"ShouldContainAtLeastOne": ["[ND3;+0;$(N[CH2]c1[cH][cH][cH][cH][cH]1);!$(N[C,S,P]=[O,S,N])].[$([NH2;+0][c,CX4]),$([NH;+0]([c,CX4])[CX4])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P](!@=[O,N,S])[OH]",
     "[CH2]1[CH2][CH2][CH]([CH2][CH2]1)[NH][CH]1[CH2][CH2][CH2][CH2][CH2]1.*",
@@ -968,7 +968,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "NbocDi_Amines":
-  {"ShouldContainAtLeastOne": ["NC(=O)OC([CD1])([CD1])[CD1].[NX3;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])]", "[NX3;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NH]([CX4])[OD2]),$([NH2][OD2])].[OD1;$(O=C(N)OC([CH3])([CH3])[CH3])]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)OC([CD1])([CD1])[CD1].[NX3;+0;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])]", "[NX3;+0;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NH]([CX4])[OD2]),$([NH2][OD2])].[OD1;$(O=C(N)OC([CH3])([CH3])[CH3])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
     "[CH2]1[CH2][CH2][CH]([CH2][CH2]1)[NH][CH]1[CH2][CH2][CH2][CH2][CH2]1.*",
@@ -990,7 +990,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "NfmocDi_Amines":
-  {"ShouldContainAtLeastOne": ["NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[NX3;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])]", "[NX3;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NH]([CX4])[OD2]),$([NH2][OD2])].[OD1;$(O=C(N)O[CH2][CH]1c2ccccc2-c3ccccc13)]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[NX3;+0;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])]", "[NX3;+0;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NH]([CX4])[OD2]),$([NH2][OD2])].[OD1;$(O=C(N)O[CH2][CH]1c2ccccc2-c3ccccc13)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13",
     "[Cl,F,Br][C,P,S](=[O,S,N])[#6]",
@@ -1011,7 +1011,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "NcbzDi_Amines":
-  {"ShouldContainAtLeastOne": ["NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1.[NX3;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])]", "[NX3;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NH]([CX4])[OD2]),$([NH2][OD2])].[OD1;$(O=C(N)O[CH2]c1[cH][cH][cH][cH][cH]1)]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)O[CH2]c1[cH][cH][cH][cH][cH]1.[NX3;+0;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])]", "[NX3;+0;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NH]([CX4])[OD2]),$([NH2][OD2])].[OD1;$(O=C(N)O[CH2]c1[cH][cH][cH][cH][cH]1)]"],
       "ShouldAlsoContain": [],
       "shouldNotContain": ["[Cl,F,Br][C,P,S](=[O,S,N])[#6]",
       "[CH2]1[CH2][CH2][CH]([CH2][CH2]1)[NH][CH]1[CH2][CH2][CH2][CH2][CH2]1.*",
@@ -1033,7 +1033,7 @@
       "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
       "[Mg,Li,Zn][#6]"]},
   "Di_Amines_NotherCarbamates":
-  {"ShouldContainAtLeastOne": ["[NH,NH2;!$(N=*)!$(N[#7,CX3,CX2,P,S])].NC(=O)[O;$(O[CD1]),$(O[CH2][CD1]),$(O[CH2]C(F)(F)F),$(O[CH2][CH]=[CH2])]"],
+  {"ShouldContainAtLeastOne": ["[NH,NH2;+0;!$(N=*)!$(N[#7,CX3,CX2,P,S])].[N;+0]C(=O)[O;$(O[CD1]),$(O[CH2][CD1]),$(O[CH2]C(F)(F)F),$(O[CH2][CH]=[CH2])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[N;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])].[N;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
@@ -1044,7 +1044,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "NTFAcDi_Amines":
-  {"ShouldContainAtLeastOne": ["[NH,NH2;!$(N=*)!$(N[#7,CX3,CX2,P,S])].[N,NH;$(NC(=O)C(F)(F)F)]"],
+  {"ShouldContainAtLeastOne": ["[NH,NH2;+0;!$(N=*)!$(N[#7,CX3,CX2,P,S])].[N,NH;+0;$(NC(=O)C(F)(F)F)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[#6,O,S,N;!$(C(F)(F)F);!$(C(=O)[OD1])][CH,SH,PH]=[O,S,N]",
@@ -1118,7 +1118,7 @@
     "[Mg,Li,Zn][#6]"]},
 
   "Amine_Ester":
-  {"ShouldContainAtLeastOne": ["[NX3;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])].[#6]C(=O)[O;$(O[CH3]),$(O[CH2][CH3]),$(OC([CD1])([CD1])[CD1]),$(O[CH2]c1[cH][cH][cH][cH][cH]1),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]", "[NX3;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NHR]([CX4,c])@[O]),$([NH2][O])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
+  {"ShouldContainAtLeastOne": ["[NX3;+0;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])].[#6]C(=O)[O;$(O[CH3]),$(O[CH2][CH3]),$(OC([CD1])([CD1])[CD1]),$(O[CH2]c1[cH][cH][cH][cH][cH]1),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]", "[NX3;+0;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NHR]([CX4,c])@[O]),$([NH2][O])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[N;$(NC(=O)OC([CH3])([CH3])[CH3])]",
     "[N;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13)]",
@@ -1366,11 +1366,11 @@
 
 "PrimaryAmines":
   {"PriAmines_Het-benzylic":
-  {"ShouldContainAtLeastOne": ["[NH2][CX4;!$(C[OH,SH])][a!$(c1ccccc1)]"],
+  {"ShouldContainAtLeastOne": ["[NH2;+0][CX4;!$(C[OH,SH])][a!$(c1ccccc1)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[CX4][Cl,Br,I]",
-    "[NH2].[N;+0;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
+    "[NH2].[N;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
     "[Sn,B]",
     "[O,S]=[C;$(C([#6])[#6])]",
     "[O,S]=[CH;$(C[#6])]",
@@ -1384,7 +1384,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "PriAmines_Het-Anilines":
-  {"ShouldContainAtLeastOne": ["[NH2][a;!$(c1ccccc1)]"],
+  {"ShouldContainAtLeastOne": ["[NH2;+0][a;!$(c1ccccc1)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]",
     "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
@@ -1393,7 +1393,7 @@
     "[O,S]=[C;$(C([#6])[#6])]",
     "[O,S]=[CH;$(C[#6])]",
     "[O,S]=[CH2]",
-    "[NH2].[N;+0;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
+    "[NH2].[N;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
     "[SH,S-]",
     "N[OH]",
     "*=[NH]",
@@ -1403,7 +1403,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "PriAmines_Benzylic":
-  {"ShouldContainAtLeastOne": ["[NH2][CX4;!$(C[OH,SH])]c1ccccc1"],
+  {"ShouldContainAtLeastOne": ["[NH2;+0][CX4;!$(C[OH,SH])]c1ccccc1"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[CX4][Cl,Br,I]",
@@ -1411,7 +1411,7 @@
     "[O,S]=[C;$(C([#6])[#6])]",
     "[O,S]=[CH;$(C[#6])]",
     "[O,S]=[CH2]",
-    "[NH2].[N;+0;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
+    "[NH2].[N;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
     "[SH,S-]",
     "N[OH]",
     "*=[NH]",
@@ -1421,7 +1421,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "PriAmines_Anilines":
-  {"ShouldContainAtLeastOne": ["[NH2]c1ccccc1"],
+  {"ShouldContainAtLeastOne": ["[NH2;+0]c1ccccc1"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[CX4][Cl,Br,I]",
@@ -1429,7 +1429,7 @@
     "[O,S]=[C;$(C([#6])[#6])]",
     "[O,S]=[CH;$(C[#6])]",
     "[O,S]=[CH2]",
-    "[NH2].[N;+0;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
+    "[NH2].[N;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
     "[SH,S-]",
     "N[OH]",
     "*=[NH]",
@@ -1439,7 +1439,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "PriAmines_Aliphatic":
-  {"ShouldContainAtLeastOne": ["[NH2][CX4;!$(C[OH,SH])]"],
+  {"ShouldContainAtLeastOne": ["[NH2;+0][CX4;!$(C[OH,SH])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]",
     "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
@@ -1448,7 +1448,7 @@
     "[O,S]=[C;$(C([#6])[#6])]",
     "[O,S]=[CH;$(C[#6])]",
     "[O,S]=[CH2]",
-    "[NH2].[N;+0;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
+    "[NH2].[N;$([NH,NH2]([#6,#7,O]));!$(N=*)!$(N[CX3,CX2,P,S])]",
     "[SH,S-]",
     "N[OH]",
     "*=[NH]",
@@ -1480,7 +1480,7 @@
     "[Mg,Li,Zn][#6]"]},
 
   "Hydroxylamines":
-  {"ShouldContainAtLeastOne": ["[NX3;!$(N=*)!$(N[CX3,CX2,P,S])]O"],
+  {"ShouldContainAtLeastOne": ["[NX3;+0;!$(N=*)!$(N[CX3,CX2,P,S])][O;+0]"],
     "ShouldAlsoContain": ["[NH,NH2,OH,NX3!$(N=*)!$(N[c,CX3,CX2,P,S])$(N!@OC(=O)c1[cH][cH][cH][cH][cH]1)]"],
     "shouldNotContain": ["[C,S,P](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[Cl,Br,I][CX4]",
@@ -1499,7 +1499,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "Hydrazines":
-  {"ShouldContainAtLeastOne": ["[N;$([NH,NH2]);!$(N[CX3,CX2,P,S])!$(N=,#*)!$(N[O,S,P])][N;!$(N[CX3,CX2,P,S])!$(N=,#*)!$(N[O,S,P])]"],
+  {"ShouldContainAtLeastOne": ["[N;+0;$([NH,NH2]);!$(N[CX3,CX2,P,S])!$(N=,#*)!$(N[O,S,P])][N;+0;!$(N[CX3,CX2,P,S])!$(N=,#*)!$(N[O,S,P])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[Cl,Br,I][CX4]",
@@ -1516,7 +1516,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "Hydrazides":
-  {"ShouldContainAtLeastOne": ["[#6]C(=O)N[N$([NH,NH2,NH3+])!$(NC=[O,S,N])!$(N[S,P])]"],
+  {"ShouldContainAtLeastOne": ["[#6]C(=O)N[N;$([NH,NH2,NH3+])!$(NC=[O,S,N])!$(N[S,P])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[Cl,Br,I][CX4]",
@@ -1798,7 +1798,7 @@
 
 "SecondaryAmines":
   {"SecAmines_Aliphatic_Polycyclic":
-  {"ShouldContainAtLeastOne": ["[NH;D2;!$(NC=[N,O,S,P,C])!$(N~[c,#7,O,S,P])].[CR2]"],
+  {"ShouldContainAtLeastOne": ["[NH;D2;+0;!$(NC=[N,O,S,P,C])!$(N~[c,#7,O,S,P])].[CR2]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[CX4][Cl,Br,I]",
@@ -1816,7 +1816,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "secHet-Anilines":
-  {"ShouldContainAtLeastOne": ["[CX4;!$(C[OH,SH])][NH;D2;!R][c;!$(c1ccccc1)]"],
+  {"ShouldContainAtLeastOne": ["[CX4;!$(C[OH,SH])][NH;+0;D2;!R][c;!$(c1ccccc1)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[CX4][Cl,Br,I]",
@@ -1834,7 +1834,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "Cyc-Aliphatic":
-  {"ShouldContainAtLeastOne": ["[CX4;!$(C[OH,SH])]@[NH;D2]@[CX4;!$(C[OH,SH])]"],
+  {"ShouldContainAtLeastOne": ["[CX4;!$(C[OH,SH])]@[NH;+0;D2]@[CX4;!$(C[OH,SH])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[CX4][Cl,Br,I]",
@@ -1852,7 +1852,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "Cyc-Benzylic":
-  {"ShouldContainAtLeastOne": ["[CX4;!$(C[OH,SH])]@[NH;D2]@[CX4;!$(C[OH,SH])]c1ccccc1"],
+  {"ShouldContainAtLeastOne": ["[CX4;!$(C[OH,SH])]@[NH;+0;D2]@[CX4;!$(C[OH,SH])]c1ccccc1"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[CX4][Cl,Br,I]",
@@ -1870,7 +1870,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "SecAmines_Aliphatic_Fluorinated":
-  {"ShouldContainAtLeastOne": ["[CX4;!$(C[OH,SH])][NH;D2][CX4;!$(C[OH,SH])].F[CX4]"],
+  {"ShouldContainAtLeastOne": ["[CX4;!$(C[OH,SH])][NH;+0;D2][CX4;!$(C[OH,SH])].F[CX4]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[CX4][Cl,Br,I]",
@@ -1888,7 +1888,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "diArylAmines":
-  {"ShouldContainAtLeastOne": ["c[NH;A;D2]c"],
+  {"ShouldContainAtLeastOne": ["c[NH;A;+0;D2]c"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P;!$(S(=O)(=O)F)](!@=[O,N,S])[F,Cl,Br]", "[C,S,P;!$([C,S]C(F)(F)F);!$(C[CH3]);!$(CC(=O)[OD1])](!@=[O,N,S])[OH]",
     "[CX4][Cl,Br,I]",
@@ -2360,7 +2360,7 @@
       "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
       "[Mg,Li,Zn][#6]"]},
   "Amines_ArylHalide_Nitro":
-  {"ShouldContainAtLeastOne": ["[#6][N;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O)].[NX3;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])].[Cl,Br,I;$(Clc1[c,n][c,n]n[c,n][c,n]1),$(Clc1[n][c,n][n,c][c,n][c,n]1),$(Clc1[n]aa[a;!c]1),$([I,Br]c)]"],
+  {"ShouldContainAtLeastOne": ["[#6][N;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O)].[NX3;+0;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])].[Cl,Br,I;$(Clc1[c,n][c,n]n[c,n][c,n]1),$(Clc1[n][c,n][n,c][c,n][c,n]1),$(Clc1[n]aa[a;!c]1),$([I,Br]c)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
     "[CX4][Cl,Br,I]",
@@ -2387,7 +2387,7 @@
     "[Mg,Li,Zn][#6]"]},
 
   "NbocAmino_Acid_AlkyneCH":
-  {"ShouldContainAtLeastOne": ["NC(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])].[CH]#C"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])].[CH]#C"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
     "[CX4][Cl,Br,I]",
@@ -2411,7 +2411,7 @@
     "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
     "[Mg,Li,Zn][#6]"]},
   "NbocAmino_Acid_ArylHalide":
-  {"ShouldContainAtLeastOne": ["NC(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])].[Cl,Br,I;$(Clc1[c,n][c,n]n[c,n][c,n]1),$(Clc1[n][c,n][n,c][c,n][c,n]1),$(Clc1[n]aa[a;!c]1),$([I,Br]c)]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])].[Cl,Br,I;$(Clc1[c,n][c,n]n[c,n][c,n]1),$(Clc1[n][c,n][n,c][c,n][c,n]1),$(Clc1[n]aa[a;!c]1),$([I,Br]c)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
       "[CX4][Cl,Br,I]",
@@ -2443,7 +2443,7 @@
       "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
       "[Mg,Li,Zn][#6]"]},
   "NbocAmino_Acid_Ester":
-  {"ShouldContainAtLeastOne": ["NC(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
       "ShouldAlsoContain": [],
       "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
         "[CX4][Cl,Br,I]",
@@ -2468,7 +2468,7 @@
         "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
         "[Mg,Li,Zn][#6]"]},
   "NbocAmino_Acid_Nitro":
-  {"ShouldContainAtLeastOne": ["NC(=O)OC([CH3])([CH3])[CH3].[#6][N;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O)].[O;$(O=C([#6])[OD1])]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)OC([CH3])([CH3])[CH3].[#6][N;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O)].[O;$(O=C([#6])[OD1])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
       "[N;$([NH,NH2]);!$(NC=[C,N,O,P,S])!$(N=[C,N,O,S])!$(N[P,S])!$(N#[C])]",
@@ -2493,7 +2493,7 @@
       "[Mg,Li,Zn][#6]"]},
 
   "Amines_Nboc_Ester":
-  {"ShouldContainAtLeastOne": ["NC(=O)OC([CH3])([CH3])[CH3].[NX3;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]", "[NX3;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NHR]([CX4,c])@[O]),$([NH2][O])].[OD1;$(O=C(N)OC([CH3])([CH3])[CH3])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)OC([CH3])([CH3])[CH3].[NX3;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]", "[NX3;$([NHR0]([CX4,c])!@[ND3R]),$([NH2R0]!@[ND3R]),$([NR]@[NHR]@[CX4,c]),$([NHR]([CX4,c])@[O]),$([NH2][O])].[OD1;$(O=C(N)OC([CH3])([CH3])[CH3])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S](=[O,S,N])",
       "[O;$(O=C([#6])[OD1])]",
@@ -2516,7 +2516,7 @@
       "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
       "[Mg,Li,Zn][#6]"]},
   "Nboc_NCbz_Amino_Acid":
-  {"ShouldContainAtLeastOne": ["NC(=O)O[CH2]c1[cH][cH][cH][cH][cH]1.[O;$(O=C([#6])[OD1])].NC(=O)OC([CH3])([CH3])[CH3]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)O[CH2]c1[cH][cH][cH][cH][cH]1.[O;$(O=C([#6])[OD1])].NC(=O)OC([CH3])([CH3])[CH3]"],
       "ShouldAlsoContain": [],
       "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
         "[CX4][Cl,Br,I]",
@@ -2539,7 +2539,7 @@
         "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
         "[Mg,Li,Zn][#6]"]},
   "Nboc_Nfmoc_Amino_Acid":
-  {"ShouldContainAtLeastOne": ["NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.NC(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[N;+0]C(=O)OC([CH3])([CH3])[CH3].[O;$(O=C([#6])[OD1])]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
       "[CX4][Cl,Br,I]",
@@ -2563,7 +2563,7 @@
       "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
       "[Mg,Li,Zn][#6]"]},
   "NfmocAmino_Acid_AlkyneCH":
-  {"ShouldContainAtLeastOne": ["NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[O;$([OH]C(=O)[#6])].[CH]#C"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[O;$([OH]C(=O)[#6])].[CH]#C"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
       "[CX4][Cl,Br,I]",
@@ -2587,7 +2587,7 @@
       "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
       "[Mg,Li,Zn][#6]"]},
   "NfmocAmino_Acid_ArylHalide":
-  {"ShouldContainAtLeastOne": ["NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[O;$(O=C([#6])[OD1])].[Cl,Br,I;$(Clc1[c,n][c,n]n[c,n][c,n]1),$(Clc1[n][c,n][n,c][c,n][c,n]1),$(Clc1[n]aa[a;!c]1),$([I,Br]c)]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[O;$(O=C([#6])[OD1])].[Cl,Br,I;$(Clc1[c,n][c,n]n[c,n][c,n]1),$(Clc1[n][c,n][n,c][c,n][c,n]1),$(Clc1[n]aa[a;!c]1),$([I,Br]c)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
       "[CX4][Cl,Br,I]",
@@ -2618,7 +2618,7 @@
       "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
       "[Mg,Li,Zn][#6]"]},
   "NfmocAmino_Acid_Ester":
-  {"ShouldContainAtLeastOne": ["NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[O;$(O=C([#6])[OD1])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
+  {"ShouldContainAtLeastOne": ["[N;+0]C(=O)O[CH2][CH]1c2ccccc2-c3ccccc13.[O;$(O=C([#6])[OD1])].[O;$(O([CH3])C([#6])=O),$(O([CH2][CH3])C([#6])=O),$(O([CH2]c1[cH][cH][cH][cH][cH]1)C([#6])=O),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
       "[N;$([NH,NH2]);!$(NC=[C,N,O,P,S])!$(N=[C,N,O,S])!$(N[P,S])!$(N#[C])]",
@@ -2643,7 +2643,7 @@
       "[SiH,SiH2,SiH3,SiH4,PH,PH2,PH3,SH,SH2,BH,BH2,BH3,BH4]",
       "[Mg,Li,Zn][#6]"]},
   "NfmocAmino_Acid_Nitro":
-  {"ShouldContainAtLeastOne": ["[N;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13)].[#6][N;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O)].[OD1]C(=O)[#6]"],
+  {"ShouldContainAtLeastOne": ["[N;+0;$(NC(=O)O[CH2][CH]1c2ccccc2-c3ccccc13)].[#6][N;$([N+](=O)([#6])[O-]),$(N(=O)([#6])=O)].[OD1]C(=O)[#6]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[Cl,F,Br][C,P,S]=[O,S,N]",
     "[CX4][Cl,Br,I]",
@@ -2668,7 +2668,7 @@
     "[Mg,Li,Zn][#6]"]},
 
   "Di_Esters_Amino":
-  {"ShouldContainAtLeastOne": ["[NX3;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])].[#6]C(=O)[O;$(O[CH3]),$(O[CH2][CH3]),$(OC([CD1])([CD1])[CD1]),$(O[CH2]c1[cH][cH][cH][cH][cH]1),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)].[#6]C(=O)[O;$(O[CH3]),$(O[CH2][CH3]),$(OC([CD1])([CD1])[CD1]),$(O[CH2]c1[cH][cH][cH][cH][cH]1),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
+  {"ShouldContainAtLeastOne": ["[NX3;+0;$([NH2][c,CX4]),$([NH]([c,CX4])[CX4])].[#6]C(=O)[O;$(O[CH3]),$(O[CH2][CH3]),$(OC([CD1])([CD1])[CD1]),$(O[CH2]c1[cH][cH][cH][cH][cH]1),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)].[#6]C(=O)[O;$(O[CH3]),$(O[CH2][CH3]),$(OC([CD1])([CD1])[CD1]),$(O[CH2]c1[cH][cH][cH][cH][cH]1),$(O(C([CH3])([CH3])[CH3])C([#6])=O),$(O([CH2][CH]=[CH2])C([#6])=O)]"],
     "ShouldAlsoContain": [],
     "shouldNotContain": ["[C,S,P](!@=[O,N,S])[F,Cl,Br]", "[C,S,P](!@=[O,N,S])[OH]",
     "[O;$(O(C=O)C)]C(=O)C(=O)O[$([C;D1]),$([C;D2][C;D1])]",
