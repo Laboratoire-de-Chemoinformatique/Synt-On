@@ -113,7 +113,7 @@ if __name__ == '__main__':
     if args.nCores == -1:
         main(inPut, args.keepPG, args.output, args.Ro2Filtr)
     else:
-        wc = countLines(inPutt)
+        wc = countLines(inPut)
         linesPerFile = wc // args.nCores
         outNamesList = splitFileByLines(inPut, inPut, linesPerFile)
         fixed_main = partial(main,  keepPG=args.keepPG,
