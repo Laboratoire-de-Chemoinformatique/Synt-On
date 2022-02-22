@@ -921,7 +921,7 @@ Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Ko
 
 Example of launch:
 ```shell script
-python3 ../SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -i -i SynthonsForLibraryGeneration.smi 
+python3 ../SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -i SynthonsForLibraryGeneration.smi 
 --nCores 10 -oD /data/yuliana/DrugsFragmentation/newLaunch --maxNumberOfStages 5 --desiredNumberOfNewMols 1000 
 --enumerationMode --MWupperTh 460 --MWlowerTh 200  
 ```
