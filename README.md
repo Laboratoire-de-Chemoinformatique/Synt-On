@@ -1,4 +1,4 @@
-# SynthI
+# Synt-On
 Open-source tool for synthons-based library design.
 
 For the standart usage of SynthI as a comand line tool see only [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-bbs-classification),
