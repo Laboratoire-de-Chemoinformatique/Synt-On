@@ -80,7 +80,7 @@ if __name__ == '__main__':
                                             "                                    Institute of Organic Chemistry, National Academy of Sciences of Ukraine\n"
                                             "                                    Kyiv National Taras Shevchenko University\n"
                                             "2021 Strasbourg, Kiev",
-                                     prog="SynthI_Classifier", formatter_class=argparse.RawTextHelpFormatter)
+                                     prog="SyntOn_Classifier", formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-i", "--input", type=str, help="Input SMILES file")
     args = parser.parse_args()
     main(args)

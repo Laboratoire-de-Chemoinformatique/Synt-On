@@ -5,7 +5,7 @@ from rdkit.Chem import rdChemReactions as Reactions
 from rdkit.Chem.Scaffolds.MurckoScaffold import *
 srcPath = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(1, srcPath)
-from SynthI_Classifier import BBClassifier
+from SyntOn_Classifier import BBClassifier
 from UsefulFunctions import *
 
 

@@ -736,8 +736,8 @@ class fragmentation:
             tree = ET.parse(self.__setupFile)
         else:
             tree = ET.parse("Setup.xml")
-        N_SynthI_setup = tree.getroot()
-        allReactions, reactionSetup = self.__getReactionSMARTS(N_SynthI_setup)
+        N_SyntOn_setup = tree.getroot()
+        allReactions, reactionSetup = self.__getReactionSMARTS(N_SyntOn_setup)
         if self.__fragmentationMode == "use_all":
             reaction_list = allReactions[:-1]
         elif self.__fragmentationMode == "include_only" or self.__fragmentationMode == "one_by_one":
@@ -757,8 +757,8 @@ class fragmentation:
             tree = ET.parse(self.__macroCycleSetupFile)
         else:
             tree = ET.parse("Setup.xml")
-        N_SynthI_setup = tree.getroot()
-        allReactions, reactionSetup = self.__getReactionSMARTS(N_SynthI_setup)
+        N_SyntOn_setup = tree.getroot()
+        allReactions, reactionSetup = self.__getReactionSMARTS(N_SyntOn_setup)
         if self.__fragmentationMode == "use_all":
             reaction_list = allReactions[:-1]
         elif self.__fragmentationMode == "include_only" or self.__fragmentationMode == "one_by_one":
@@ -773,9 +773,9 @@ class fragmentation:
         #reaction_list -> Ids of reactions that were specified by user to be used for the fragmentation
         return reactionSetup, reaction_list
 
-    def __getReactionSMARTS(self, N_SynthI_setup: ET.Element):
+    def __getReactionSMARTS(self, N_SyntOn_setup: ET.Element):
         reactionSetup = {}
-        for child in N_SynthI_setup:
+        for child in N_SyntOn_setup:
             if child.tag == "AvailableReactions":
                 for ch in child:
                     for subCh in ch:
@@ -1104,7 +1104,7 @@ class fragmentation:
         print("WARNING! No lable were assigned to the smiles: " + productSmiles)
         return False
 
-def fragmentMolecule(smiles, SynthIfragmentor, simTh=-1):
+def fragmentMolecule(smiles, SyntOnfragmentor, simTh=-1):
     mol = readMol(smiles)
     if mol:
         RemoveStereochemistry(mol)
@@ -1113,19 +1113,18 @@ def fragmentMolecule(smiles, SynthIfragmentor, simTh=-1):
         products = cuttingRule.RunReactants((mol,))
         if products:
             mol = products[0][0]
-        allSyntheticPathways, allSynthons = SynthIfragmentor.cutWithHierarchyStorred(mol)
-        if SynthIfragmentor.SynthLib != None:
+        allSyntheticPathways, allSynthons = SyntOnfragmentor.cutWithHierarchyStorred(mol)
+        if SyntOnfragmentor.SynthLib != None:
             firstSynthons = getShortestSyntheticPathways(allSyntheticPathways)
             for comb in firstSynthons:
-                comb.checkAvailability(SynthIfragmentor.SynthLib, simTh, SynthIfragmentor.FindAnaloguesOfMissingSynthons)
+                comb.checkAvailability(SyntOnfragmentor.SynthLib, simTh, SyntOnfragmentor.FindAnaloguesOfMissingSynthons)
         return allSyntheticPathways, allSynthons
     else:
         return None,None
 
-def analoguesLibraryGeneration(Smiles_molNameTuple, SynthIfragmentor, outDir, simTh=-1, strictAvailabilityMode=False, desiredNumberOfNewMols=1000):
-    with open(os.path.join(outDir, "SynthonsForAnalogsGenerationForMol" + str(Smiles_molNameTuple[1]) + ".smi"),
-              "w") as outSynthons:
-        allSyntheticPathways, allSynthons = fragmentMolecule(Smiles_molNameTuple[0], SynthIfragmentor, simTh=simTh)
+def analoguesLibraryGeneration(Smiles_molNameTuple, SyntOnfragmentor, outDir, simTh=-1, strictAvailabilityMode=False, desiredNumberOfNewMols=1000):
+    with open(os.path.join(outDir, "SynthonsForAnalogsGenerationForMol" + str(Smiles_molNameTuple[1]) + ".smi"), "w") as outSynthons:
+        allSyntheticPathways, allSynthons = fragmentMolecule(Smiles_molNameTuple[0], SyntOnfragmentor, simTh=simTh)
         """fsynthonsAfterOneCut = getShortestSyntheticPathways(allSyntheticPathways)
         shortestSynthesis = findShortestSynthPathWithAvailableSynthLib(fsynthonsAfterOneCut, showAll=False,
                                                                     firstLaunch=True)"""
@@ -1138,13 +1137,13 @@ def analoguesLibraryGeneration(Smiles_molNameTuple, SynthIfragmentor, outDir, si
                     CompletePath = True
                 if "MR" in comb.name:
                     continue
-                synthonsDict, SynthonsForAnaloguesSynthesisLocal = comb.getSynthonsForAnaloguesGeneration(SynthIfragmentor.SynthLib,
+                synthonsDict, SynthonsForAnaloguesSynthesisLocal = comb.getSynthonsForAnaloguesGeneration(SyntOnfragmentor.SynthLib,
                                                              simTh, strictAvailabilityMode = strictAvailabilityMode)
                 if synthonsDict and SynthonsForAnaloguesSynthesisLocal:
                     outSynthons.write("****************************************** " + comb.name + " ******************************************\n")
                     outSynthons.writelines(SynthonsForAnaloguesSynthesisLocal)
                     reactionsUsedInFragmentationReactions = [rid.split("_")[0] for rid in comb.name.split("|")]
-                    reactionForReconstruction = SynthIfragmentor.getReactionForReconstruction(reactionsUsedInFragmentationReactions)
+                    reactionForReconstruction = SyntOnfragmentor.getReactionForReconstruction(reactionsUsedInFragmentationReactions)
                     enumerator = enumeration(outDir=outDir, Synthons=synthonsDict,
                                                    reactionSMARTS=reactionForReconstruction, maxNumberOfReactedSynthons=len(synthonsDict),
                                                    desiredNumberOfNewMols=desiredNumberOfNewMols, nCores=1, analoguesEnumeration=True)
@@ -1163,14 +1162,14 @@ def analoguesLibraryGeneration(Smiles_molNameTuple, SynthIfragmentor, outDir, si
                             continue
                         #comb.printDetailedReagentsSetInfo()
                         synthonsDict, SynthonsForAnaloguesSynthesisLocal = comb.getSynthonsForAnaloguesGeneration(
-                            SynthIfragmentor.SynthLib, simTh, strictAvailabilityMode=strictAvailabilityMode)
+                            SyntOnfragmentor.SynthLib, simTh, strictAvailabilityMode=strictAvailabilityMode)
                         #comb.printDetailedReagentsSetInfo()
                         if synthonsDict and SynthonsForAnaloguesSynthesisLocal:
                             outSynthons.write(
                                 "****************************************** " + comb.name + " ******************************************\n")
                             outSynthons.writelines(SynthonsForAnaloguesSynthesisLocal)
                             reactionsUsedInFragmentationReactions = [rid.split("_")[0] for rid in comb.name.split("|")]
-                            reactionForReconstruction = SynthIfragmentor.getReactionForReconstruction(
+                            reactionForReconstruction = SyntOnfragmentor.getReactionForReconstruction(
                                 reactionsUsedInFragmentationReactions)
                             enumerator = enumeration(outDir=outDir, Synthons=synthonsDict,
                                                            reactionSMARTS=reactionForReconstruction,

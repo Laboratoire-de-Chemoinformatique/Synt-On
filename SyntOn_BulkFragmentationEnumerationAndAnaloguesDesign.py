@@ -16,7 +16,7 @@ from collections import Counter
 srcPath = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(1, srcPath)
 from src.UsefulFunctions import *
-from src.SynthI import *
+from src.SyntOn import *
 
 
 def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, analoguesLibGen=False,
@@ -29,7 +29,7 @@ def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, an
         simBBselection = False
     else:
         simBBselection = True
-    SynthIfragmentor = fragmentation(fragmentationMode=fragmentationMode, reactionsToWorkWith=reactionsToWorkWith,
+    SyntOnfragmentor = fragmentation(fragmentationMode=fragmentationMode, reactionsToWorkWith=reactionsToWorkWith,
                     maxNumberOfReactionCentersPerFragment=maxNumberOfReactionCentersPerFragment,
                     MaxNumberOfStages = MaxNumberOfStages, FragmentsToIgnore=SmilesToIgnore,
                     SynthLibrary=SynthLibrary, FindAnaloguesOfMissingSynthons=simBBselection,
@@ -38,7 +38,7 @@ def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, an
         for molNumb, line in enumerate(open(inp)):
             if line.strip():
                 Smiles = line.strip().split()[0]
-                analoguesLibraryGeneration((Smiles, molNumb+1), SynthIfragmentor, outDir, simTh = simTh,
+                analoguesLibraryGeneration((Smiles, molNumb+1), SyntOnfragmentor, outDir, simTh = simTh,
                                            strictAvailabilityMode=strictAvailabilityMode,
                                            desiredNumberOfNewMols=desiredNumberOfNewMols)
     elif analoguesLibGen:
@@ -48,7 +48,7 @@ def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, an
                 Smiles = line.strip().split()[0]
                 Smiles_molNumb_List.append((Smiles, molNumb+1))
         fixed_analogsGenerationFunction = partial(analoguesLibraryGeneration, outDir=outDir, simTh=simTh,
-                             SynthIfragmentor=SynthIfragmentor, strictAvailabilityMode=strictAvailabilityMode,
+                             SyntOnfragmentor=SyntOnfragmentor, strictAvailabilityMode=strictAvailabilityMode,
                                                   desiredNumberOfNewMols=desiredNumberOfNewMols)
         nCores = args.nCores
         finalLog = []
@@ -62,7 +62,7 @@ def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, an
         for line in open(inp):
             if line.strip():
                 Smiles = line.strip().split()[0]
-                allReagentSets, allSynthons = fragmentMolecule(Smiles, SynthIfragmentor, simTh)
+                allReagentSets, allSynthons = fragmentMolecule(Smiles, SyntOnfragmentor, simTh)
 
                 if allReagentSets and len(allReagentSets)>1:
                     fsynthonsAfterOneCut = getShortestSyntheticPathways(allReagentSets)
@@ -117,7 +117,7 @@ def main(inp, SynthLibrary, outDir, simTh, strictAvailabilityMode, nCores=-1, an
         outAllSynthons.close()
         return "Finished"
     else:
-        reactionForReconstruction = SynthIfragmentor.getReactionForReconstruction()
+        reactionForReconstruction = SyntOnfragmentor.getReactionForReconstruction()
         synthons = []
         for line in open(inp):
             sline = line.strip()
@@ -138,10 +138,10 @@ if __name__ == '__main__':
                                             "                                    Institute of Organic Chemistry, National Academy of Sciences of Ukraine\n"
                                             "                                    Kyiv National Taras Shevchenko University\n"
                                             "2021 Strasbourg, Kiev",
-                                     prog="SynthI_BulkFragmentationEnumerationAndAnaloguesDesign", formatter_class=argparse.RawTextHelpFormatter)
+                                     prog="SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign", formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-i", "--input", type=str, help="input file")
     parser.add_argument("-oD", "--outDir", type=str, help="Output directory to write analogues.")
-    parser.add_argument("--SynthLibrary", type=str, default=None, help="Library of available synthons. Generated from avaialable BBs using SynthI_BBsBulkClassificationAndSynthonization.py")
+    parser.add_argument("--SynthLibrary", type=str, default=None, help="Library of available synthons. Generated from avaialable BBs using SyntOn_BBsBulkClassificationAndSynthonization.py")
     parser.add_argument("--nCores", default=-1, type=int, help="Number of CPUs available for parallelization.")
     parser.add_argument("--simTh", default=-1, type=float, help="Similarity threshold for BB analogues search. "
                     "If not specified, only positional variational approach will be used for BBs search")

@@ -1,8 +1,8 @@
 import os,sys
 srcPath = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(1, srcPath)
-from src.SynthI_Classifier import *
-from src.SynthI_BBs import *
+from src.SyntOn_Classifier import *
+from src.SyntOn_BBs import *
 from src.UsefulFunctions import *
 from rdkit import Chem
 """from rdkit.Chem.rdMolDescriptors import *
@@ -89,7 +89,7 @@ if __name__ == '__main__':
                                             "                                    Institute of Organic Chemistry, National Academy of Sciences of Ukraine\n"
                                             "                                    Kyiv National Taras Shevchenko University\n"
                                             "2021 Strasbourg, Kiev",
-                                     prog="SynthI_BBsBulkClassificationAndSynthonization", formatter_class=argparse.RawTextHelpFormatter)
+                                     prog="SyntOn_BBsBulkClassificationAndSynthonization", formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-i", "--input", type=str, help="Input file containing 2 columns building blocks smiles and ids.")
     parser.add_argument("-o", "--output", type=str, help="Output files suffix name.")
     parser.add_argument("--keepPG", action="store_true", help="Write both protected and unprotected "

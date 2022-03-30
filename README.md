@@ -1,62 +1,62 @@
 # Synt-On
 Open-source tool for synthons-based library design.
 
-For the standart usage of SynthI as a comand line tool see only [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-bbs-classification),
-[Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-synthons-generation-for-the-large-bbs-library),
-[Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#scaffold-analysis),
-[Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-compounds-fragmentation),
-[Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-analogues-enumeration).
+For the standart usage of SyntOn as a comand line tool see only [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-bbs-classification),
+[Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-synthons-generation-for-the-large-bbs-library),
+[Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#scaffold-analysis),
+[Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-compounds-fragmentation),
+[Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-analogues-enumeration).
 
-All other chapters of this manual concern usage of SynthI as a python library inside of the customized scripts.
+All other chapters of this manual concern usage of SyntOn as a python library inside of the customized scripts.
 
-**Be careful: prior to BBs synthonization the SMILES should be preprocessed and conterions and solvents should be removed. SynthI-BBs consider every molecule while processing mixture SMILES and for each of them synthons will be generated if possible, therefore take care of them before synthonization**
+**Be careful: prior to BBs synthonization the SMILES should be preprocessed and conterions and solvents should be removed. SyntOn-BBs consider every molecule while processing mixture SMILES and for each of them synthons will be generated if possible, therefore take care of them before synthonization**
 
 # Table of Contents
-* [Prerequisites](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#prerequisites)
-    * [System requirements](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#system-requirements)
-    * [Comopounds preprocessing](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#comopounds-preprocessing)
-* [SynthI-Classifier](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#synthi-classifier)
-    * [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-bbs-classification) 
-* [SynthI-BBs](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#synthi-bbs)
-    * [Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#scaffold-analysis)
-    * [BBs synthonization](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bbs-synthonization)
-    * [Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-synthons-generation-for-the-large-bbs-library)
-* [SynthI-Fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#synthi-fragmentation)
-    * [Fragmentation with a default setup](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#fragmentation-with-a-default-setup)
-    * [Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-compounds-fragmentation)
-* [SynthI-Enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#synthi-enumeration)
-    * [Generate analogues of a compound](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#generate-analogues-of-a-compound)
-    * [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-analogues-enumeration)
-    * [Enumerate library of all possible compounds using given set of synthons](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#enumerate-library-of-all-possible-compounds-using-given-set-of-synthons)
-* [Detailed classes description](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#detailed-classes-description)
+* [Prerequisites](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#prerequisites)
+    * [System requirements](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#system-requirements)
+    * [Comopounds preprocessing](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#comopounds-preprocessing)
+* [SyntOn-Classifier](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#synthi-classifier)
+    * [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-bbs-classification) 
+* [SyntOn-BBs](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#synthi-bbs)
+    * [Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#scaffold-analysis)
+    * [BBs synthonization](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bbs-synthonization)
+    * [Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-synthons-generation-for-the-large-bbs-library)
+* [SyntOn-Fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#synthi-fragmentation)
+    * [Fragmentation with a default setup](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#fragmentation-with-a-default-setup)
+    * [Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-compounds-fragmentation)
+* [SyntOn-Enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#synthi-enumeration)
+    * [Generate analogues of a compound](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#generate-analogues-of-a-compound)
+    * [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-analogues-enumeration)
+    * [Enumerate library of all possible compounds using given set of synthons](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#enumerate-library-of-all-possible-compounds-using-given-set-of-synthons)
+* [Detailed classes description](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#detailed-classes-description)
 
 ## Prerequisites
 
 ### System requirements
-SynthI is a suit of scripts written in python. It should be used with the following dependencies: python 3.9.0, rdkit 2021.03.1, matplotlib 3.4.2  and numpy 1.20.2. 
+SyntOn is a suit of scripts written in python. It should be used with the following dependencies: python 3.9.0, rdkit 2021.03.1, matplotlib 3.4.2  and numpy 1.20.2. 
 
 Several build-in python modules are also used, but they are usually installed by default (*datetime, os, time, random, re, resource, sys, multiprocessing, collections, xml*). All other modules are custom written and provided within the package. 
 
 The scripts were run in a linux workstation with 15 processors.
 
-The full list of packages is listed in the file SynthI_environment.yml. You can create required environlent using this command:
+The full list of packages is listed in the file SyntOn_environment.yml. You can create required environlent using this command:
 
 ```shell script
-$ conda env create -f SynthI_environment.yml  -p /home/user/anaconda3/envs/synthI_env
+$ conda env create -f SyntOn_environment.yml  -p /home/user/anaconda3/envs/synthI_env
 ```
 
 
 ### Comopounds preprocessing
 
-All BBs structures need to be sanitized and standartized idependently by user prior to SynthI usage. Solvents and contriones should be deleted. There is no need to generate major tautomer form as soon as SynthI will do it for each generated synthons separately.
+All BBs structures need to be sanitized and standartized idependently by user prior to SyntOn usage. Solvents and contriones should be deleted. There is no need to generate major tautomer form as soon as SyntOn will do it for each generated synthons separately.
 
-## SynthI-Classifier
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+## SyntOn-Classifier
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
 This module returns the list of classes assigned to the given BB. 
 
 ```python
->>> from SynthI.src.SynthI_Classifier import BBClassifier
+>>> from SyntOn.src.SyntOn_Classifier import BBClassifier
 >>> BBClassifier(molSmiles="CCOC(=O)C1=C(N)SC=C1C2CC2")
 ```
 ```text
@@ -72,7 +72,7 @@ If the SMILES cannot be processed by RdKit, the following messages will appear:
 [23:37:46] Explicit valence for atom # 8 N, 4, is greater than permitted
 C1CCC(CC1)P([Ir][N]2=CC=CC=C2)(C3CCCCC3)C4CCCCC4.C/1C/C=C\CC/C=C1 was not processed by rdkit
 ```
-As soon as heterocyclization reaction will be available only in SynhtI.2.0, some of the heterocyclization reagents will not be classified in SynthI.1.0:
+As soon as heterocyclization reaction will be available only in SynhtI.2.0, some of the heterocyclization reagents will not be classified in SyntOn.1.0:
 
 ```python
 >>> BBClassifier(molSmiles="CCOC=1C=C(CC#N)C=CC1OCC(F)(F)F")
@@ -83,15 +83,15 @@ As soon as heterocyclization reaction will be available only in SynhtI.2.0, some
 
 ### Bulk BBs classification 
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
-Also *SynthI_Classifier.py* can be launched as a comand line tool for the BBs library separation into several sublibraries according to the BBs classes:
+Also *SyntOn_Classifier.py* can be launched as a comand line tool for the BBs library separation into several sublibraries according to the BBs classes:
 
 ```shell script
-$ python3 SynthI/src/SynthI_Classifier.py -h
+$ python3 SyntOn/src/SyntOn_Classifier.py -h
 ```
 ```text
-usage: SynthI_Classifier [-h] [-i INPUT]
+usage: SyntOn_Classifier [-h] [-i INPUT]
 
 Classification of building blocks. Separates provided library into several sublibraries according to the reagents classess.
 
@@ -111,11 +111,11 @@ Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Ko
 ```
 As a result separate files for each BB class found in the provided library file will be created. The name contains both class and subclass names separated by underscore - *SecondaryAmines_Cyc-Aliphatic.smi* or *Acid_Aliphatic_Acid.smi*.
 
-## SynthI-BBs 
+## SyntOn-BBs 
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
-SynthI-BBs allows to perform scaffold analysis of BBs and generate exhaustively all possible synthons from a given BB. The position of the functional groups as well as type of the resulting intermediate product (cation, anion, radical etc.) is encoded in synthon’s SMILES by introducing special system of labels. 
+SyntOn-BBs allows to perform scaffold analysis of BBs and generate exhaustively all possible synthons from a given BB. The position of the functional groups as well as type of the resulting intermediate product (cation, anion, radical etc.) is encoded in synthon’s SMILES by introducing special system of labels. 
 
 |Synthon label | Synthon example | Nature of the reaction center | Example of corresponding reagent classes |
 | :-: | :-: | :-: | :-: |
@@ -131,12 +131,12 @@ SynthI-BBs allows to perform scaffold analysis of BBs and generate exhaustively 
 
 ### Scaffold analysis
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
-SynthI-BBs allow to generate meaningful scaffolds from BBs by removing any ring-containing moieties that will not be kept in the reaction product and thus are irrelevant in BB analysis (e.g. protective (Bnz, Cbz, Fmoc) and leaving groups (boronics, oxiranes, etc.))
+SyntOn-BBs allow to generate meaningful scaffolds from BBs by removing any ring-containing moieties that will not be kept in the reaction product and thus are irrelevant in BB analysis (e.g. protective (Bnz, Cbz, Fmoc) and leaving groups (boronics, oxiranes, etc.))
 
 ```python
->>> from SynthI.src.SynthI_BBs import generateScaffoldForBB
+>>> from SyntOn.src.SyntOn_BBs import generateScaffoldForBB
 >>> generateScaffoldForBB("OC(=O)C=1C=CC=C(NC(=O)OCC2C=3C=CC=CC3C=4C=CC=CC24)C1")
 ```
 ```text
@@ -145,12 +145,12 @@ SynthI-BBs allow to generate meaningful scaffolds from BBs by removing any ring-
 'c1ccccc1'
 ```
 
-Also *SynthI_BBScaffoldGeneration.py* can be launched as a comand line tool for the scaffold analysis of large BBs library:
+Also *SyntOn_BBScaffoldGeneration.py* can be launched as a comand line tool for the scaffold analysis of large BBs library:
 
 ```shell script
-$ python3 SynthI/SynthI_BBScaffoldGeneration.py -h 
+$ python3 SyntOn/SyntOn_BBScaffoldGeneration.py -h 
 
-usage: SynthI_BBScaffoldGeneration [-h] [-i INPUT] [-o OUTPUT]
+usage: SyntOn_BBScaffoldGeneration [-h] [-i INPUT] [-o OUTPUT]
 
 BBs Scaffold analysis. Generates meaningful BBs scaffolds after removing ring-containing leaving and protective groups. Count scaffolds occurrence in the provided collection of BBs, and construct cumulative scaffold frequency plot
 
@@ -176,12 +176,12 @@ It generates four files: *outSuffixName_Scaffolds.smi*, *outSuffixName_scaffolds
 
 ### BBs synthonization
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
 In case if BB contain protective groups, protected synthons will be discarded by default
 
 ```python
->>> from SynthI.src.SynthI_BBs import mainSynthonsGenerator
+>>> from SyntOn.src.SyntOn_BBs import mainSynthonsGenerator
 >>> mainSynthonsGenerator("CCOC(=O)C1=C(N)SC=C1C2CC2")
 ```
 ```text
@@ -211,7 +211,7 @@ O=C(O)c1c(C2CC2)csc1[NH2:40] Bifunctional_Amine_Ester
 O=[CH:10]c1c(C2CC2)csc1[NH2:20] Bifunctional_Amine_Ester
 O=[CH:10]c1c(C2CC2)csc1[NH2:40] Bifunctional_Amine_Ester
 ```
-As it was mentioned before, solvents and contriones should be removed before using SynthI. In case if two moieties will be present in input, syntons for both of them will be generated:
+As it was mentioned before, solvents and contriones should be removed before using SyntOn. In case if two moieties will be present in input, syntons for both of them will be generated:
 ```python
 >>> mainSynthonsGenerator("NCCN1CCOCC1.CC1=NN=C(N1)SCC(O)=O")
 ```
@@ -259,7 +259,7 @@ If used inside a custom forkflow user may want to get a python object that will 
 Resulted synthons can be filtered according to the Ro2:
 
 ```python
->>> from SynthI.src.UsefulFunctions import Ro2Filtration
+>>> from SyntOn.src.UsefulFunctions import Ro2Filtration
 >>> Ro2Filtration("O=C(O)c1c(C2CC2)csc1[NH2:20]")
 
 (True, ['MolW=183.035399528', 'LogP=1.9059000000000001', 'HDC=2', 'HAC=4']) 
@@ -271,14 +271,14 @@ Resulted synthons can be filtered according to the Ro2:
 
 ### Bulk synthons generation for the large BBs library
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
-In case of large BB library, classification and synthonization of BBs can be performed using command line tool *SynthI/SynthI_BBsBulkClassificationAndSynthonization.py*:
+In case of large BB library, classification and synthonization of BBs can be performed using command line tool *SyntOn/SyntOn_BBsBulkClassificationAndSynthonization.py*:
 
 ```shell script
-$ python3 SynthI/SynthI_BBsBulkClassificationAndSynthonization.py -h
+$ python3 SyntOn/SyntOn_BBsBulkClassificationAndSynthonization.py -h
 
-usage: SynthI_BBsBulkClassificationAndSynthonization [-h] [-i INPUT] [-o OUTPUT] [--keepPG] [--Ro2Filtr] [--nCores NCORES] 
+usage: SyntOn_BBsBulkClassificationAndSynthonization [-h] [-i INPUT] [-o OUTPUT] [--keepPG] [--Ro2Filtr] [--nCores NCORES] 
 
 BBs classification and Synthons generation for large BBs libraries
 
@@ -324,15 +324,15 @@ N[CH:10]=O EN300-50197 Reagents_Isocyanates ClC(Cl)(Cl)C(=O)N=C=O 1 outSuffixNam
 ``` 
 Files *outSuffixName_NotProcessed* and *outSuffixName_NotClassified* contain not processed by RdKit or processed but not classified BBs.
 
-## SynthI-Fragmentation
+## SyntOn-Fragmentation
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
 This module allows to fragment given molecule and generate synthons that correspond to particular BBs, needed to easily synthesize input compound.
 
 ### Fragmentation with a default setup
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
 In order to perform compoound fragmentation, first, the Fragmentor (Instant of the class fragmentation) should be
  initialized.
@@ -342,12 +342,12 @@ disconnection result in such fragment, this bond will not be disconnected. It sh
 (two copies of the same fragment should be generated by adding * and *[V] at the open end of the structure)
 
 ```python
->>> from SynthI.src.SynthI import * 
+>>> from SyntOn.src.SyntOn import * 
 
 >>> SynthLibrary = "/pathToTheSynthonsLib/outENSynthmode.smi"
 >>> FragmentsToIgnore = ["*C(C)C", "*C(=O)C", "*C=O", "*[V]C=O", "*[V]C(C)C", "*[V]C(=O)C"]
 
->>> SynthIfragmentor = fragmentation(fragmentationMode="use_all", maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
+>>> SyntOnfragmentor = fragmentation(fragmentationMode="use_all", maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                     SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore, 
 ...                                     FindAnaloguesOfMissingSynthons=True)
 ```
@@ -357,31 +357,31 @@ Processing BB library. It may take a few minutes, depending on the library size
 Lib BB reading time:
 0:01:33.865876
 ```
-Latter `SynthIfragmentor` cna be used to fragment different molecules with a help of function `fragmentMolecule (smiles, SynthIfragmentor, simTh=-1)`
+Latter `SyntOnfragmentor` cna be used to fragment different molecules with a help of function `fragmentMolecule (smiles, SyntOnfragmentor, simTh=-1)`
 
 ```python
 >>> smi = "NC(=O)OC(CN1N=CN=N1)C1=CC=CC=C1Cl"
->>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SynthIfragmentor)
+>>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SyntOnfragmentor)
 # here some RdKit messages can appear, they can be ignored
 ```
 
-Both `allSyntheticPathways` and `allSynthons` are dictionaries as values containing instances of the classes *synthon* and *syntheticPathway* ( [see detailes here](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#detailed-classes-description) )
+Both `allSyntheticPathways` and `allSynthons` are dictionaries as values containing instances of the classes *synthon* and *syntheticPathway* ( [see detailes here](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#detailed-classes-description) )
  
 ```python
 >>> allSynthons
  
-{'InitMol': <SynthI.src.SynthI.synthon at 0x7fcb4588b430>,
- 'N[CH:10]=O': <SynthI.src.SynthI.synthon at 0x7fcb4588b550>,
- 'Clc1ccccc1C(Cn1ncnn1)[OH:20]': <SynthI.src.SynthI.synthon at 0x7fcb4588bbb0>,
- 'c1nn[nH:20]n1': <SynthI.src.SynthI.synthon at 0x7fcb4588b6a0>,
- 'NC(=O)OC(c1ccccc1Cl)[CH3:10]': <SynthI.src.SynthI.synthon at 0x7fcb4588b3d0>,
- 'NC(=O)OC(c1ccccc1Cl)[CH3:21]': <SynthI.src.SynthI.synthon at 0x7fcb4588beb0>,
- 'Clc1ccccc1C([CH3:10])[OH:20]': <SynthI.src.SynthI.synthon at 0x7fcb3007b520>,
- 'Clc1ccccc1C([OH:20])[CH3:21]': <SynthI.src.SynthI.synthon at 0x7fcb3007be80>,
- 'c1nnn(C[CH2:10][OH:20])n1': <SynthI.src.SynthI.synthon at 0x7fcb3007ba00>, 
- 'Clc1cccc[cH:20]1': <SynthI.src.SynthI.synthon at 0x7fcb3007ba30>,
- 'Clc1ccccc1[CH2:10][OH:20]': <SynthI.src.SynthI.synthon at 0x7fcb3007bdf0>,
- 'c1nnn([CH3:20])n1': <SynthI.src.SynthI.synthon at 0x7fcb3007bc70>} 
+{'InitMol': <SyntOn.src.SyntOn.synthon at 0x7fcb4588b430>,
+ 'N[CH:10]=O': <SyntOn.src.SyntOn.synthon at 0x7fcb4588b550>,
+ 'Clc1ccccc1C(Cn1ncnn1)[OH:20]': <SyntOn.src.SyntOn.synthon at 0x7fcb4588bbb0>,
+ 'c1nn[nH:20]n1': <SyntOn.src.SyntOn.synthon at 0x7fcb4588b6a0>,
+ 'NC(=O)OC(c1ccccc1Cl)[CH3:10]': <SyntOn.src.SyntOn.synthon at 0x7fcb4588b3d0>,
+ 'NC(=O)OC(c1ccccc1Cl)[CH3:21]': <SyntOn.src.SyntOn.synthon at 0x7fcb4588beb0>,
+ 'Clc1ccccc1C([CH3:10])[OH:20]': <SyntOn.src.SyntOn.synthon at 0x7fcb3007b520>,
+ 'Clc1ccccc1C([OH:20])[CH3:21]': <SyntOn.src.SyntOn.synthon at 0x7fcb3007be80>,
+ 'c1nnn(C[CH2:10][OH:20])n1': <SyntOn.src.SyntOn.synthon at 0x7fcb3007ba00>, 
+ 'Clc1cccc[cH:20]1': <SyntOn.src.SyntOn.synthon at 0x7fcb3007ba30>,
+ 'Clc1ccccc1[CH2:10][OH:20]': <SyntOn.src.SyntOn.synthon at 0x7fcb3007bdf0>,
+ 'c1nnn([CH3:20])n1': <SyntOn.src.SyntOn.synthon at 0x7fcb3007bc70>} 
 ```
 The detailed information about each synthon can be retreived:
 ```python
@@ -465,7 +465,7 @@ This synthetic pathways are organized in a disconnection hierarchy, that can be 
     reagentSet 0 :
     R2.2_0|R5.1_0 c1nn[nH:20]n1.Clc1ccccc1C([CH3:10])[OH:20].N[CH:10]=O Availability rate (% of atoms of fragmented molecule coming from available synthons): 0.72 
     ```
-Method *printDetailedReagentsSetInfo()* of the class *syntheticPathway* ( [see detailes here](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#detailed-classes-description) ) can be used for retreiving detailed information about the selected synthetic pathway: 
+Method *printDetailedReagentsSetInfo()* of the class *syntheticPathway* ( [see detailes here](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#detailed-classes-description) ) can be used for retreiving detailed information about the selected synthetic pathway: 
 
 ```python
 >>> shortestSynthesis[0].printDetailedReagentsSetInfo()  
@@ -518,19 +518,19 @@ Children synthons: -
 
 ### Selecting customized list of reactions for fragmentation
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
 **Mode "include_only"**
 
 Only the reactions, selected by user will be used for fragmentation. The list of RiDs should be specified using argument `reactionsToWorkWith`. The list should be provided inside " "; intervals separated via "-" and "," can be used (e.g. "R1-R10,R11.1-R11.4,R12.1"). Specification "R1" implicitly includes all (R1.1, R1.2, R1.3 and R1.4) subreactions in the group R1.
   
 ```python
->>> SynthIfragmentorIncludeOnlyR1_R9 = fragmentation(fragmentationMode="include_only", reactionsToWorkWith = "R1-R9", 
+>>> SyntOnfragmentorIncludeOnlyR1_R9 = fragmentation(fragmentationMode="include_only", reactionsToWorkWith = "R1-R9", 
 ...                                                   maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                                   SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore, 
 ...                                                   FindAnaloguesOfMissingSynthons=True) 
 
->>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SynthIfragmentorIncludeOnlyR1_R9) 
+>>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SyntOnfragmentorIncludeOnlyR1_R9) 
 
 >>> for key in allSyntheticPathways:  
 ...     allSyntheticPathways[key].printShortReagentSetInfo() 
@@ -549,12 +549,12 @@ The list of RiDs of reactions that need to be excluded should be specified using
 In the example below all reactions except R5.1 (nH-SN alkylation of NH-heterocycles) will be used for fragmentaion. 
 
 ```python
->>> SynthIfragmentorExcludeSomeR5_1 = fragmentation(fragmentationMode="exclude_some", reactionsToWorkWith = "R5.1",
+>>> SyntOnfragmentorExcludeSomeR5_1 = fragmentation(fragmentationMode="exclude_some", reactionsToWorkWith = "R5.1",
 ...                                                 maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                                 SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore, 
 ...                                                 FindAnaloguesOfMissingSynthons=True) 
 
->>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SynthIfragmentorExcludeSomeR5_1) 
+>>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SyntOnfragmentorExcludeSomeR5_1) 
 
 >>> for key in allSyntheticPathways:  
 ...     allSyntheticPathways[key].printShortReagentSetInfo() 
@@ -571,12 +571,12 @@ R10.1_1|R2.2_0 Clc1ccccc1[CH2:10][OH:20].c1nnn([CH3:20])n1.N[CH:10]=O Availabili
 In this mode user-provided reactions are applied in the specified order; each bond can be cut using onlly one reaction rule. If `reactionsToWorkWith` is not specified, than all reactions in the default order will be applied.
 
 ```python
->>> SynthIfragmentorOneByOneR2_R10_R5 = fragmentation(fragmentationMode="one_by_one", reactionsToWorkWith = "R2,R10,R5",
+>>> SyntOnfragmentorOneByOneR2_R10_R5 = fragmentation(fragmentationMode="one_by_one", reactionsToWorkWith = "R2,R10,R5",
 ...                                                   maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                                   SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore, 
 ...                                                   FindAnaloguesOfMissingSynthons=True) 
 
->>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SynthIfragmentorOneByOneR2_R10_R5 ) 
+>>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SyntOnfragmentorOneByOneR2_R10_R5 ) 
 
 >>> for key in allSyntheticPathways:  
 ...     allSyntheticPathways[key].printShortReagentSetInfo() 
@@ -588,12 +588,12 @@ R10.1_1|R2.2_0 Clc1ccccc1[CH2:10][OH:20].c1nnn([CH3:20])n1.N[CH:10]=O Availabili
 ```
 If there are several ways to cut particular chemical bond, it will be cut only according to the rule that comes first in the customized ordered list of reactions to use. 
 ```python
->>> SynthIfragmentorOneByOneR2_R5_R10  = fragmentation(fragmentationMode="one_by_one", reactionsToWorkWith = "R2,R5,R10",
+>>> SyntOnfragmentorOneByOneR2_R5_R10  = fragmentation(fragmentationMode="one_by_one", reactionsToWorkWith = "R2,R5,R10",
 ...                                                    maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                                    SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore,
 ...                                                    FindAnaloguesOfMissingSynthons=True) 
 
->>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SynthIfragmentorOneByOneR2_R5_R10  ) 
+>>> allSyntheticPathways, allSynthons = fragmentMolecule(smi, SyntOnfragmentorOneByOneR2_R5_R10  ) 
 
 >>> for key in allSyntheticPathways:  
 ...     allSyntheticPathways[key].printShortReagentSetInfo() 
@@ -605,14 +605,14 @@ R2.2_0|R5.1_0 c1nn[nH:20]n1.Clc1ccccc1C([CH3:10])[OH:20].N[CH:10]=O Availability
 
 ### Bulk compounds fragmentation
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
-Library of compounds can be fragmented using *SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
+Library of compounds can be fragmented using *SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
 
 ```shell script
-$ python3 SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -h
+$ python3 SyntOn/SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py -h
 
-usage: SynthI_BulkFragmentationEnumerationAndAnaloguesDesign [-h] [-i INPUT] [-oD OUTDIR] [--SynthLibrary SYNTHLIBRARY] 
+usage: SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign [-h] [-i INPUT] [-oD OUTDIR] [--SynthLibrary SYNTHLIBRARY] 
                                                      [--nCores NCORES]  [--analoguesLibGen] [--strictAvailabilityMode]
                                                      [--simBBselection] [--Ro2Filtration] [--fragmentationMode  MODE] [--simTh SIMTH]
                                                      [--reactionsToWorkWith REACTIONSTOWORKWITH] [--MaxNumberOfStages MAXNUMBEROFSTAGES]
@@ -627,7 +627,7 @@ optional arguments:
   -oD OUTDIR, --outDir OUTDIR   
                         Output directory to write analogues. 
   --SynthLibrary SYNTHLIBRARY                        
-                        Library of available synthons. Generated from avaialable BBs using SynthI_BBsBulkClassificationAndSynthonization.py  
+                        Library of available synthons. Generated from avaialable BBs using SyntOn_BBsBulkClassificationAndSynthonization.py  
   --nCores NCORES       Number of CPUs available for parallelization.          
   --simTh SIMTH         Similarity threshold for BB analogues search. If not specified, only positional variational approach will be used for BBs search             
   --analoguesLibGen     Generate library of analogues from input mol                                                       
@@ -672,7 +672,7 @@ Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Ko
 ```
 Example of launch:
 ```shell script
-python3 SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -i FDA_small_drugs_SMILES_ForFragmentation.smiles  
+python3 SyntOn/SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py -i FDA_small_drugs_SMILES_ForFragmentation.smiles  
 -oD testDir --SynthLibrary outENSynthmode.smi --MaxNumberOfStages 5 --maxNumberOfReactionCentersPerFragment 3 
 --fragmentationMode  use_all --reactionsToWorkWith R1-R13 --nCores 15
 
@@ -694,16 +694,16 @@ It produces 2 files:
     ```
  
 
-## SynthI-Enumeration
+## SyntOn-Enumeration
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
-SynthI-Enumeration applies the list of the reaction rules in order to generate the full combinatorial library of all 
+SyntOn-Enumeration applies the list of the reaction rules in order to generate the full combinatorial library of all 
 compounds that can be synthesized using a given set of synthons.
 
 ### Generate analogues of a compound
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
 Prior to analoggues generation, Fragmentor (Instant of the class fragmentation) should be initialized. It will  define 
 the list of reactions used for fragmentation and library of availble synthons that will be used to find synthons for 
@@ -713,12 +713,12 @@ this bond will not be disconnected. It should be defined by Markush structure (t
 generated by adding * and *[V] at the open end of the structure).   
 
 ```python
->>> from SynthI.src.SynthI import * 
+>>> from SyntOn.src.SyntOn import * 
 
 >>> SynthLibrary = "/pathToTheSynthonsLib/outENSynthmode.smi"
 >>> FragmentsToIgnore = ["*C(C)C", "*C(=O)C", "*C=O", "*[V]C=O", "*[V]C(C)C", "*[V]C(=O)C"]
 
->>> SynthIfragmentor = fragmentation(fragmentationMode="use_all", maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
+>>> SyntOnfragmentor = fragmentation(fragmentationMode="use_all", maxNumberOfReactionCentersPerFragment=3, MaxNumberOfStages = 5, 
 ...                                     SynthLibrary=SynthLibrary, FragmentsToIgnore=FragmentsToIgnore, 
 ...                                     FindAnaloguesOfMissingSynthons=True)
 ```
@@ -728,28 +728,28 @@ Processing BB library. It may take a few minutes, depending on the library size
 Lib BB reading time:
 0:01:33.865876
 ```
-Latter, function `analoguesLibraryGeneration(Smiles_molNameTuple, SynthIfragmentor, outDir, simTh=-1, strictAvailabilityMode=False, desiredNumberOfNewMols=1000)` can be used.
+Latter, function `analoguesLibraryGeneration(Smiles_molNameTuple, SyntOnfragmentor, outDir, simTh=-1, strictAvailabilityMode=False, desiredNumberOfNewMols=1000)` can be used.
 If strictAvailablilityMode is turned on only fully synthesizable analogues are generated. 
 Alternatively, unavailable synthons resulted from compound fragmentation will still be used for the analogues generation. 
 
 ```python
 >>> smi = "CCN1C2=C(C(=O)N(C1=O)CC)N(C(=N2)C=CC3=CC(=C(C=C3)OC)OC)C"
->>> analoguesLibraryGeneration((smi, "MolName"), SynthIfragmentor, "/Path/ToTheOutput/Directory", simTh = 0.5, strictAvailabilityMode=True, desiredNumberOfNewMols=100)
+>>> analoguesLibraryGeneration((smi, "MolName"), SyntOnfragmentor, "/Path/ToTheOutput/Directory", simTh = 0.5, strictAvailabilityMode=True, desiredNumberOfNewMols=100)
 # here some RdKit messages can appear, they can be ignored
 ```
 
 It produces 2 files. The first one contains analogues of the specified compound, while the second one consists of the synthons
-used for the analogues library design (see example at [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#bulk-analogues-enumeration))
+used for the analogues library design (see example at [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-analogues-enumeration))
 
 
 ### Bulk analogues enumeration
 
-Analogues for each compound from defined library can be generated using *SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
+Analogues for each compound from defined library can be generated using *SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
 
 ```shell script
-$ python3 SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -h
+$ python3 SyntOn/SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py -h
 
-usage: SynthI_BulkFragmentationEnumerationAndAnaloguesDesign [-h] [-i INPUT] [-oD OUTDIR] [--SynthLibrary SYNTHLIBRARY] 
+usage: SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign [-h] [-i INPUT] [-oD OUTDIR] [--SynthLibrary SYNTHLIBRARY] 
                                                      [--nCores NCORES]  [--analoguesLibGen] [--strictAvailabilityMode]
                                                      [--simBBselection] [--Ro2Filtration] [--fragmentationMode  MODE] [--simTh SIMTH]
                                                      [--reactionsToWorkWith REACTIONSTOWORKWITH] [--MaxNumberOfStages MAXNUMBEROFSTAGES]
@@ -764,7 +764,7 @@ optional arguments:
   -oD OUTDIR, --outDir OUTDIR   
                         Output directory to write analogues. 
   --SynthLibrary SYNTHLIBRARY                        
-                        Library of available synthons. Generated from avaialable BBs using SynthI_BBsBulkClassificationAndSynthonization.py  
+                        Library of available synthons. Generated from avaialable BBs using SyntOn_BBsBulkClassificationAndSynthonization.py  
   --nCores NCORES       Number of CPUs available for parallelization.          
   --simTh SIMTH         Similarity threshold for BB analogues search. If not specified, only positional variational approach will be used for BBs search             
   --analoguesLibGen     Generate library of analogues from input mol                                                       
@@ -809,7 +809,7 @@ Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Ko
 ```
 Example of launch:
 ```shell script
-python3 ../SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -i FDA_small_drugs_SMILES.smiles 
+python3 ../SyntOn/SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py -i FDA_small_drugs_SMILES.smiles 
 --SynthLibrary outEN_Synthmode.smi --nCores 10 -oD /data/yuliana/DrugsFragmentation/newLaunch  --simTh 0.5 
 --analoguesLibGen --MaxNumberOfStages 5 --maxNumberOfReactionCentersPerFragment 3  --fragmentationMode  use_all 
 --reactionsToWorkWith R1-R13 --strictAvailabilityMode --desiredNumberOfNewMols 100000 
@@ -853,14 +853,14 @@ of the file smiles of the synthon used for new compounds generation is given. Se
 
 ### Enumerate library of all possible compounds using given set of synthons
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
-New compounds can enumerated from defined library of synthons using *SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
+New compounds can enumerated from defined library of synthons using *SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
 
 ```shell script
-$ python3 SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -h
+$ python3 SyntOn/SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py -h
 
-usage: SynthI_BulkFragmentationEnumerationAndAnaloguesDesign [-h] [-i INPUT] [-oD OUTDIR] [--SynthLibrary SYNTHLIBRARY] 
+usage: SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign [-h] [-i INPUT] [-oD OUTDIR] [--SynthLibrary SYNTHLIBRARY] 
                                                      [--nCores NCORES]  [--analoguesLibGen] [--strictAvailabilityMode]
                                                      [--simBBselection] [--Ro2Filtration] [--fragmentationMode  MODE] [--simTh SIMTH]
                                                      [--reactionsToWorkWith REACTIONSTOWORKWITH] [--MaxNumberOfStages MAXNUMBEROFSTAGES]
@@ -875,7 +875,7 @@ optional arguments:
   -oD OUTDIR, --outDir OUTDIR   
                         Output directory to write analogues. 
   --SynthLibrary SYNTHLIBRARY                        
-                        Library of available synthons. Generated from avaialable BBs using SynthI_BBsBulkClassificationAndSynthonization.py  
+                        Library of available synthons. Generated from avaialable BBs using SyntOn_BBsBulkClassificationAndSynthonization.py  
   --nCores NCORES       Number of CPUs available for parallelization.          
   --simTh SIMTH         Similarity threshold for BB analogues search. If not specified, only positional variational approach will be used for BBs search             
   --analoguesLibGen     Generate library of analogues from input mol                                                       
@@ -921,14 +921,14 @@ Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Ko
 
 Example of launch:
 ```shell script
-python3 ../SynthI/SynthI_BulkFragmentationEnumerationAndAnaloguesDesign.py -i SynthonsForLibraryGeneration.smi 
+python3 ../SyntOn/SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py -i SynthonsForLibraryGeneration.smi 
 --nCores 10 -oD /data/yuliana/DrugsFragmentation/newLaunch --maxNumberOfStages 5 --desiredNumberOfNewMols 1000 
 --enumerationMode --MWupperTh 460 --MWlowerTh 200  
 ```
 It will create a list of temporary files, that will be combine into one final file *FinalOut_allEnumeratedCompounds_DuplicatesCanBePresent.smi*
 ## Detailed classes description
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SynthI#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
 
 _**CLASS `synthon (smiles, cutLevel=1, directParent=None, directChildren=None, syntheticPathway=None, BBlibProvided=False)`**_
 

@@ -3,7 +3,7 @@ from rdkit import Chem
 srcPath = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(1, srcPath)
 from src.UsefulFunctions import *
-from src.SynthI_BBs import *
+from src.SyntOn_BBs import *
 
 def main(args):
     with open(args.output + "_Scaffolds.smi", "w") as out:
@@ -63,7 +63,7 @@ if __name__ == '__main__':
                                             "                                    Institute of Organic Chemistry, National Academy of Sciences of Ukraine\n"
                                             "                                    Kyiv National Taras Shevchenko University\n"
                                             "2021 Strasbourg, Kiev",
-                                     prog="SynthI_BBScaffoldGeneration", formatter_class=argparse.RawTextHelpFormatter)
+                                     prog="SyntOn_BBScaffoldGeneration", formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-i", "--input", type=str, help="Input BBs file.")
     parser.add_argument("-o", "--output", type=str, help="Output files suffix name.")
     args = parser.parse_args()
