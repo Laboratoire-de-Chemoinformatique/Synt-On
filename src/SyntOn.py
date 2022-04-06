@@ -268,6 +268,7 @@ class enumeration:
                                     'C:40': ['C:30'], 'C:50': ['C:50'], 'C:70': ['C:60', 'c:60'],
                                     'c:60':['C:70'], 'C:60': ['C:70'], 'N:40': ['C:30'] }
 
+
     def getReconstructedMols(self, allowedToRunSubprocesses=False, randomSeed=None, seed = (0,0), mainRun = True):
         pat = re.compile("\[\w*:\w*\]")
         if randomSeed==None:
