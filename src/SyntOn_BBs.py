@@ -246,8 +246,11 @@ def __synthonsAssignement(CurrentClass, PreviousClasses, molSmi, MarksSetup, kee
                                           firstReactionAsPrep, func, PreviousClasses, CurrentClass, twoPGs)
 
     elif firstReactionAsPrep:
-        synthons = __FirstReactionAsPrep(MarksSetup[CurrentClass]['Labels'], MarksSetup[CurrentClass]['SMARTS'],
-                                        PreviousClasses, CurrentClass, mol, func)
+        synthons = __NormalSynthonsGenerator(MarksSetup[CurrentClass]['Labels'], MarksSetup[CurrentClass]['SMARTS'],
+                                             PreviousClasses, CurrentClass, mol,
+                                             func=func)
+        synthons.update(__FirstReactionAsPrep(MarksSetup[CurrentClass]['Labels'], MarksSetup[CurrentClass]['SMARTS'],
+                                              PreviousClasses, CurrentClass, mol, func))
     else:
         synthons = __NormalSynthonsGenerator(MarksSetup[CurrentClass]['Labels'], MarksSetup[CurrentClass]['SMARTS'],
                                            PreviousClasses, CurrentClass, mol,
