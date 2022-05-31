@@ -1002,3 +1002,11 @@ Generation of analogues of the specified molecule and unbiased library enumerati
 
 * ``enumerationInstance.getReconstructedMols(mol)`` - fragment provided molecule (should be RdKit molecule object and not smiles). Return two dictionary - *allSyntheticPathways* and *allSynthons* obtained during fragmentation.
 
+# Development
+
+This code is auto-formated with [`black`](https://github.com/psf/black) and [`isort`](https://pycqa.github.io/isort/) and checked with continuous integration to ensure code formatting has been properly applied. Please run the following in all pull requests:
+
+```shell
+$ pip install tox
+$ tox
+```
