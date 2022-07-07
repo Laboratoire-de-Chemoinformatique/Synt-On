@@ -1,34 +1,34 @@
 # Synt-On
 Open-source tool for synthons-based library design.
 
-For the standart usage of SyntOn as a comand line tool see only [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-bbs-classification),
-[Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-synthons-generation-for-the-large-bbs-library),
-[Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#scaffold-analysis),
-[Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-compounds-fragmentation),
-[Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-analogues-enumeration).
+For the standart usage of SyntOn as a comand line tool see only [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-bbs-classification),
+[Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-synthons-generation-for-the-large-bbs-library),
+[Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#scaffold-analysis),
+[Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-compounds-fragmentation),
+[Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-analogues-enumeration).
 
 All other chapters of this manual concern usage of SyntOn as a python library inside of the customized scripts.
 
 **Be careful: prior to BBs synthonization the SMILES should be preprocessed and conterions and solvents should be removed. SyntOn-BBs consider every molecule while processing mixture SMILES and for each of them synthons will be generated if possible, therefore take care of them before synthonization**
 
 # Table of Contents
-* [Prerequisites](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#prerequisites)
-    * [System requirements](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#system-requirements)
-    * [Comopounds preprocessing](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#comopounds-preprocessing)
-* [SyntOn-Classifier](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#synthi-classifier)
-    * [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-bbs-classification) 
-* [SyntOn-BBs](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#synthi-bbs)
-    * [Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#scaffold-analysis)
-    * [BBs synthonization](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bbs-synthonization)
-    * [Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-synthons-generation-for-the-large-bbs-library)
-* [SyntOn-Fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#synthi-fragmentation)
-    * [Fragmentation with a default setup](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#fragmentation-with-a-default-setup)
-    * [Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-compounds-fragmentation)
-* [SyntOn-Enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#synthi-enumeration)
-    * [Generate analogues of a compound](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#generate-analogues-of-a-compound)
-    * [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-analogues-enumeration)
-    * [Enumerate library of all possible compounds using given set of synthons](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#enumerate-library-of-all-possible-compounds-using-given-set-of-synthons)
-* [Detailed classes description](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#detailed-classes-description)
+* [Prerequisites](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#prerequisites)
+    * [System requirements](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#system-requirements)
+    * [Comopounds preprocessing](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#comopounds-preprocessing)
+* [SyntOn-Classifier](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#synthi-classifier)
+    * [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-bbs-classification) 
+* [SyntOn-BBs](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#synthi-bbs)
+    * [Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#scaffold-analysis)
+    * [BBs synthonization](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bbs-synthonization)
+    * [Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-synthons-generation-for-the-large-bbs-library)
+* [SyntOn-Fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#synthi-fragmentation)
+    * [Fragmentation with a default setup](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#fragmentation-with-a-default-setup)
+    * [Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-compounds-fragmentation)
+* [SyntOn-Enumeration](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#synthi-enumeration)
+    * [Generate analogues of a compound](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#generate-analogues-of-a-compound)
+    * [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-analogues-enumeration)
+    * [Enumerate library of all possible compounds using given set of synthons](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#enumerate-library-of-all-possible-compounds-using-given-set-of-synthons)
+* [Detailed classes description](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#detailed-classes-description)
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ $ conda env create -f SyntOn_environment.yml  -p /home/user/anaconda3/envs/synth
 All BBs structures need to be sanitized and standartized idependently by user prior to SyntOn usage. Solvents and contriones should be deleted. There is no need to generate major tautomer form as soon as SyntOn will do it for each generated synthons separately.
 
 ## SyntOn-Classifier
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 This module returns the list of classes assigned to the given BB. 
 
@@ -83,7 +83,7 @@ As soon as heterocyclization reaction will be available only in SynhtI.2.0, some
 
 ### Bulk BBs classification 
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 Also *SyntOn_Classifier.py* can be launched as a comand line tool for the BBs library separation into several sublibraries according to the BBs classes:
 
@@ -113,7 +113,7 @@ As a result separate files for each BB class found in the provided library file 
 
 ## SyntOn-BBs 
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 SyntOn-BBs allows to perform scaffold analysis of BBs and generate exhaustively all possible synthons from a given BB. The position of the functional groups as well as type of the resulting intermediate product (cation, anion, radical etc.) is encoded in synthon’s SMILES by introducing special system of labels. 
 
@@ -131,7 +131,7 @@ SyntOn-BBs allows to perform scaffold analysis of BBs and generate exhaustively 
 
 ### Scaffold analysis
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 SyntOn-BBs allow to generate meaningful scaffolds from BBs by removing any ring-containing moieties that will not be kept in the reaction product and thus are irrelevant in BB analysis (e.g. protective (Bnz, Cbz, Fmoc) and leaving groups (boronics, oxiranes, etc.))
 
@@ -176,7 +176,7 @@ It generates four files: *outSuffixName_Scaffolds.smi*, *outSuffixName_scaffolds
 
 ### BBs synthonization
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 In case if BB contain protective groups, protected synthons will be discarded by default
 
@@ -271,7 +271,7 @@ Resulted synthons can be filtered according to the Ro2:
 
 ### Bulk synthons generation for the large BBs library
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 In case of large BB library, classification and synthonization of BBs can be performed using command line tool *SyntOn/SyntOn_BBsBulkClassificationAndSynthonization.py*:
 
@@ -326,13 +326,13 @@ Files *outSuffixName_NotProcessed* and *outSuffixName_NotClassified* contain not
 
 ## SyntOn-Fragmentation
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 This module allows to fragment given molecule and generate synthons that correspond to particular BBs, needed to easily synthesize input compound.
 
 ### Fragmentation with a default setup
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 In order to perform compoound fragmentation, first, the Fragmentor (Instant of the class fragmentation) should be
  initialized.
@@ -365,7 +365,7 @@ Latter `SyntOnfragmentor` cna be used to fragment different molecules with a hel
 # here some RdKit messages can appear, they can be ignored
 ```
 
-Both `allSyntheticPathways` and `allSynthons` are dictionaries as values containing instances of the classes *synthon* and *syntheticPathway* ( [see detailes here](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#detailed-classes-description) )
+Both `allSyntheticPathways` and `allSynthons` are dictionaries as values containing instances of the classes *synthon* and *syntheticPathway* ( [see detailes here](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#detailed-classes-description) )
  
 ```python
 >>> allSynthons
@@ -465,7 +465,7 @@ This synthetic pathways are organized in a disconnection hierarchy, that can be 
     reagentSet 0 :
     R2.2_0|R5.1_0 c1nn[nH:20]n1.Clc1ccccc1C([CH3:10])[OH:20].N[CH:10]=O Availability rate (% of atoms of fragmented molecule coming from available synthons): 0.72 
     ```
-Method *printDetailedReagentsSetInfo()* of the class *syntheticPathway* ( [see detailes here](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#detailed-classes-description) ) can be used for retreiving detailed information about the selected synthetic pathway: 
+Method *printDetailedReagentsSetInfo()* of the class *syntheticPathway* ( [see detailes here](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#detailed-classes-description) ) can be used for retreiving detailed information about the selected synthetic pathway: 
 
 ```python
 >>> shortestSynthesis[0].printDetailedReagentsSetInfo()  
@@ -518,7 +518,7 @@ Children synthons: -
 
 ### Selecting customized list of reactions for fragmentation
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 **Mode "include_only"**
 
@@ -605,7 +605,7 @@ R2.2_0|R5.1_0 c1nn[nH:20]n1.Clc1ccccc1C([CH3:10])[OH:20].N[CH:10]=O Availability
 
 ### Bulk compounds fragmentation
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 Library of compounds can be fragmented using *SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
 
@@ -696,14 +696,14 @@ It produces 2 files:
 
 ## SyntOn-Enumeration
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 SyntOn-Enumeration applies the list of the reaction rules in order to generate the full combinatorial library of all 
 compounds that can be synthesized using a given set of synthons.
 
 ### Generate analogues of a compound
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 Prior to analoggues generation, Fragmentor (Instant of the class fragmentation) should be initialized. It will  define 
 the list of reactions used for fragmentation and library of availble synthons that will be used to find synthons for 
@@ -739,7 +739,7 @@ Alternatively, unavailable synthons resulted from compound fragmentation will st
 ```
 
 It produces 2 files. The first one contains analogues of the specified compound, while the second one consists of the synthons
-used for the analogues library design (see example at [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#bulk-analogues-enumeration))
+used for the analogues library design (see example at [Bulk analogues enumeration](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-analogues-enumeration))
 
 
 ### Bulk analogues enumeration
@@ -853,7 +853,7 @@ of the file smiles of the synthon used for new compounds generation is given. Se
 
 ### Enumerate library of all possible compounds using given set of synthons
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 New compounds can enumerated from defined library of synthons using *SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py* script.
 
@@ -928,7 +928,7 @@ python3 ../SyntOn/SyntOn_BulkFragmentationEnumerationAndAnaloguesDesign.py -i Sy
 It will create a list of temporary files, that will be combine into one final file *FinalOut_allEnumeratedCompounds_DuplicatesCanBePresent.smi*
 ## Detailed classes description
 
-[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/SyntOn#table-of-contents)
+[Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
 _**CLASS `synthon (smiles, cutLevel=1, directParent=None, directChildren=None, syntheticPathway=None, BBlibProvided=False)`**_
 
