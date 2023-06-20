@@ -14,7 +14,8 @@ All other chapters of this manual concern usage of SyntOn as a python library in
 # Table of Contents
 * [Prerequisites](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#prerequisites)
     * [System requirements](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#system-requirements)
-    * [Comopounds preprocessing](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#comopounds-preprocessing)
+    * [Installation](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#installation)
+    * [Compounds preprocessing](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#comopounds-preprocessing)
 * [SyntOn-Classifier](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#synton-classifier)
     * [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-bbs-classification) 
 * [SyntOn-BBs](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#synton-bbs)
