@@ -1,7 +1,7 @@
 # Synt-On
 Open-source tool for synthons-based library design.
 
-For the standart usage of SyntOn as a comand line tool see only [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-bbs-classification),
+For the standard usage of Synt-On as a command line tool see only [Bulk BBs classification](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-bbs-classification),
 [Bulk synthons generation for the large BBs library](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-synthons-generation-for-the-large-bbs-library),
 [Scaffold analysis](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#scaffold-analysis),
 [Bulk compounds fragmentation](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#bulk-compounds-fragmentation),
@@ -39,16 +39,23 @@ Several build-in python modules are also used, but they are usually installed by
 
 The scripts were run in a linux workstation with 15 processors.
 
-The full list of packages is listed in the file SyntOn_environment.yml. You can create required environlent using this command:
+## Installation
+
+The full list of packages is listed in the file SyntOn_environment.yml. You can create required environlent using this command, in which you need to replace "user" by your username:
 
 ```shell script
-$ conda env create -f SyntOn_environment.yml  -p /home/user/anaconda3/envs/synthI_env
+$ conda env create -f SyntOn_environment.yml  -p /home/[user]/anaconda3/envs/synton_env
 ```
 
+Activate the environment using the following command :
 
-### Comopounds preprocessing
+```shell script
+$ conda activate synton_env
+```
 
-All BBs structures need to be sanitized and standartized idependently by user prior to SyntOn usage. Solvents and contriones should be deleted. There is no need to generate major tautomer form as soon as SyntOn will do it for each generated synthons separately.
+### Compounds preprocessing
+
+All BBs structures need to be sanitized and standardized independently by the user prior to SyntOn usage. Solvents and counterions should be deleted. There is no need to generate major tautomer form as soon as SyntOn will do it for each generated synthons separately.
 
 ## SyntOn-Classifier
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
@@ -72,7 +79,7 @@ If the SMILES cannot be processed by RdKit, the following messages will appear:
 [23:37:46] Explicit valence for atom # 8 N, 4, is greater than permitted
 C1CCC(CC1)P([Ir][N]2=CC=CC=C2)(C3CCCCC3)C4CCCCC4.C/1C/C=C\CC/C=C1 was not processed by rdkit
 ```
-As soon as heterocyclization reaction will be available only in SynhtI.2.0, some of the heterocyclization reagents will not be classified in SyntOn.1.0:
+As soon as heterocyclization reaction will be available only in SynthOn.2.0, some of the heterocyclization reagents will not be classified in SyntOn.1.0:
 
 ```python
 >>> BBClassifier(molSmiles="CCOC=1C=C(CC#N)C=CC1OCC(F)(F)F")
@@ -109,7 +116,7 @@ Knowledge base (SMARTS library):    Dmitriy M.Volochnyuk, Sergey V.Ryabukhin, Ko
 2021 Strasbourg, Kiev 
 
 ```
-As a result separate files for each BB class found in the provided library file will be created. The name contains both class and subclass names separated by underscore - *SecondaryAmines_Cyc-Aliphatic.smi* or *Acid_Aliphatic_Acid.smi*.
+As a result, separate files for each BB class found in the provided library file will be created. The name contains both class and subclass names separated by underscore - *SecondaryAmines_Cyc-Aliphatic.smi* or *Acid_Aliphatic_Acid.smi*.
 
 ## SyntOn-BBs 
 
@@ -178,7 +185,7 @@ It generates four files: *outSuffixName_Scaffolds.smi*, *outSuffixName_scaffolds
 
 [Back to Table of Contents](https://github.com/Laboratoire-de-Chemoinformatique/Synt-On#table-of-contents)
 
-In case if BB contain protective groups, protected synthons will be discarded by default
+If BB contain protective groups, protected synthons will be discarded by default
 
 ```python
 >>> from SyntOn.src.SyntOn_BBs import mainSynthonsGenerator
